@@ -20,8 +20,8 @@ class Footer extends Component {
     render() {
         return (
             <div className="footer">
-                <div className="container">
-                    <div className="row menu hidden-xs">
+                <div className="container col-padding">
+                    <div className="menu hidden-xs">
                         <li>
                             <a href="/xzzc.html">走进协同</a>
                         </li>
@@ -44,7 +44,7 @@ class Footer extends Component {
                             <a href="/zsjh.html">招生招聘</a>
                         </li>
                     </div>
-                    <div className="row line hidden-xs"></div>
+                    <div className="line hidden-xs"></div>
                     <div className="row copyright margin-top-20">
                         <div className="col-md-3 col-xs-12">
                             郑老师 82596128 18188718581(中小学)

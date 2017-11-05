@@ -1,10 +1,10 @@
 const initialState = {
-    list: 'asd'
+    list: []
 }
 
 function product(state = initialState, action) {
     switch (action.type) {
-        case 'product':
+        case 'Index':
             return Object.assign(initialState, action.data);
 
         default :

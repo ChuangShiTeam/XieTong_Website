@@ -426,44 +426,12 @@ body {
     background-color: #EEEEEE;
 }
 
-.enter-item-icon-0 {
+.enter-item-icon {
     position: absolute;
     top: 9px;
     left: 10px;
     width: 24px;
     height: 24px;
-    background-image: url("../image/round_check.png");
-    background-size: contain;
-}
-
-.enter-item-icon-1 {
-    position: absolute;
-    top: 9px;
-    left: 10px;
-    width: 24px;
-    height: 24px;
-    background-image: url("../image/evaluate.png");
-    background-size: contain;
-}
-
-.enter-item-icon-2 {
-    position: absolute;
-    top: 9px;
-    left: 10px;
-    width: 24px;
-    height: 24px;
-    background-image: url("../image/location.png");
-    background-size: contain;
-}
-
-.enter-item-icon-3 {
-    position: absolute;
-    top: 9px;
-    left: 10px;
-    width: 24px;
-    height: 24px;
-    background-image: url("../image/mail.png");
-    background-size: contain;
 }
 
 .enter-item-text {
@@ -488,8 +456,6 @@ body {
     right: 10px;
     width: 20px;
     height: 20px;
-    background-image: url("../image/right.png");
-    background-size: contain;
 }
 
 .sight {
