@@ -20,7 +20,6 @@ function request(config) {
         data: JSON.stringify(config.data),
         success: function (response) {
             if (response.code === 200) {
-                alert(response.data[0].user_name);
                 config.success(response.data);
             } else {
 

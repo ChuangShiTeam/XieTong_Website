@@ -204,6 +204,11 @@ body {
     height: 50px;
     line-height: 50px;
     text-align: center;
+    cursor: pointer;
+}
+
+.header .menu li {
+    color: #ffffff;
 }
 
 .header .menu li a {
@@ -231,6 +236,7 @@ body {
     text-align: left;
     text-indent: 33px;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
 }
 
 .header .banner {
@@ -345,7 +351,7 @@ body {
 
 .article-item-description {
     position: absolute;
-    top: 28px;
+    top: 25px;
     left: 0px;
     padding-left: 100px;
     width: 100%;

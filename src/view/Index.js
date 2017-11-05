@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import {Carousel} from 'react-bootstrap';
 
 import Header from '../component/Header';
 import Footer from '../component/Footer';
 
 import constant from '../util/constant';
-import http from '../util/http';
 
 class Index extends Component {
     constructor(props) {
@@ -19,22 +17,7 @@ class Index extends Component {
     }
 
     componentDidMount() {
-        if(this.props.index.list.length === 0) {
-            // http.request({
-            //     url: '/mobile/minhang/task/user/complete/list',
-            //     data: {
-            //         task_id: '',
-            //         page_index: 1,
-            //         page_size: 8
-            //     },
-            //     success: function (data) {
-            //
-            //     },
-            //     complete: function () {
-            //
-            //     }
-            // });
-        }
+
     }
 
     componentWillUnmount() {
@@ -44,7 +27,7 @@ class Index extends Component {
     render() {
         return (
             <div className="index">
-                <Header website_menu_id="home"/>
+                <Header history={this.props.history} website_menu_id="home"/>
                 <div className="content-background-1">
                     <div className="container">
                         <div className="row margin-top-20 margin-bottom-20">
@@ -366,4 +349,8 @@ class Index extends Component {
     }
 }
 
-export default connect((state) => state)(Index);
+export default connect((state) => {
+    return {
+
+    }
+})(Index);

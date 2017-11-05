@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import {Carousel} from 'react-bootstrap';
 
 import Header from '../../component/Header';
@@ -20,20 +19,25 @@ class Index extends Component {
 
     componentDidMount() {
         if(this.props.index.list.length === 0) {
-            // http.request({
-            //     url: '/mobile/minhang/task/user/complete/list',
-            //     data: {
-            //         task_id: '',
-            //         page_index: 1,
-            //         page_size: 8
-            //     },
-            //     success: function (data) {
-            //
-            //     },
-            //     complete: function () {
-            //
-            //     }
-            // });
+            http.request({
+                url: '/mobile/minhang/task/user/complete/list',
+                data: {
+                    task_id: '',
+                    page_index: 1,
+                    page_size: 8
+                },
+                success: function (data) {
+                    this.props.dispatch({
+                        type: 'index',
+                        data: {
+                            list: data
+                        }
+                    });
+                },
+                complete: function () {
+
+                }
+            });
         }
     }
 
@@ -366,4 +370,8 @@ class Index extends Component {
     }
 }
 
-export default connect((state) => state)(Index);
+export default connect((state) => {
+    return {
+
+    }
+})(Index);

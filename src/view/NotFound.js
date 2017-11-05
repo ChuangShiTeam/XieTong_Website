@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Carousel} from 'react-bootstrap';
 
 import Header from '../component/Header';
 import Footer from '../component/Footer';
-
-import constant from '../util/constant';
-import http from '../util/http';
 
 class NotFound extends Component {
     constructor(props) {
@@ -53,4 +49,8 @@ class NotFound extends Component {
     }
 }
 
-export default connect((state) => state)(NotFound);
+export default connect((state) => {
+    return {
+
+    }
+})(NotFound);
