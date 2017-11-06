@@ -6,11 +6,12 @@ import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} f
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
+import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../util/http';
 
-class Admissions extends Component {
+class StudentAdmissions extends Component {
     constructor(props) {
         super(props);
 
@@ -93,6 +94,7 @@ class Admissions extends Component {
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
+                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="5b68b36ca31c49839f38aacf6ac65450"/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
@@ -372,10 +374,10 @@ class Admissions extends Component {
     }
 }
 
-Admissions = createForm({})(Admissions);
+StudentAdmissions = createForm({})(StudentAdmissions);
 
 export default connect((state) => {
     return {
 
     }
-})(Admissions);
+})(StudentAdmissions);

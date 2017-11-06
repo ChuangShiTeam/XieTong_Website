@@ -46,7 +46,7 @@ const Routers = () =>
                 <Route path="/index" component={Index}/>
                 <Route path="/page/:page_id" component={Page}/>
                 <Route path="/team" component={Team}/>
-                <Route path="/article/index" component={ArticleIndex}/>
+                <Route path="/article/index/:article_category_id" component={ArticleIndex}/>
                 <Route path="/article/detail/:article_id" component={ArticleDetail}/>
                 <Route path="/student/login" component={StudentLogin}/>
                 <Route path="/student/admissions" component={StudentAdmissions}/>

@@ -7,35 +7,37 @@ class PageSubNav extends Component {
         super(props);
 
         this.state = {
-            page_id: '',
-            website_menu_list: []
+            website_menu_id: '',
+            website_menu_list: [],
+            page_id: ''
         }
     }
 
     componentDidMount() {
-
+        this.setState({
+            website_menu_id: this.props.website_menu_id,
+            website_menu_list: this.props.website_menu.list,
+            page_id: this.props.page_id
+        });
     }
 
     componentWillReceiveProps(nextProps) {
+        if (this.state.website_menu_id !== nextProps.website_menu_id) {
+            this.setState({
+                website_menu_id: nextProps.website_menu_id
+            });
+        }
+
+        if (this.state.website_menu_list !== nextProps.website_menu.list) {
+            this.setState({
+                website_menu_list: nextProps.website_menu.list
+            });
+        }
+
         if (this.state.page_id !== nextProps.page_id) {
-            var index = -1;
-
-            for (var i = 0; i < nextProps.website_menu.list.length; i++) {
-                for (var j = 0; j < nextProps.website_menu.list[i].children.length; j++) {
-                    if (nextProps.website_menu.list[i].children[j].page_id === nextProps.page_id) {
-                        index = i;
-
-                        break;
-                    }
-                }
-            }
-
-            if (index > -1) {
-                this.setState({
-                    page_id: nextProps.page_id,
-                    website_menu_list: nextProps.website_menu.list[index].children
-                });
-            }
+            this.setState({
+                page_id: nextProps.page_id
+            });
         }
     }
 
@@ -43,25 +45,25 @@ class PageSubNav extends Component {
 
     }
 
-    handleClickeMenu(url) {
-        this.props.history.push({
-            pathname: url,
-            query: {}
-        });
-    }
-
     render() {
         return (
             <div>
                 {
-                    this.state.website_menu_list.map(function (website_menu, index) {
+                    this.state.website_menu_list.map(function (website_menu) {
                         return (
-                            <Link key={website_menu.website_menu_id} to={website_menu.page_id === '' ? website_menu.website_menu_url : '/page/' + website_menu.page_id}>
-                                <div className={"subnav-item" + (website_menu.page_id === this.state.page_id ? " active" : "") + (index === 0 ? "" : " margin-top")}>
-                                    <div className="subnav-item-menu">{website_menu.website_menu_name}</div>
-                                    <div className="subnav-item-arrow"></div>
-                                </div>
-                            </Link>
+                            website_menu.children.map(function (children_website_menu, index) {
+                                return (
+                                    website_menu.website_menu_id === this.state.website_menu_id ?
+                                        <Link key={children_website_menu.website_menu_id} to={children_website_menu.website_menu_url === '' ? '/page/' + children_website_menu.page_id : children_website_menu.website_menu_url}>
+                                            <div className={"subnav-item" + (children_website_menu.page_id === this.state.page_id ? " active" : "") + (index === 0 ? "" : " margin-top")}>
+                                                <div className="subnav-item-menu">{children_website_menu.website_menu_name}</div>
+                                                <div className="subnav-item-arrow"></div>
+                                            </div>
+                                        </Link>
+                                        :
+                                        ""
+                                )
+                            }.bind(this))
                         )
                     }.bind(this))
                 }
@@ -71,7 +73,7 @@ class PageSubNav extends Component {
 }
 
 PageSubNav.propTypes = {
-    history: React.PropTypes.object.isRequired,
+    website_menu_id: React.PropTypes.string.isRequired,
     page_id: React.PropTypes.string.isRequired
 };
 

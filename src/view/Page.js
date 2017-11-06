@@ -79,11 +79,14 @@ class Page extends Component {
                         page: data
                     });
                 }.bind(this),
+                error: function (data) {
+
+                },
                 complete: function () {
                     this.setState({
                         is_load: false
                     });
-                }
+                }.bind(this)
             });
         }
     }
@@ -101,11 +104,16 @@ class Page extends Component {
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
-                            <PageSubNav history={this.props.history} page_id={this.state.page_id}/>
+                            <PageSubNav website_menu_id={this.state.page.website_menu_id} page_id={this.state.page_id}/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
-                            <div dangerouslySetInnerHTML={{__html: this.state.page.page_content}}></div>
+                            {
+                                this.state.is_load ?
+                                    <div className="text-center">正在努力加载中..</div>
+                                    :
+                                    <div dangerouslySetInnerHTML={{__html: this.state.page.page_content}}></div>
+                            }
                         </div>
                     </div>
                 </div>

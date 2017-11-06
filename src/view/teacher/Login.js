@@ -10,7 +10,7 @@ import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../util/http';
 
-class Login extends Component {
+class TeacherLogin extends Component {
     constructor(props) {
         super(props);
 
@@ -175,10 +175,10 @@ class Login extends Component {
     }
 }
 
-Login = createForm({})(Login);
+TeacherLogin = createForm({})(TeacherLogin);
 
 export default connect((state) => {
     return {
 
     }
-})(Login);
+})(TeacherLogin);

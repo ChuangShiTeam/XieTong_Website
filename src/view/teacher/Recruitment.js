@@ -6,11 +6,12 @@ import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, HelpBlock, Butto
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
+import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../util/http';
 
-class Recruitment extends Component {
+class TeacherRecruitment extends Component {
     constructor(props) {
         super(props);
 
@@ -102,6 +103,7 @@ class Recruitment extends Component {
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
+                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="d46f020e9a28412c911e580ec22574f2"/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
@@ -434,10 +436,10 @@ class Recruitment extends Component {
     }
 }
 
-Recruitment = createForm({})(Recruitment);
+TeacherRecruitment = createForm({})(TeacherRecruitment);
 
 export default connect((state) => {
     return {
 
     }
-})(Recruitment);
+})(TeacherRecruitment);

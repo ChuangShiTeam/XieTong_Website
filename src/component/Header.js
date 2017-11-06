@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {Navbar, Nav, NavDropdown, MenuItem, Carousel} from 'react-bootstrap';
 import {AutoAffix} from 'react-overlays';
-import {Link} from 'react-router';
 
 import constant from '../util/constant';
 import http from '../util/http';
@@ -43,6 +43,9 @@ class Header extends Component {
                         }
                     });
                 }.bind(this),
+                error: function (data) {
+
+                },
                 complete: function () {
 
                 }
@@ -85,7 +88,7 @@ class Header extends Component {
                                             {
                                                 website_menu.children.map(function (children) {
                                                     return (
-                                                        <MenuItem key={children.website_menu_id} onClick={this.handleClickeMenu.bind(this, children.page_id === '' ? children.website_menu_url : '/page/' + children.page_id)}>{children.website_menu_name}</MenuItem>
+                                                        <MenuItem key={children.website_menu_id} onClick={this.handleClickeMenu.bind(this, children.website_menu_url === '' ? '/page/' + children.page_id : children.website_menu_url)}>{children.website_menu_name}</MenuItem>
                                                     )
                                                 }.bind(this))
                                             }
@@ -137,12 +140,12 @@ class Header extends Component {
                                 this.props.website_menu.list.map(function (website_menu) {
                                     return (
                                         <li key={website_menu.website_menu_id} className={this.props.website_menu_id === website_menu.website_menu_id ? "active" : ""}>
-                                            <div onClick={this.handleClickeMenu.bind(this, website_menu.page_id === '' ? website_menu.website_menu_url : '/page/' + website_menu.page_id)}>{website_menu.website_menu_name}</div>
+                                            <div onClick={this.handleClickeMenu.bind(this, website_menu.website_menu_url === '' ? '/page/' + website_menu.page_id : website_menu.website_menu_url)}>{website_menu.website_menu_name}</div>
                                             <ul>
                                                 {
                                                     website_menu.children.map(function (children) {
                                                         return (
-                                                            <li key={children.website_menu_id} onClick={this.handleClickeMenu.bind(this, children.page_id === '' ? children.website_menu_url : '/page/' + children.page_id)}>
+                                                            <li key={children.website_menu_id} onClick={this.handleClickeMenu.bind(this, children.website_menu_url === '' ? '/page/' + children.page_id : children.website_menu_url)}>
                                                                 <a>{children.website_menu_name}</a>
                                                             </li>
                                                         )
