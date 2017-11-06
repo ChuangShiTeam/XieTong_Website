@@ -4,7 +4,7 @@ const initialState = {
 
 function product(state = initialState, action) {
     switch (action.type) {
-        case 'article':
+        case 'article_category':
             return Object.assign({}, state, action.data);
         default :
             return state;

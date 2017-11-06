@@ -50,7 +50,7 @@ class Detail extends Component {
     render() {
         return (
             <div>
-                <Header website_menu_id="8d3c2491d1394b65a05c707846f06ab2"/>
+                <Header history={this.props.history} website_menu_id="8d3c2491d1394b65a05c707846f06ab2"/>
                 <div className="content container">
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>

@@ -636,6 +636,10 @@ body {
     color: #ffffff !important;
 }
 
+.navbar-default .navbar-nav .open .dropdown-menu > li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff !important;
 }

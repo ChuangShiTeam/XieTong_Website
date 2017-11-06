@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router'
 
 import Header from '../component/Header';
 import Footer from '../component/Footer';
+import PageSubNav from '../component/PageSubNav';
+import DepartmentSubNav from '../component/DepartmentSubNav';
 
 import http from '../util/http';
 
@@ -12,26 +15,29 @@ class Page extends Component {
 
         this.state = {
             page_id: '',
-            page: {
-
-            }
+            page_list: [],
+            page: {}
         }
     }
 
     componentDidMount() {
         this.setState({
-            page_id: this.props.params.page_id
+            page_id: this.props.params.page_id,
+            page_list: this.props.page.list,
+            website_menu_list: this.props.website_menu.list
         }, function () {
             this.handleLoad();
         }.bind(this));
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            page_id: nextProps.params.page_id
-        }, function () {
-            this.handleLoad();
-        }.bind(this));
+        if (this.state.page_id !== nextProps.params.page_id) {
+            this.setState({
+                page_id: nextProps.params.page_id
+            }, function () {
+                this.handleLoad();
+            }.bind(this));
+        }
     }
 
     componentWillUnmount() {
@@ -39,20 +45,39 @@ class Page extends Component {
     }
 
     handleLoad() {
-        http.request({
-            url: '/desktop/page/find',
-            data: {
-                page_id: this.state.page_id
-            },
-            success: function (data) {
+        var is_exit = false;
+        for (var i = 0; i < this.state.page_list.length; i++) {
+            if (this.state.page_list[i].page_id === this.state.page_id) {
                 this.setState({
-                    page: data
+                    page: this.state.page_list[i]
                 });
-            }.bind(this),
-            complete: function () {
 
+                is_exit = true;
+
+                break;
             }
-        });
+        }
+
+        if (!is_exit) {
+            http.request({
+                url: '/desktop/page/find',
+                data: {
+                    page_id: this.state.page_id
+                },
+                success: function (data) {
+                    var page_list = this.state.page_list;
+                    page_list.push(data);
+
+                    this.setState({
+                        page_list: page_list,
+                        page: data
+                    });
+                }.bind(this),
+                complete: function () {
+
+                }
+            });
+        }
     }
 
     render() {
@@ -62,78 +87,14 @@ class Page extends Component {
                 <div className="content container">
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
-                        <div className="title-breadcrumb"><a href="/index.html">首页</a> > <a href="xzzc.html">走进协同</a> >
-                            校长致辞
+                        <div className="title-breadcrumb">
+                            <a href="/index.html">首页</a> > <Link to="">{this.state.page.website_menu_name}</Link> > {this.state.page.page_name}
                         </div>
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
-                            <a href="/xzzc.html">
-                                <div className="subnav-item  active  ">
-                                    <div className="subnav-item-menu">校长致辞</div>
-                                    <div className="subnav-item-arrow"></div>
-                                </div>
-                            </a>
-                            <a href="/xxjj.html">
-                                <div className="subnav-item margin-top ">
-                                    <div className="subnav-item-menu">学校简介</div>
-                                    <div className="subnav-item-arrow"></div>
-                                </div>
-                            </a>
-                            <a href="/fssy.html">
-                                <div className="subnav-item margin-top ">
-                                    <div className="subnav-item-menu">佛山市实验学校教育集团</div>
-                                    <div className="subnav-item-arrow"></div>
-                                </div>
-                            </a>
-                            <a href="/mgxt.html">
-                                <div className="subnav-item margin-top ">
-                                    <div className="subnav-item-menu">美国协同教育集团</div>
-                                    <div className="subnav-item-arrow"></div>
-                                </div>
-                            </a>
-                            <a href="/zzjg.html">
-                                <div className="subnav-item margin-top ">
-                                    <div className="subnav-item-menu">组织架构</div>
-                                    <div className="subnav-item-arrow"></div>
-                                </div>
-                            </a>
-                            <a href="/xxfzc.html">
-                                <div className="subnav-item margin-top ">
-                                    <div className="subnav-item-menu">学校发展处</div>
-                                    <div className="subnav-item-arrow"></div>
-                                </div>
-                            </a>
-                            <a href="/jsfzc.html">
-                                <div className="subnav-item margin-top ">
-                                    <div className="subnav-item-menu">教师发展处</div>
-                                    <div className="subnav-item-arrow"></div>
-                                </div>
-                            </a>
-                            <a href="/xsfzc.html">
-                                <div className="subnav-item margin-top ">
-                                    <div className="subnav-item-menu">学生发展处</div>
-                                    <div className="subnav-item-arrow"></div>
-                                </div>
-                            </a>
-                            <div className="department margin-top">
-                                <a href="/xxb.html">
-                                    <img src="/image/department0.jpg" alt=""/>
-                                    <div className="department-mask">小学部</div>
-                                </a>
-                            </div>
-                            <div className="department margin-top">
-                                <a href="/zxb.html">
-                                    <img src="/image/department1.jpg" alt=""/>
-                                    <div className="department-mask">中学部</div>
-                                </a>
-                            </div>
-                            <div className="department margin-top">
-                                <a href="/gjb.html">
-                                    <img src="/image/department2.jpg" alt=""/>
-                                    <div className="department-mask">国际部</div>
-                                </a>
-                            </div>
+                            <PageSubNav history={this.props.history} page_id={this.state.page_id}/>
+                            <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
                             <div dangerouslySetInnerHTML={{__html: this.state.page.page_content}}></div>
@@ -148,6 +109,7 @@ class Page extends Component {
 
 export default connect((state) => {
     return {
-
+        website_menu: state.website_menu,
+        page: state.page
     }
 })(Page);

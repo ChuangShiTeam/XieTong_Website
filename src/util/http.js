@@ -22,7 +22,7 @@ function request(config) {
             if (response.code === 200) {
                 config.success(response.data);
             } else {
-
+                config.error(response);
             }
         },
         error: function () {

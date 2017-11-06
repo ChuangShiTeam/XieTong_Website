@@ -5,20 +5,31 @@ import {Provider} from 'react-redux';
 import {routerReducer} from 'react-router-redux';
 
 import index from './store/index';
-import menu from './store/menu';
+import website_menu from './store/website_menu';
+import advertisement from './store/advertisement';
 import article from './store/article';
+import article_category from './store/article_category';
+import page from './store/page';
 
 import Index from './view/Index';
 import Page from './view/Page';
+import Team from './view/Team';
 import ArticleIndex from './view/article/Index';
 import ArticleDetail from './view/article/Detail';
+import StudentLogin from './view/student/Login';
+import StudentAdmissions from './view/student/Admissions';
+import TeacherLogin from './view/teacher/Login';
+import TeacherRecruitment from './view/teacher/Recruitment';
 import NotFound from './view/NotFound';
 
 const store = createStore(
     combineReducers({
         index,
-        menu,
+        website_menu,
+        advertisement,
         article,
+        article_category,
+        page,
         routing: routerReducer
     })
 );
@@ -34,8 +45,13 @@ const Routers = () =>
                 <IndexRedirect to="/index"/>
                 <Route path="/index" component={Index}/>
                 <Route path="/page/:page_id" component={Page}/>
+                <Route path="/team" component={Team}/>
                 <Route path="/article/index" component={ArticleIndex}/>
                 <Route path="/article/detail/:article_id" component={ArticleDetail}/>
+                <Route path="/student/login" component={StudentLogin}/>
+                <Route path="/student/admissions" component={StudentAdmissions}/>
+                <Route path="/teacher/login" component={TeacherLogin}/>
+                <Route path="/teacher/recruitment" component={TeacherRecruitment}/>
                 <Route path="/not/found" component={NotFound}/>
             </Route>
         </Router>

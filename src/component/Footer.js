@@ -13,6 +13,10 @@ class Footer extends Component {
 
     }
 
+    componentWillReceiveProps(nextProps) {
+
+    }
+
     componentWillUnmount() {
 
     }

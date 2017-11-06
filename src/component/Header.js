@@ -15,19 +15,31 @@ class Header extends Component {
     }
 
     componentDidMount() {
-        if (this.props.menu.list.length === 0) {
+        if (this.props.website_menu.list.length === 0) {
             http.request({
-                url: '/desktop/website/menu/list',
+                url: '/desktop/xietong/website/init',
                 data: {
-                    task_id: '',
-                    page_index: 1,
-                    page_size: 8
+
                 },
                 success: function (data) {
                     this.props.dispatch({
-                        type: 'menu',
+                        type: 'website_menu',
                         data: {
-                            list: data
+                            list: data.website_menu_list
+                        }
+                    });
+
+                    this.props.dispatch({
+                        type: 'advertisement',
+                        data: {
+                            list: data.advertisement_list
+                        }
+                    });
+
+                    this.props.dispatch({
+                        type: 'article_category',
+                        data: {
+                            list: data.article_category_list
                         }
                     });
                 }.bind(this),
@@ -38,12 +50,15 @@ class Header extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+
+    }
+
     componentWillUnmount() {
 
     }
 
     handleClickeMenu(url) {
-        // this.props.history.pushState(null, url);
         this.props.history.push({
             pathname: url,
             query: {}
@@ -56,24 +71,21 @@ class Header extends Component {
                 <Navbar className="hidden-sm hidden-md hidden-lg mobile-header" fixedTop={true}>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="/index">欢迎光临佛山协同(国际)学校</a>
+                            <Link to="/index">欢迎光临佛山协同(国际)学校</Link>
                         </Navbar.Brand>
                         <Navbar.Toggle/>
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav>
                             {
-                                this.props.menu.list.map(function (menu) {
+                                this.props.website_menu.list.map(function (website_menu) {
                                     return (
-                                        <NavDropdown key={menu.website_menu_id} title={menu.website_menu_name}
+                                        <NavDropdown key={website_menu.website_menu_id} title={website_menu.website_menu_name}
                                                      id="basic-nav-dropdown">
                                             {
-                                                menu.children.map(function (children) {
+                                                website_menu.children.map(function (children) {
                                                     return (
-                                                        <div key={children.website_menu_id}>
-                                                            <MenuItem onClick={this.handleClickeMenu.bind(this, children.page_id === '' ? children.website_menu_url : '/page/' + children.page_id)}>{children.website_menu_name}</MenuItem>
-                                                            <MenuItem divider/>
-                                                        </div>
+                                                        <MenuItem key={children.website_menu_id} onClick={this.handleClickeMenu.bind(this, children.page_id === '' ? children.website_menu_url : '/page/' + children.page_id)}>{children.website_menu_name}</MenuItem>
                                                     )
                                                 }.bind(this))
                                             }
@@ -86,23 +98,23 @@ class Header extends Component {
                 </Navbar>
                 <div className="navigation hidden-xs">
                     <div className="container col-padding">
-                        <div className="pull-left"><a href="/index">您好，欢迎光临佛山协同(国际)学校！</a></div>
+                        <div className="pull-left"><Link to="/index">您好，欢迎光临佛山协同(国际)学校！</Link></div>
                         <div className="pull-right hidden-xs">
-                            <a className="margin-right" href="/not/found">我是学生</a>
+                            <Link className="margin-right" to="/student/login">我是学生</Link>
                             |
-                            <a className="margin-left" href="/not/found">我是老师</a>
+                            <Link className="margin-left" to="/teacher/login">我是老师</Link>
                         </div>
                     </div>
                 </div>
                 <div className="main">
                     <div className="container col-padding">
                         <div className="pull-left">
-                            <a href="/index">
+                            <Link to="/index">
                                 <img className="logo" src="/image/logo.png" alt=""/>
-                            </a>
+                            </Link>
                         </div>
                         <div className="pull-right hidden-xs">
-                            <a href="/404.html">
+                            <Link to="/not/found">
                                 <div className="search">
                                     <div className="search-input">
 
@@ -111,7 +123,7 @@ class Header extends Component {
                                         全站搜索
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -122,13 +134,13 @@ class Header extends Component {
                                 <Link to="/index">首页</Link>
                             </li>
                             {
-                                this.props.menu.list.map(function (menu) {
+                                this.props.website_menu.list.map(function (website_menu) {
                                     return (
-                                        <li key={menu.website_menu_id} className={this.props.website_menu_id === menu.website_menu_id ? "active" : ""}>
-                                            {menu.website_menu_name}
+                                        <li key={website_menu.website_menu_id} className={this.props.website_menu_id === website_menu.website_menu_id ? "active" : ""}>
+                                            <div onClick={this.handleClickeMenu.bind(this, website_menu.page_id === '' ? website_menu.website_menu_url : '/page/' + website_menu.page_id)}>{website_menu.website_menu_name}</div>
                                             <ul>
                                                 {
-                                                    menu.children.map(function (children) {
+                                                    website_menu.children.map(function (children) {
                                                         return (
                                                             <li key={children.website_menu_id} onClick={this.handleClickeMenu.bind(this, children.page_id === '' ? children.website_menu_url : '/page/' + children.page_id)}>
                                                                 <a>{children.website_menu_name}</a>
@@ -147,35 +159,17 @@ class Header extends Component {
                 {
                     this.props.is_show_banner ?
                         <Carousel className="banner hidden-xs" interval={5000} keyboard={false}>
-                            <Carousel.Item>
-                                <a href="/xxjj.html">
-                                    <img className="banner-image"
-                                         src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/original/045f78f2bbe044caa97a9a7f1aa5b3af.jpg"}
-                                         alt=""/>
-                                </a>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <a href="/xsst.html">
-                                    <img className="banner-image"
-                                         src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/original/8cafd8e71833445c946a308ed5e9ee93.jpg"}
-                                         alt=""/>
-                                </a>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img className="banner-image"
-                                     src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/original/281d8f1b11084f939a98488864221bdf.png"}
-                                     alt=""/>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img className="banner-image"
-                                     src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/original/e13d5cf3dcc64ffc82aaf29bbb576463.png"}
-                                     alt=""/>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img className="banner-image"
-                                     src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/original/e2579cebf60047b599f8b849f6c7c419.jpg"}
-                                     alt=""/>
-                            </Carousel.Item>
+                            {
+                                this.props.advertisement.list.map(function (advertisement) {
+                                    return (
+                                        <Carousel.Item key={advertisement.advertisement_id}>
+                                            <Link to={advertisement.advertisement_link}>
+                                                <img className="banner-image" src={constant.host + advertisement.file_original_path} alt=""/>
+                                            </Link>
+                                        </Carousel.Item>
+                                    )
+                                })
+                            }
                         </Carousel>
                         :
                         ''
@@ -198,6 +192,8 @@ Header.defaultProps = {
 
 export default connect((state) => {
     return {
-        menu: state.menu
+        website_menu: state.website_menu,
+        advertisement: state.advertisement,
+        article_category: state.article_category
     }
 })(Header);

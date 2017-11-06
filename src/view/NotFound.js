@@ -12,22 +12,11 @@ class NotFound extends Component {
     }
 
     componentDidMount() {
-        if (this.props.index.list.length === 0) {
-            // http.request({
-            //     url: '/mobile/minhang/task/user/complete/list',
-            //     data: {
-            //         task_id: '',
-            //         page_index: 1,
-            //         page_size: 8
-            //     },
-            //     success: function (data) {
-            //
-            //     },
-            //     complete: function () {
-            //
-            //     }
-            // });
-        }
+
+    }
+
+    componentWillReceiveProps(nextProps) {
+
     }
 
     componentWillUnmount() {

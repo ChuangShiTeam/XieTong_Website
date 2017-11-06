@@ -20,6 +20,10 @@ class Index extends Component {
 
     }
 
+    componentWillReceiveProps(nextProps) {
+
+    }
+
     componentWillUnmount() {
 
     }
