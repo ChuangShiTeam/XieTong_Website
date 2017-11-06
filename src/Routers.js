@@ -4,7 +4,7 @@ import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import {routerReducer} from 'react-router-redux';
 
-import index from './store/index';
+import index from './store/Index';
 import website_menu from './store/website_menu';
 import advertisement from './store/advertisement';
 import article from './store/article';
@@ -26,6 +26,8 @@ import TeacherDetail from './view/teacher/Detail';
 import TeacherLogin from './view/teacher/Login';
 import TeacherRecruitment from './view/teacher/Recruitment';
 import NotFound from './view/NotFound';
+import SignUpJunior from './view/signup/Junior';
+import SignUpPupil from './view/signup/Pupil';
 
 const store = createStore(
     combineReducers({
@@ -63,6 +65,8 @@ const Routers = () =>
                 <Route path="/teacher/recruitment" component={TeacherRecruitment}/>
                 <Route path="/teacher/detail/:teacher_id" component={TeacherDetail}/>
                 <Route path="/not/found" component={NotFound}/>
+                <Route path="/sign/junior" component={SignUpJunior}/>
+                <Route path="/sign/pupil" component={SignUpPupil}/>
             </Route>
         </Router>
     </Provider>
