@@ -1,12 +1,11 @@
 const initialState = {
-    article_list: []
+    list: []
 }
 
 function product(state = initialState, action) {
     switch (action.type) {
-        case 'index':
+        case 'student':
             return Object.assign({}, state, action.data);
-
         default :
             return state;
     }

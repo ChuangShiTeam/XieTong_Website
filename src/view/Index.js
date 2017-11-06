@@ -7,16 +7,40 @@ import Header from '../component/Header';
 import Footer from '../component/Footer';
 
 import constant from '../util/constant';
+import http from '../util/http';
 
 class Index extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+
+        }
     }
 
     componentDidMount() {
+        if (this.props.index.article_list.length === 0) {
+            http.request({
+                url: '/desktop/xietong/website/index',
+                data: {
 
+                },
+                success: function (data) {
+                    this.props.dispatch({
+                        type: 'index',
+                        data: {
+                            article_list: data
+                        }
+                    });
+                }.bind(this),
+                error: function (data) {
+
+                },
+                complete: function () {
+
+                }
+            });
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -73,105 +97,50 @@ class Index extends Component {
                                     <div className="title-line"></div>
                                 </div>
                                 <div className="pull-right">
-                                    <a href="#">更多</a>
+                                    <Link to="/article/index/c9dd8759a7a04aaeb038973c3246d863">更多</Link>
                                 </div>
                             </div>
                             <div className="col-md-6 col-padding">
                                 <Carousel className="margin-top" interval={3000} keyboard={false}>
-                                    <Carousel.Item>
-                                        <a href="#">
-                                            <img className="school-article-image"
-                                                 src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/f07f64940c864d59a4506a696b018ed8.jpg"}
-                                                 alt=""/>
-                                        </a>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <a href="#">
-                                            <img className="school-article-image"
-                                                 src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/608b4278a55b4ffb9e99d4d6c7a41965.jpg"}
-                                                 alt=""/>
-                                        </a>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <a href="#">
-                                            <img className="school-article-image"
-                                                 src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/c81681f248d14960b34bd4d591ef9071.jpg"}
-                                                 alt=""/>
-                                        </a>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <a href="#">
-                                            <img className="school-article-image"
-                                                 src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/e4f154e9732d4ff4888d81a55e5e7434.jpg"}
-                                                 alt=""/>
-                                        </a>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <a href="#">
-                                            <img className="school-article-image"
-                                                 src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/4b56a10946a64bf6a38db039f3e0f603.jpg"}
-                                                 alt=""/>
-                                        </a>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <a href="#">
-                                            <img className="school-article-image"
-                                                 src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/c81681f248d14960b34bd4d591ef9071.jpg"}
-                                                 alt=""/>
-                                        </a>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <a href="#">
-                                            <img className="school-article-image"
-                                                 src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/ea80bd13796c43feb2af9993028bb9cf.jpg"}
-                                                 alt=""/>
-                                        </a>
-                                    </Carousel.Item>
+                                    {
+                                        this.props.index.article_list.map(function (article) {
+                                            return (
+                                                article.article_category_id === 'c9dd8759a7a04aaeb038973c3246d863' ?
+                                                    <Carousel.Item key={article.article_id}>
+                                                        <Link to={"/article/detail/" + article.article_id}>
+                                                            <img className="school-article-image"
+                                                                 src={constant.image_host + article.file_path}
+                                                                 alt=""/>
+                                                        </Link>
+                                                    </Carousel.Item>
+                                                    :
+                                                    ''
+                                            )
+                                        })
+                                    }
                                 </Carousel>
                             </div>
                             <div className="col-md-6 col-padding">
-                                <div className={"article-item margin-top"}>
-                                    <a href="/#/article/detail/40d7c97c00824be7a3358c61be156ba0">
-                                        <img className="article-item-image img-thumbnail"
-                                             src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/f07f64940c864d59a4506a696b018ed8.jpg"}
-                                             alt=""/>
-                                        <div className="article-item-title">佛山协同（国际）学校教师节</div>
-                                        <div className="article-item-description">
-                                            师恩长存，卓越幸福——佛山协同（国际）学校教师节庆祝活动暨优秀教师表彰大会
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className={"article-item margin-top"}>
-                                    <a href="/#/article/detail/55395079ed324e9daf3766f326463155">
-                                        <img className="article-item-image img-thumbnail"
-                                             src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/608b4278a55b4ffb9e99d4d6c7a41965.jpg"}
-                                             alt=""/>
-                                        <div className="article-item-title">【喜讯】胡慧敏老师荣获数学教师技能一等奖</div>
-                                        <div className="article-item-description">2017年9月27日，在刚刚结束的&ldquo;
-                                            2017年佛山禅城区小学数学教师技能大赛&rdquo;中，我校小学部数学老师胡慧敏从竞争激烈的解题暨说课比赛中脱颖而出，获得一等奖。
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className={"article-item margin-top"}>
-                                    <a href="/#/article/detail/9c002dcc41434d199f0c0af6dfebbae5">
-                                        <img className="article-item-image img-thumbnail"
-                                             src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/c81681f248d14960b34bd4d591ef9071.jpg"}
-                                             alt=""/>
-                                        <div className="article-item-title">协同因你们而更加美好 协同学校九年级表彰会及家长会</div>
-                                        <div className="article-item-description">
-                                            10月21日上午，我校中学部九年级全体师生及家长在国际部报告厅举行了本学期第一阶段表彰会及家长会，会议由黄海松级长主持。
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className={"article-item margin-top"}>
-                                    <a href="/#/article/detail/a103da4254bf4f5e8413b307580c8703">
-                                        <img className="article-item-image img-thumbnail"
-                                             src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/e4f154e9732d4ff4888d81a55e5e7434.jpg"}
-                                             alt=""/>
-                                        <div className="article-item-title">砥砺奋进的五年.文明的力量</div>
-                                        <div className="article-item-description">砥砺奋进的五年.文明的力量</div>
-                                    </a>
-                                </div>
+                                {
+                                    this.props.index.article_list.map(function (article) {
+                                        return (
+                                            article.article_category_id === 'c9dd8759a7a04aaeb038973c3246d863' ?
+                                                <div key={article.article_id} className={"article-item margin-top"}>
+                                                    <Link to={"/article/detail/" + article.article_id}>
+                                                        <img className="article-item-image img-thumbnail"
+                                                             src={constant.image_host + article.file_path}
+                                                             alt=""/>
+                                                        <div className="article-item-title">{article.article_name}</div>
+                                                        <div className="article-item-description">
+                                                            {article.article_summary}
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                                :
+                                                ''
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                         <div className="col-md-4 visible-xs-inline margin-top"></div>
@@ -185,30 +154,29 @@ class Index extends Component {
                                     <div className="title-line"></div>
                                 </div>
                                 <div className="pull-right">
-                                    <a href="#">更多</a>
+                                    <Link to="/article/index/7e84950e6d96412b860b5be55f46d5e8">更多</Link>
                                 </div>
                             </div>
-                            <div className={"article-item margin-top"}>
-                                <a href="/#/article/detail/d31a86b977324470a35ae0c1b8f97780">
-                                    <img className="article-item-image img-thumbnail"
-                                         src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/146a3afdbafe4ad4a107d5dcbacba17f.png"}
-                                         alt=""/>
-                                    <div className="article-item-title">我校党支部 学习习总书记对广东工作批示的重要精神</div>
-                                    <div className="article-item-description">
-                                        4月25日，协同学校党支部成员集中会议室，对习近平总书记对广东工作批示的重要精神进行了全面的学习。
-                                    </div>
-                                </a>
-                            </div>
-                            <div className={"article-item margin-top"}>
-                                <a href="/#/article/detail/d7c5f895dbf240a795ab4c3f22db8fa6">
-                                    <img className="article-item-image img-thumbnail"
-                                         src={constant.host + "/upload/749388e5dac3465f922c54e61d16a993/b8f561e34c8441aaa9eb85c116359718/17f799d37ced47a5a0746f95684d547f.png"}
-                                         alt=""/>
-                                    <div className="article-item-title">佛山协同学校党支部召开纪检工作会议</div>
-                                    <div className="article-item-description">为扎实做好2017年学校纪检工作，8月30日，协同学校党支部召开纪检工作会议。
-                                    </div>
-                                </a>
-                            </div>
+                            {
+                                this.props.index.article_list.map(function (article) {
+                                    return (
+                                        article.article_category_id === '7e84950e6d96412b860b5be55f46d5e8' ?
+                                            <div key={article.article_id} className={"article-item margin-top"}>
+                                                <Link to={"/article/detail/" + article.article_id}>
+                                                    <img className="article-item-image img-thumbnail"
+                                                         src={constant.image_host + article.file_path}
+                                                         alt=""/>
+                                                    <div className="article-item-title">{article.article_name}</div>
+                                                    <div className="article-item-description">
+                                                        {article.article_summary}
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                            :
+                                            ''
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                     <div className="row margin-top-20">
@@ -222,19 +190,28 @@ class Index extends Component {
                                     <div className="title-line"></div>
                                 </div>
                                 <div className="pull-right">
-                                    <Link to="">更多</Link>
+                                    <Link to="/article/index/0cc726f2b92f43d1ba5cc5d0065efb09">更多</Link>
                                 </div>
                             </div>
-                            <div className={"activity-item margin-top"}>
-                                <a href="/#/article/detail/cb1c5d42e3664e16b7f6de8b55c16ec6">
-                                    <div className="activity-item-date">
-                                        <div className="activity-item-date-day">28</div>
-                                        <div className="activity-item-date-year-month">2017-09</div>
-                                    </div>
-                                    <div className="activity-item-title">2017年9月23日我校进行中学部学生个人选修课选课活动</div>
-                                    <div className="activity-item-description"></div>
-                                </a>
-                            </div>
+                            {
+                                this.props.index.article_list.map(function (article) {
+                                    return (
+                                        article.article_category_id === '0cc726f2b92f43d1ba5cc5d0065efb09' ?
+                                            <div key={article.article_id} className={"activity-item margin-top"}>
+                                                <Link to={"/article/detail/" + article.article_id}>
+                                                    <div className="activity-item-date">
+                                                        <div className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                        <div className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                    </div>
+                                                    <div className="activity-item-title">{article.article_name}</div>
+                                                    <div className="activity-item-description">{article.article_summary}</div>
+                                                </Link>
+                                            </div>
+                                            :
+                                            ''
+                                    )
+                                })
+                            }
                         </div>
                         <div className="col-md-4 visible-xs-inline margin-top"></div>
                         <div className="col-md-4 col-padding">
@@ -247,49 +224,28 @@ class Index extends Component {
                                     <div className="title-line"></div>
                                 </div>
                                 <div className="pull-right">
-                                    <Link to="">更多</Link>
+                                    <Link to="/article/index/da9b1750e8ea4f959df23cbdcba53f9a">更多</Link>
                                 </div>
                             </div>
-                            <div className={"activity-item margin-top"}>
-                                <a href="/#/article/detail/0567126404ba47a1b0c28d284658cc06">
-                                    <div className="activity-item-date">
-                                        <div className="activity-item-date-day">01</div>
-                                        <div className="activity-item-date-year-month">2017-11</div>
-                                    </div>
-                                    <div className="activity-item-title">佛山协同（国际）学校2017年4月协同视讯</div>
-                                    <div className="activity-item-description"></div>
-                                </a>
-                            </div>
-                            <div className={"activity-item margin-top"}>
-                                <a href="/#/article/detail/08b9f3f6350e4f659329415cc756d853">
-                                    <div className="activity-item-date">
-                                        <div className="activity-item-date-day">06</div>
-                                        <div className="activity-item-date-year-month">2017-10</div>
-                                    </div>
-                                    <div className="activity-item-title">佛山协同（国际）学校202班护畅队</div>
-                                    <div className="activity-item-description"></div>
-                                </a>
-                            </div>
-                            <div className={"activity-item margin-top"}>
-                                <a href="/#/article/detail/0a29f810211f43c8a044f1dd9b949a5e">
-                                    <div className="activity-item-date">
-                                        <div className="activity-item-date-day">18</div>
-                                        <div className="activity-item-date-year-month">2017-10</div>
-                                    </div>
-                                    <div className="activity-item-title">佛山协同（国际）学校精英学子筑梦青春微电影系列</div>
-                                    <div className="activity-item-description"></div>
-                                </a>
-                            </div>
-                            <div className={"activity-item margin-top"}>
-                                <a href="/#/article/detail/0c2fe4512d20447fb66f1db2e7ae063e">
-                                    <div className="activity-item-date">
-                                        <div className="activity-item-date-day">18</div>
-                                        <div className="activity-item-date-year-month">2017-10</div>
-                                    </div>
-                                    <div className="activity-item-title">佛山协同（国际）学校2017年2月份视讯</div>
-                                    <div className="activity-item-description"></div>
-                                </a>
-                            </div>
+                            {
+                                this.props.index.article_list.map(function (article) {
+                                    return (
+                                        article.article_category_id === 'da9b1750e8ea4f959df23cbdcba53f9a' ?
+                                            <div key={article.article_id} className={"activity-item margin-top"}>
+                                                <Link to={"/article/detail/" + article.article_id}>
+                                                    <div className="activity-item-date">
+                                                        <div className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                        <div className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                    </div>
+                                                    <div className="activity-item-title">{article.article_name}</div>
+                                                    <div className="activity-item-description">{article.article_summary}</div>
+                                                </Link>
+                                            </div>
+                                            :
+                                            ''
+                                    )
+                                })
+                            }
                         </div>
                         <div className="col-md-4 visible-xs-inline margin-top"></div>
                         <div className="col-md-4 col-padding">
@@ -398,5 +354,7 @@ class Index extends Component {
 }
 
 export default connect((state) => {
-    return {}
+    return {
+        index: state.index
+    }
 })(Index);

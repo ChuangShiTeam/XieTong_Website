@@ -94,7 +94,7 @@ class Page extends Component {
     render() {
         return (
             <div>
-                <Header history={this.props.history} website_menu_id="8d3c2491d1394b65a05c707846f06ab2"/>
+                <Header history={this.props.history} website_menu_id={this.state.page.website_menu_id}/>
                 <div className="content container">
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
@@ -104,7 +104,7 @@ class Page extends Component {
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
-                            <PageSubNav website_menu_id={this.state.page.website_menu_id} page_id={this.state.page_id}/>
+                            <PageSubNav website_menu_id={this.state.page.website_menu_id ? this.state.page.website_menu_id : ''} page_id={this.state.page_id}/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">

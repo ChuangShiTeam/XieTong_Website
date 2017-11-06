@@ -133,7 +133,7 @@ class Header extends Component {
                 <AutoAffix viewportOffsetTop={0}>
                     <div className="menu hidden-xs">
                         <ul className="container col-padding">
-                            <li className={this.props.website_menu_id === "home" ? "active" : ""}>
+                            <li className={this.props.website_menu_id === "home" ? "active" : ""} onClick={this.handleClickeMenu.bind(this, '/index')}>
                                 <Link to="/index">首页</Link>
                             </li>
                             {
@@ -166,8 +166,8 @@ class Header extends Component {
                                 this.props.advertisement.list.map(function (advertisement) {
                                     return (
                                         <Carousel.Item key={advertisement.advertisement_id}>
-                                            <Link to={advertisement.advertisement_link}>
-                                                <img className="banner-image" src={constant.host + advertisement.file_original_path} alt=""/>
+                                            <Link to="">
+                                                <img className="banner-image" src={constant.image_host + advertisement.file_original_path} alt=""/>
                                             </Link>
                                         </Carousel.Item>
                                     )

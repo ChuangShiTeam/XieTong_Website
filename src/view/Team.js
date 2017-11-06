@@ -7,25 +7,74 @@ import Footer from '../component/Footer';
 import PageSubNav from '../component/PageSubNav';
 import DepartmentSubNav from '../component/DepartmentSubNav';
 
+import constant from '../util/constant';
+import http from '../util/http';
+
 class Team extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-
+            team_id: '',
+            page_id: ''
         }
     }
 
     componentDidMount() {
-
+        this.setState({
+            team_id: this.props.params.team_id
+        }, function () {
+            this.handleLoad();
+        }.bind(this));
     }
 
     componentWillReceiveProps(nextProps) {
-
+        if (this.state.team_id !== nextProps.params.team_id) {
+            this.setState({
+                team_id: nextProps.params.team_id
+            }, function () {
+                this.handleLoad();
+            }.bind(this));
+        }
     }
 
     componentWillUnmount() {
 
+    }
+
+    handleLoad() {
+        var page_id = '';
+        if (this.state.team_id === '70699f5ca3df49bfb4c742827e1a060c') {
+            page_id = 'bda8c7a0c4584abf8e41d60685af5c57';
+        } else if (this.state.team_id === '75b1b7bca5214bad9c79a9927659f8cb') {
+            page_id = 'cac641d6533e413a820ed8b019b3b100';
+        } else if (this.state.team_id === '54a612b9e5454814adb72ee1417d3e57') {
+            page_id = 'e253866195a64d059d9f66100f11680f';
+        }
+        this.setState({
+            page_id: page_id
+        });
+
+        if (this.props.team.list.length === 0) {
+            http.request({
+                url: '/desktop/xietong/teacher/list',
+                data: {},
+                success: function (data) {
+                    this.props.dispatch({
+                        type: 'team',
+                        data: {
+                            list: data
+                        }
+                    });
+                }.bind(this),
+                error: function (data) {
+
+                },
+                complete: function () {
+
+                }
+            });
+        }
     }
 
     render() {
@@ -41,11 +90,47 @@ class Team extends Component {
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
-                            <PageSubNav website_menu_id="80d321d42ae945a4951f83568452c284" page_id="bda8c7a0c4584abf8e41d60685af5c57"/>
+                            <PageSubNav website_menu_id="80d321d42ae945a4951f83568452c284"
+                                        page_id={this.state.page_id}/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
-
+                            {
+                                this.props.team.list.map(function (team) {
+                                    return (
+                                        team.teacher_category_id === this.state.team_id ?
+                                            this.state.team_id === '70699f5ca3df49bfb4c742827e1a060c' ?
+                                                <div key={team.teacher_id} className="teacher-image">
+                                                    <div className="team-item margin-top-20">
+                                                        <div className="col-md-4 team-image">
+                                                            <div className="team-image-item">
+                                                                <img className="img-circle"
+                                                                     src={constant.image_host + team.file_path} alt=""/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-8 col-no-padding-left">
+                                                            <div className="team-name">{team.teacher_name}</div>
+                                                            <div className="team-description"
+                                                                 dangerouslySetInnerHTML={{__html: team.teacher_description}}></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                :
+                                                <div key={team.teacher_id} className="col-md-4">
+                                                    <Link to={"/teacher/detail/" + team.teacher_id}
+                                                       className="teacher-image thumbnail">
+                                                        <img src={constant.image_host + team.file_path} alt=""/>
+                                                        <div>
+                                                            <div className="teacher-name">{team.teacher_name}</div>
+                                                            <div>{team.teacher_title}</div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            :
+                                            ''
+                                    )
+                                }.bind(this))
+                            }
                         </div>
                     </div>
                 </div>
@@ -57,6 +142,6 @@ class Team extends Component {
 
 export default connect((state) => {
     return {
-        website_menu: state.website_menu
+        team: state.team
     }
 })(Team);

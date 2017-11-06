@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {Pagination} from 'react-bootstrap';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
 import ArticleSubNav from '../../component/ArticleSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
+
+import constant from '../../util/constant';
+import http from '../../util/http';
 
 class ArticleIndex extends Component {
     constructor(props) {
@@ -13,6 +17,8 @@ class ArticleIndex extends Component {
 
         this.state = {
             is_load: false,
+            page_index: 1,
+            page_size: 10,
             article_category_id: '',
             article_list: []
         }
@@ -41,7 +47,35 @@ class ArticleIndex extends Component {
     }
 
     handleLoad() {
+        http.request({
+            url: '/desktop/article/acticle/category/list',
+            data: {
+                article_category_id: this.state.article_category_id,
+                page_index: this.state.page_index,
+                page_size: this.state.page_size
+            },
+            success: function (data) {
+                this.setState({
+                    page_index: this.state.page_index,
+                    total: data.total,
+                    article_list: data.list,
+                });
+            }.bind(this),
+            error: function (data) {
 
+            },
+            complete: function () {
+
+            }
+        });
+    }
+
+    handlePagination(page_index) {
+        this.setState({
+            page_index: page_index
+        }, function () {
+            this.handleLoad();
+        }.bind(this));
     }
 
     render() {
@@ -57,10 +91,39 @@ class ArticleIndex extends Component {
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
-                            <ArticleSubNav history={this.props.history} article_category_id={this.state.article_category_id}/>
+                            <ArticleSubNav history={this.props.history}
+                                           article_category_id={this.state.article_category_id}/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
+                            {
+                                this.state.article_list.map(function (article, index) {
+                                    return (
+                                        <Link key={article.article_id} to={"/article/detail/" + article.article_id}>
+                                            <div className={"article-item" + (index > 0 ? " margin-top-30" : "")}>
+                                                <img className="article-item-image"
+                                                     src={constant.image_host + article.file_path}
+                                                     alt=""/>
+                                                <div className="article-item-title">{article.article_name}</div>
+                                                <div className="article-item-description">{article.article_summary}</div>
+                                            </div>
+                                        </Link>
+                                    )
+                                })
+                            }
+                            {
+                                this.state.article_list.length > 0 ?
+                                    <Pagination
+                                        ellipsis
+                                        boundaryLinks
+                                        items={Math.ceil(this.state.total / this.state.page_size)}
+                                        maxButtons={5}
+                                        activePage={this.state.page_index}
+                                        onSelect={this.handlePagination.bind(this)}
+                                    />
+                                    :
+                                    ''
+                            }
 
                         </div>
                     </div>
@@ -72,7 +135,5 @@ class ArticleIndex extends Component {
 }
 
 export default connect((state) => {
-    return {
-
-    }
+    return {}
 })(ArticleIndex);

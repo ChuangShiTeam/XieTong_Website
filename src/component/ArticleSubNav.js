@@ -7,6 +7,10 @@ import http from '../util/http';
 class ArticleSubNav extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+
+        }
     }
 
     componentDidMount() {
