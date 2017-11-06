@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Navbar, Nav, NavDropdown, MenuItem, Carousel} from 'react-bootstrap';
 import {AutoAffix} from 'react-overlays';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 
 import constant from '../util/constant';
 import http from '../util/http';

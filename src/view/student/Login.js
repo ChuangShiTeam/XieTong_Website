@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {createForm} from 'rc-form';
 import {Form, FormGroup, Col, ControlLabel, FormControl, Button, Alert} from 'react-bootstrap';
 
@@ -98,7 +99,7 @@ class Login extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <a href="/index.html">首页</a> >  学生登录
+                            <Link to="/index">首页</Link> >  学生登录
                         </div>
                     </div>
                     <div className="row margin-top-20">
@@ -110,15 +111,15 @@ class Login extends Component {
                                 <FormGroup {...getFieldProps('user_account', {
                                     rules: [{
                                         required: true,
-                                        message: '学号不能为空'
+                                        message: '学生学号不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('user_account') ? 'error' : getFieldValue('user_account') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} sm={2}>
-                                        学号
+                                        学生学号
                                     </Col>
                                     <Col sm={7}>
-                                        <FormControl placeholder="请输入学号"/>
+                                        <FormControl placeholder="请输入学生学号"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('user_account')}</span>
                                     </Col>
@@ -127,15 +128,15 @@ class Login extends Component {
                                 <FormGroup {...getFieldProps('user_password', {
                                     rules: [{
                                         required: true,
-                                        message: '密码不能为空'
+                                        message: '登录密码不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('user_password') ? 'error' : getFieldValue('user_password') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} sm={2}>
-                                        密码
+                                        登录密码
                                     </Col>
                                     <Col sm={7}>
-                                        <FormControl type="password" placeholder="请输入密码"/>
+                                        <FormControl type="password" placeholder="请输入登录密码"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('user_password')}</span>
                                     </Col>

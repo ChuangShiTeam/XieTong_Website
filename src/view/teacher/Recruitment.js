@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {createForm} from 'rc-form';
 import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, HelpBlock, Button, Alert} from 'react-bootstrap';
 
@@ -96,7 +97,7 @@ class Recruitment extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <a href="/index.html">首页</a> >  学生登录
+                            <Link to="/index">首页</Link> >  学生登录
                         </div>
                     </div>
                     <div className="row margin-top-20">

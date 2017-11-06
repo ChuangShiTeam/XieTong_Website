@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {Carousel} from 'react-bootstrap';
 
 import Header from '../component/Header';
@@ -256,28 +257,28 @@ class Index extends Component {
                                 <div className="title-text">用户导航</div>
                                 <div className="title-line"></div>
                             </div>
-                            <a href="http://h5.xietong.nowui.com/" target="bank">
+                            <Link to="/student/login">
                                 <div className="enter-item margin-top-20">
                                     <img className="enter-item-icon" src="../image/round_check.png" alt=""/>
                                     <div className="enter-item-text">选课入口</div>
                                     <img className="enter-item-arrow" src="../image/right.png" alt=""/>
                                 </div>
-                            </a>
-                            <a href="/wybm">
+                            </Link>
+                            <Link to="/student/admissions">
                                 <div className="enter-item margin-top-20">
                                     <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
                                     <div className="enter-item-text">学生报读入口</div>
                                     <img className="enter-item-arrow" src="../image/right.png" alt=""/>
                                 </div>
-                            </a>
-                            <a href="/jszp">
+                            </Link>
+                            <Link to="/teacher/recruitment">
                                 <div className="enter-item margin-top-20">
                                     <img className="enter-item-icon" src="../image/location.png" alt=""/>
                                     <div className="enter-item-text">教师应聘入口</div>
                                     <img className="enter-item-arrow" src="../image/right.png" alt=""/>
                                 </div>
-                            </a>
-                            <a href="/#/index">
+                            </Link>
+                            <a>
                                 <div className="enter-item margin-top-20">
                                     <img className="enter-item-icon" src="../image/mail.png" alt=""/>
                                     <div className="enter-item-text">校长信箱入口</div>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 
 import Header from '../component/Header';
 import Footer from '../component/Footer';
@@ -14,6 +14,7 @@ class Page extends Component {
         super(props);
 
         this.state = {
+            is_load: false,
             page_id: '',
             page_list: [],
             page: {}
@@ -59,6 +60,11 @@ class Page extends Component {
         }
 
         if (!is_exit) {
+            this.setState({
+                is_load: true,
+                page: {}
+            });
+
             http.request({
                 url: '/desktop/page/find',
                 data: {
@@ -74,7 +80,9 @@ class Page extends Component {
                     });
                 }.bind(this),
                 complete: function () {
-
+                    this.setState({
+                        is_load: false
+                    });
                 }
             });
         }

@@ -26,7 +26,7 @@ class NotFound extends Component {
     render() {
         return (
             <div className="index">
-                <Header website_menu_id="" is_show_banner={false}/>
+                <Header history={this.props.history} website_menu_id="" is_show_banner={false}/>
                 <div style={{height: '800px'}}>
                     <div className="not-found">
 
