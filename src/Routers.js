@@ -12,6 +12,7 @@ import article_category from './store/article_category';
 import page from './store/page';
 import team from './store/team';
 import student from './store/student';
+import train from './store/train';
 
 import Index from './view/Index';
 import Page from './view/Page';
@@ -28,6 +29,7 @@ import TeacherRecruitment from './view/teacher/Recruitment';
 import NotFound from './view/NotFound';
 import SignUpJunior from './view/signup/Junior';
 import SignUpPupil from './view/signup/Pupil';
+import Train from './view/teacher/Train';
 
 const store = createStore(
     combineReducers({
@@ -39,6 +41,7 @@ const store = createStore(
         page,
         team,
         student,
+        train,
         routing: routerReducer
     })
 );
@@ -67,6 +70,7 @@ const Routers = () =>
                 <Route path="/not/found" component={NotFound}/>
                 <Route path="/sign/junior" component={SignUpJunior}/>
                 <Route path="/sign/pupil" component={SignUpPupil}/>
+                <Route path="/train/:page_id" component={Train}/>
             </Route>
         </Router>
     </Provider>
