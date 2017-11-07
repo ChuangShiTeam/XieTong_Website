@@ -10,7 +10,7 @@ import advertisement from './store/advertisement';
 import article from './store/article';
 import article_category from './store/article_category';
 import page from './store/page';
-import team from './store/team';
+import teacher from './store/teacher';
 import student from './store/student';
 import train from './store/train';
 
@@ -41,7 +41,7 @@ const store = createStore(
         article,
         article_category,
         page,
-        team,
+        teacher,
         student,
         train,
         routing: routerReducer

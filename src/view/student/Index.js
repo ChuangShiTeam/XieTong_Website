@@ -16,7 +16,8 @@ class Team extends Component {
 
         this.state = {
             student_category_id: '',
-            page_id: ''
+            page_id: '',
+            page_name: ''
         }
     }
 
@@ -44,13 +45,17 @@ class Team extends Component {
 
     handleLoad() {
         var page_id = '';
+        var page_name = '';
         if (this.state.student_category_id === '0bce6c38d8d3463bb62a3270251a126d') {
             page_id = '371b4d2376c54dea975f832fa95b96b7';
+            page_name = '学生社团';
         } else if (this.state.student_category_id === '1d49d03576954b3c998608b8f43be324') {
             page_id = '0d2baae867af4745a6c768a75a907d75';
+            page_name = '学生领袖';
         }
         this.setState({
-            page_id: page_id
+            page_id: page_id,
+            page_name: page_name
         });
 
         if (this.props.student.list.length === 0) {
@@ -83,7 +88,7 @@ class Team extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <a href="/index.html">首页</a> > <Link to=""></Link> >
+                            <a href="/index.html">首页</a> > <Link to="">学生发展</Link> > {this.state.page_name}
                         </div>
                     </div>
                     <div className="row margin-top-20">
