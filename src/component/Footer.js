@@ -35,7 +35,7 @@ class Footer extends Component {
                                         <Link to={website_menu.website_menu_url === '' ? '/page/' + website_menu.page_id : website_menu.website_menu_url}>{website_menu.website_menu_name}</Link>
                                     </li>
                                 )
-                            }.bind(this))
+                            })
                         }
                     </div>
                     <div className="line hidden-xs"></div>
