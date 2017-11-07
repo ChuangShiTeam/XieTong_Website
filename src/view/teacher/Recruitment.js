@@ -105,12 +105,13 @@ class TeacherRecruitment extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <Link to="/index">首页</Link> >  学生登录
+                            <Link to="/index">首页</Link> > 招生招聘 > 教师招聘
                         </div>
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
-                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="d46f020e9a28412c911e580ec22574f2"/>
+                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d"
+                                        page_id="d46f020e9a28412c911e580ec22574f2"/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
@@ -128,7 +129,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl placeholder="请输入姓名"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_name')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_name')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_sex', {
@@ -150,7 +152,8 @@ class TeacherRecruitment extends Component {
                                             女
                                         </Radio>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_sex')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_sex')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_birthday', {
@@ -166,7 +169,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl type="date" placeholder="请输入出生日期"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_birthday')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_birthday')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_mobile', {
@@ -182,7 +186,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl type="tel" placeholder="请输入手机号码"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_mobile')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_mobile')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_email', {
@@ -198,7 +203,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl type="email" placeholder="请输入邮箱地址"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_mobile')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_mobile')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_faculty', {
@@ -220,7 +226,8 @@ class TeacherRecruitment extends Component {
                                             小学部
                                         </Radio>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_faculty')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_faculty')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_subject', {
@@ -236,7 +243,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl type="text" placeholder="请输入应聘学科"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_subject')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_subject')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_is_fresh_graduate', {
@@ -258,7 +266,8 @@ class TeacherRecruitment extends Component {
                                             否
                                         </Radio>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_is_fresh_graduate')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_is_fresh_graduate')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_work_year', {initialValue: ''})} >
@@ -290,7 +299,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl type="text" placeholder="请输入政治面貌"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_politics_status')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_politics_status')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_job_title', {initialValue: ''})}>
@@ -314,7 +324,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl type="text" placeholder="请输入学历"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_education')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_education')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_major', {
@@ -330,7 +341,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl type="text" placeholder="请输入专业"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_major')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_major')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_grad_school', {
@@ -346,7 +358,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl placeholder="请输入毕业院校"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_grad_school')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_grad_school')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_education_experience', {
@@ -362,7 +375,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl componentClass="textarea"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_education_experience')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_education_experience')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_work_experience', {initialValue: ''})}>
@@ -394,7 +408,8 @@ class TeacherRecruitment extends Component {
                                     <Col sm={9}>
                                         <FormControl componentClass="textarea"/>
                                         <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('teacher_recruitment_now_address')}</span>
+                                        <span
+                                            className="error-message">{getFieldError('teacher_recruitment_now_address')}</span>
                                     </Col>
                                 </FormGroup>
 
@@ -403,7 +418,8 @@ class TeacherRecruitment extends Component {
                                         请上传您的电子版简历
                                     </Col>
                                     <Col sm={9}>
-                                        <FileUpload ref="teacher_recruitment_file" name="teacher_recruitment_file" type="application/msword, application/pdf" size={50} limit={1}/>
+                                        <FileUpload ref="teacher_recruitment_file" name="teacher_recruitment_file"
+                                                    type="application/msword, application/pdf" size={50} limit={1}/>
                                         上传格式限制pdf、word
                                     </Col>
                                 </FormGroup>
@@ -442,7 +458,5 @@ class TeacherRecruitment extends Component {
 TeacherRecruitment = createForm({})(TeacherRecruitment);
 
 export default connect((state) => {
-    return {
-
-    }
+    return {}
 })(TeacherRecruitment);

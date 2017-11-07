@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router';
 
 class Footer extends Component {
     constructor(props) {
@@ -26,27 +28,15 @@ class Footer extends Component {
             <div className="footer">
                 <div className="container col-padding">
                     <div className="menu hidden-xs">
-                        <li>
-                            <a href="/xzzc.html">走进协同</a>
-                        </li>
-                        <li>
-                            <a href="/gltd.html">教师发展</a>
-                        </li>
-                        <li>
-                            <a href="/xsst.html">学生发展</a>
-                        </li>
-                        <li>
-                            <a href="/gsskt.html">课程教学</a>
-                        </li>
-                        <li>
-                            <a href="/xyaq.html">学生服务</a>
-                        </li>
-                        <li>
-                            <a href="/lxyz.html">党建工会</a>
-                        </li>
-                        <li>
-                            <a href="/zsjh.html">招生招聘</a>
-                        </li>
+                        {
+                            this.props.website_menu.list.map(function (website_menu) {
+                                return (
+                                    <li>
+                                        <Link to={website_menu.website_menu_url === '' ? '/page/' + website_menu.page_id : website_menu.website_menu_url}>{website_menu.website_menu_name}</Link>
+                                    </li>
+                                )
+                            }.bind(this))
+                        }
                     </div>
                     <div className="line hidden-xs"></div>
                     <div className="row copyright margin-top-20">
@@ -80,4 +70,16 @@ class Footer extends Component {
     }
 }
 
-export default Footer;
+Footer.propTypes = {
+
+};
+
+Footer.defaultProps = {
+
+};
+
+export default connect((state) => {
+    return {
+        website_menu: state.website_menu
+    }
+})(Footer);
