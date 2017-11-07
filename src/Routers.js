@@ -29,6 +29,8 @@ import TeacherRecruitment from './view/teacher/Recruitment';
 import NotFound from './view/NotFound';
 import SignUpJunior from './view/signup/Junior';
 import SignUpPupil from './view/signup/Pupil';
+import SignUpPupilCheck from './view/signup/PupilCheck';
+import SignUpJuniorCheck from './view/signup/JuniorCheck';
 import Train from './view/teacher/Train';
 
 const store = createStore(
@@ -70,6 +72,8 @@ const Routers = () =>
                 <Route path="/not/found" component={NotFound}/>
                 <Route path="/sign/junior" component={SignUpJunior}/>
                 <Route path="/sign/pupil" component={SignUpPupil}/>
+                <Route path="/sign/pupilcheck" component={SignUpPupilCheck}/>
+                <Route path="/sign/juniorcheck" component={SignUpJuniorCheck}/>
                 <Route path="/train/:page_id" component={Train}/>
             </Route>
         </Router>

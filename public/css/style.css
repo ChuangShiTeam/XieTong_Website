@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 img {
     border: 0px;
-    width: 100%;
+    max-width: 100%;
 }
 
 ul, li {
@@ -35,7 +35,7 @@ a:hover {
 }
 
 a, area {
-    blr: expression(this.onFocus=this.blur())
+    blr: expression(this.onFocus=this.blur());
 }
 
 .carousel-control.left {
@@ -267,6 +267,10 @@ body {
 
 .department {
     position: relative;
+}
+
+.department img {
+    width: 100%;
 }
 
 .department-mask {

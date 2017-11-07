@@ -35,7 +35,6 @@ class Recruitment extends Component {
     }
 
     handlSubmit() {
-        debugger;
         this.props.form.validateFields((errors, values) => {
             if (!!errors) {
                 var message = '';
@@ -83,6 +82,7 @@ class Recruitment extends Component {
     }
 
     render() {
+
         const {getFieldProps, getFieldError, getFieldValue} = this.props.form;
 
         return (
