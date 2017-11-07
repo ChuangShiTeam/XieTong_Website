@@ -50,6 +50,10 @@ class Team extends Component {
             page_id = 'cac641d6533e413a820ed8b019b3b100';
         } else if (this.state.team_id === '54a612b9e5454814adb72ee1417d3e57') {
             page_id = 'e253866195a64d059d9f66100f11680f';
+        } else if (this.state.team_id === 'df17d19a032b41c78dc159ba548c8dcb') {
+            page_id = '0bc1615e1b824359ae1120fca932f60e';
+        } else if (this.state.team_id === '5a3e3e701efe486383eaa54dbbe80467') {
+            page_id = 'a3c0f17fa1bd4847be48cd00295d5551';
         }
         this.setState({
             page_id: page_id
