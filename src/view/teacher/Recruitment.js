@@ -6,10 +6,12 @@ import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, HelpBlock, Butto
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
+import FileUpload from '../../component/FileUpload';
 import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../util/http';
+import constant from '../../util/constant';
 
 class TeacherRecruitment extends Component {
     constructor(props) {
@@ -51,7 +53,13 @@ class TeacherRecruitment extends Component {
 
                 return;
             }
+            console.log('values', values);
             values.teacher_recruitment_file = '';
+            let teacher_recruitment_file = this.refs.teacher_recruitment_file.handleGetValue();
+            if (teacher_recruitment_file.length > 0) {
+                values.teacher_recruitment_file = teacher_recruitment_file[0].file_id
+            }
+
             if (values.teacher_recruitment_is_fresh_graduate === 'true') {
                 values.teacher_recruitment_is_fresh_graduate = true;
             } else {
@@ -63,15 +71,14 @@ class TeacherRecruitment extends Component {
             });
 
             http.request({
-                url: '/desktop/xietong/student/login',
-                data: {
-                    page_id: this.state.page_id
-                },
+                url: '/desktop/xietong/teacher/recruitment/save',
+                data: values,
                 success: function (data) {
                     this.setState({
                         result_type: 'success',
                         result_message: '提交成功'
                     });
+                    this.props.form.resetFields();
                 }.bind(this),
                 error: function (data) {
                     this.setState({
@@ -396,12 +403,8 @@ class TeacherRecruitment extends Component {
                                         请上传您的电子版简历
                                     </Col>
                                     <Col sm={9}>
-                                        <FormControl type="file" inputRef={ref => {
-                                            this.teacher_recruitment_file = ref;
-                                        }}
-                                                     onChange={this.handleUpload.bind(this)}
-                                        />
-                                        <HelpBlock>(2M以内)</HelpBlock>
+                                        <FileUpload ref="teacher_recruitment_file" name="teacher_recruitment_file" type="application/msword, application/pdf" size={50} limit={1}/>
+                                        上传格式限制pdf、word
                                     </Col>
                                 </FormGroup>
 
