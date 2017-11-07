@@ -31,7 +31,7 @@ class Footer extends Component {
                         {
                             this.props.website_menu.list.map(function (website_menu) {
                                 return (
-                                    <li>
+                                    <li key={website_menu.website_menu_id}>
                                         <Link to={website_menu.website_menu_url === '' ? '/page/' + website_menu.page_id : website_menu.website_menu_url}>{website_menu.website_menu_name}</Link>
                                     </li>
                                 )
