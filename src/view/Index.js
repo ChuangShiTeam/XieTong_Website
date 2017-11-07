@@ -257,7 +257,7 @@ class Index extends Component {
                             <Link to="/student/login">
                                 <div className="enter-item margin-top-20">
                                     <img className="enter-item-icon" src="../image/round_check.png" alt=""/>
-                                    <div className="enter-item-text">选课入口</div>
+                                    <div className="enter-item-text">课程选择入口</div>
                                     <img className="enter-item-arrow" src="../image/right.png" alt=""/>
                                 </div>
                             </Link>

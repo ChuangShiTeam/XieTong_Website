@@ -4,7 +4,7 @@ import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import {routerReducer} from 'react-router-redux';
 
-import index from './store/Index';
+import index from './store/index';
 import website_menu from './store/website_menu';
 import advertisement from './store/advertisement';
 import article from './store/article';
