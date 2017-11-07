@@ -254,20 +254,6 @@ class Index extends Component {
                                 <div className="title-text">用户导航</div>
                                 <div className="title-line"></div>
                             </div>
-                            <Link to="/student/login">
-                                <div className="enter-item margin-top-20">
-                                    <img className="enter-item-icon" src="../image/round_check.png" alt=""/>
-                                    <div className="enter-item-text">课程选择入口</div>
-                                    <img className="enter-item-arrow" src="../image/right.png" alt=""/>
-                                </div>
-                            </Link>
-                            <Link to="/student/admissions">
-                                <div className="enter-item margin-top-20">
-                                    <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
-                                    <div className="enter-item-text">学生报读入口</div>
-                                    <img className="enter-item-arrow" src="../image/right.png" alt=""/>
-                                </div>
-                            </Link>
                             <Link to="/teacher/recruitment">
                                 <div className="enter-item margin-top-20">
                                     <img className="enter-item-icon" src="../image/location.png" alt=""/>
@@ -275,13 +261,27 @@ class Index extends Component {
                                     <img className="enter-item-arrow" src="../image/right.png" alt=""/>
                                 </div>
                             </Link>
-                            <a>
+                            <Link to="/sign/pupil">
                                 <div className="enter-item margin-top-20">
-                                    <img className="enter-item-icon" src="../image/mail.png" alt=""/>
-                                    <div className="enter-item-text">校长信箱入口</div>
+                                    <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
+                                    <div className="enter-item-text">小学报读入口</div>
                                     <img className="enter-item-arrow" src="../image/right.png" alt=""/>
                                 </div>
-                            </a>
+                            </Link>
+                            <Link to="/sign/junior">
+                                <div className="enter-item margin-top-20">
+                                    <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
+                                    <div className="enter-item-text">初中报读入口</div>
+                                    <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                </div>
+                            </Link>
+                            <Link to="/student/login">
+                                <div className="enter-item margin-top-20">
+                                    <img className="enter-item-icon" src="../image/round_check.png" alt=""/>
+                                    <div className="enter-item-text">课程选择入口</div>
+                                    <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
