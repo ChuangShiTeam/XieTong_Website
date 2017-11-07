@@ -2,36 +2,36 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
-import Header from '../component/Header';
-import Footer from '../component/Footer';
-import PageSubNav from '../component/PageSubNav';
-import DepartmentSubNav from '../component/DepartmentSubNav';
+import Header from '../../component/Header';
+import Footer from '../../component/Footer';
+import PageSubNav from '../../component/PageSubNav';
+import DepartmentSubNav from '../../component/DepartmentSubNav';
 
-import constant from '../util/constant';
-import http from '../util/http';
+import constant from '../../util/constant';
+import http from '../../util/http';
 
 class Team extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            team_id: '',
+            teacher_category_id: '',
             page_id: ''
         }
     }
 
     componentDidMount() {
         this.setState({
-            team_id: this.props.params.team_id
+            teacher_category_id: this.props.params.teacher_category_id
         }, function () {
             this.handleLoad();
         }.bind(this));
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.state.team_id !== nextProps.params.team_id) {
+        if (this.state.teacher_category_id !== nextProps.params.teacher_category_id) {
             this.setState({
-                team_id: nextProps.params.team_id
+                teacher_category_id: nextProps.params.teacher_category_id
             }, function () {
                 this.handleLoad();
             }.bind(this));
@@ -44,12 +44,16 @@ class Team extends Component {
 
     handleLoad() {
         var page_id = '';
-        if (this.state.team_id === '70699f5ca3df49bfb4c742827e1a060c') {
+        if (this.state.teacher_category_id === '70699f5ca3df49bfb4c742827e1a060c') {
             page_id = 'bda8c7a0c4584abf8e41d60685af5c57';
-        } else if (this.state.team_id === '75b1b7bca5214bad9c79a9927659f8cb') {
+        } else if (this.state.teacher_category_id === '75b1b7bca5214bad9c79a9927659f8cb') {
             page_id = 'cac641d6533e413a820ed8b019b3b100';
-        } else if (this.state.team_id === '54a612b9e5454814adb72ee1417d3e57') {
+        } else if (this.state.teacher_category_id === '54a612b9e5454814adb72ee1417d3e57') {
             page_id = 'e253866195a64d059d9f66100f11680f';
+        } else if (this.state.teacher_category_id === 'df17d19a032b41c78dc159ba548c8dcb') {
+            page_id = '0bc1615e1b824359ae1120fca932f60e';
+        } else if (this.state.teacher_category_id === '5a3e3e701efe486383eaa54dbbe80467') {
+            page_id = 'a3c0f17fa1bd4847be48cd00295d5551';
         }
         this.setState({
             page_id: page_id
@@ -98,8 +102,8 @@ class Team extends Component {
                             {
                                 this.props.team.list.map(function (team) {
                                     return (
-                                        team.teacher_category_id === this.state.team_id ?
-                                            this.state.team_id === '70699f5ca3df49bfb4c742827e1a060c' ?
+                                        team.teacher_category_id === this.state.teacher_category_id ?
+                                            this.state.teacher_category_id === '70699f5ca3df49bfb4c742827e1a060c' ?
                                                 <div key={team.teacher_id} className="teacher-image">
                                                     <div className="team-item margin-top-20">
                                                         <div className="col-md-4 team-image">
@@ -118,7 +122,7 @@ class Team extends Component {
                                                 :
                                                 <div key={team.teacher_id} className="col-md-4">
                                                     <Link to={"/teacher/detail/" + team.teacher_id}
-                                                       className="teacher-image thumbnail">
+                                                          className="teacher-image thumbnail">
                                                         <img src={constant.image_host + team.file_path} alt=""/>
                                                         <div>
                                                             <div className="teacher-name">{team.teacher_name}</div>
