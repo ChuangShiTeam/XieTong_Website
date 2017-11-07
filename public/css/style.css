@@ -35,7 +35,7 @@ a:hover {
 }
 
 a, area {
-    blr: expression(this.onFocus=this.blur())
+    blr: expression(this.onFocus=this.blur());
 }
 
 .carousel-control.left {
