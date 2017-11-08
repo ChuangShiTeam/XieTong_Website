@@ -518,7 +518,6 @@ body {
     right: 10px;
     width: 20px;
     height: 20px;
-    background-image: url("../image/right.png");
     background-size: contain;
 }
 
@@ -531,7 +530,7 @@ body {
 }
 
 .subnav .active .subnav-item-arrow {
-    background-image: url("../image/right-active.png");
+
 }
 
 .footer {

@@ -41,7 +41,12 @@ class PageSubNav extends Component {
                                         <Link key={children_website_menu.website_menu_id} to={children_website_menu.website_menu_url === '' ? '/page/' + children_website_menu.page_id : children_website_menu.website_menu_url}>
                                             <div className={"subnav-item" + (children_website_menu.page_id === this.state.page_id ? " active" : "") + (index === 0 ? "" : " margin-top")}>
                                                 <div className="subnav-item-menu">{children_website_menu.website_menu_name}</div>
-                                                <div className="subnav-item-arrow"></div>
+                                                {
+                                                    children_website_menu.page_id === this.state.page_id ?
+                                                        <img className="subnav-item-arrow" src="../image/right-active.png" alt=""/>
+                                                        :
+                                                        <img className="subnav-item-arrow" src="../image/right.png" alt=""/>
+                                                }
                                             </div>
                                         </Link>
                                         :
