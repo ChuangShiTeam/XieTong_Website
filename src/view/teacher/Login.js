@@ -8,7 +8,8 @@ import Header from '../../component/Header';
 import Footer from '../../component/Footer';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
-import http from '../../util/http';
+import http from '../../common/http';
+import util from '../../common/util';
 
 class TeacherLogin extends Component {
     constructor(props) {
@@ -23,7 +24,11 @@ class TeacherLogin extends Component {
     }
 
     componentDidMount() {
+        util.scrollToTop(0);
+    }
 
+    componentWillReceiveProps(nextProps) {
+        util.scrollToTop(0);
     }
 
     componentWillUnmount() {

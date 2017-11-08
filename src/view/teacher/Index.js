@@ -7,8 +7,9 @@ import Footer from '../../component/Footer';
 import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
-import constant from '../../util/constant';
-import http from '../../util/http';
+import constant from '../../common/constant';
+import http from '../../common/http';
+import util from '../../common/util';
 
 class Team extends Component {
     constructor(props) {
@@ -22,6 +23,8 @@ class Team extends Component {
     }
 
     componentDidMount() {
+        util.scrollToTop(0);
+
         this.setState({
             teacher_category_id: this.props.params.teacher_category_id
         }, function () {
@@ -30,6 +33,8 @@ class Team extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        util.scrollToTop(0);
+
         if (this.state.teacher_category_id !== nextProps.params.teacher_category_id) {
             this.setState({
                 teacher_category_id: nextProps.params.teacher_category_id

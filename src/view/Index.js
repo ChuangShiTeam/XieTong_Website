@@ -6,25 +6,24 @@ import {Carousel} from 'react-bootstrap';
 import Header from '../component/Header';
 import Footer from '../component/Footer';
 
-import constant from '../util/constant';
-import http from '../util/http';
+import constant from '../common/constant';
+import http from '../common/http';
+import util from '../common/util';
 
 class Index extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     componentDidMount() {
+        util.scrollToTop(0);
+
         if (this.props.index.article_list.length === 0) {
             http.request({
                 url: '/desktop/xietong/website/index',
-                data: {
-
-                },
+                data: {},
                 success: function (data) {
                     this.props.dispatch({
                         type: 'index',
@@ -200,11 +199,14 @@ class Index extends Component {
                                             <div key={article.article_id} className={"activity-item margin-top"}>
                                                 <Link to={"/article/detail/" + article.article_id}>
                                                     <div className="activity-item-date">
-                                                        <div className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
-                                                        <div className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                        <div
+                                                            className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                        <div
+                                                            className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
                                                     </div>
                                                     <div className="activity-item-title">{article.article_name}</div>
-                                                    <div className="activity-item-description">{article.article_summary}</div>
+                                                    <div
+                                                        className="activity-item-description">{article.article_summary}</div>
                                                 </Link>
                                             </div>
                                             :
@@ -234,11 +236,14 @@ class Index extends Component {
                                             <div key={article.article_id} className={"activity-item margin-top"}>
                                                 <Link to={"/article/detail/" + article.article_id}>
                                                     <div className="activity-item-date">
-                                                        <div className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
-                                                        <div className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                        <div
+                                                            className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                        <div
+                                                            className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
                                                     </div>
                                                     <div className="activity-item-title">{article.article_name}</div>
-                                                    <div className="activity-item-description">{article.article_summary}</div>
+                                                    <div
+                                                        className="activity-item-description">{article.article_summary}</div>
                                                 </Link>
                                             </div>
                                             :

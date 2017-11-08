@@ -6,8 +6,9 @@ import {Carousel} from 'react-bootstrap';
 import Header from '../component/Header';
 import Footer from '../component/Footer';
 
-import constant from '../util/constant';
-import http from '../util/http';
+import constant from '../common/constant';
+import http from '../common/http';
+import util from '../common/util';
 
 class Xxb extends Component {
 	constructor(props) {
@@ -19,6 +20,8 @@ class Xxb extends Component {
 	}
 
 	componentDidMount() {
+        util.scrollToTop(0);
+
 		if (this.props.xxb.article_list.length === 0) {
 			http.request({
 				url: '/desktop/xietong/website/index',
@@ -43,9 +46,9 @@ class Xxb extends Component {
 		}
 	}
 
-	componentWillReceiveProps(nextProps) {
-
-	}
+    componentWillReceiveProps(nextProps) {
+        util.scrollToTop(0);
+    }
 
 	componentWillUnmount() {
 

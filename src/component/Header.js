@@ -4,8 +4,8 @@ import {Link} from 'react-router';
 import {Navbar, Nav, NavDropdown, MenuItem, Carousel} from 'react-bootstrap';
 import {AutoAffix} from 'react-overlays';
 
-import constant from '../util/constant';
-import http from '../util/http';
+import constant from '../common/constant';
+import http from '../common/http';
 
 class Header extends Component {
     constructor(props) {

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {HelpBlock, Button, Alert} from 'react-bootstrap';
 import Upload from 'rc-upload';
 
-import constant from '../util/constant';
-import storage from '../util/storage';
+import constant from '../common/constant';
+import storage from '../common/storage';
 
 class FileUpload extends Component {
 	constructor(props) {

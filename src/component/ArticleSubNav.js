@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router'
 
-import http from '../util/http';
+import http from '../common/http';
 
 class ArticleSubNav extends Component {
     constructor(props) {

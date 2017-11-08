@@ -10,7 +10,8 @@ import FileUpload from '../../component/FileUpload';
 import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
-import http from '../../util/http';
+import http from '../../common/http';
+import util from '../../common/util';
 
 class TeacherRecruitment extends Component {
     constructor(props) {
@@ -25,11 +26,11 @@ class TeacherRecruitment extends Component {
     }
 
     componentDidMount() {
-
+        util.scrollToTop(0);
     }
 
-    componentWillUnmount() {
-
+    componentWillReceiveProps(nextProps) {
+        util.scrollToTop(0);
     }
 
     handleUpload() {
