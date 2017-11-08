@@ -22,10 +22,17 @@ class Header extends Component {
 
                 },
                 success: function (data) {
+                    var website_menu_list = data.website_menu_list;
+                    for (var i = 0; i < website_menu_list.length; i++) {
+                        for (var j = 0; j < website_menu_list[i].children.length; j++) {
+                            website_menu_list[i].children[j].website_menu_parent_id = website_menu_list[i].website_menu_id;
+                        }
+                    }
+
                     this.props.dispatch({
                         type: 'website_menu',
                         data: {
-                            list: data.website_menu_list
+                            list: website_menu_list
                         }
                     });
 

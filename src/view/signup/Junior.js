@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createForm} from 'rc-form';
-import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, HelpBlock, Button, Alert} from 'react-bootstrap';
+import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} from 'react-bootstrap';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
