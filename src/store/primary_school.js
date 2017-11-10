@@ -1,6 +1,8 @@
 const initialState = {
-    article_list: []
-}
+    organization_id: '6fd70c5e490e403b844ca722e0a5d756',
+    article_list: [],
+    student_list: []
+};
 
 function product(state = initialState, action) {
     switch (action.type) {

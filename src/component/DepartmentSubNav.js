@@ -27,19 +27,19 @@ class DepartmentSubNav extends Component {
         return (
             <div>
                 <div className="department margin-top">
-                    <Link to="/index">
+                    <Link to="/primary/school">
                         <img src="/image/department0.jpg" alt=""/>
                         <div className="department-mask">小学部</div>
                     </Link>
                 </div>
                 <div className="department margin-top">
-                    <Link to="/index">
+                    <Link to="/primary/school">
                         <img src="/image/department1.jpg" alt=""/>
                         <div className="department-mask">中学部</div>
                     </Link>
                 </div>
                 <div className="department margin-top">
-                    <Link to="/index">
+                    <Link to="/primary/school">
                         <img src="/image/department2.jpg" alt=""/>
                         <div className="department-mask">国际部</div>
                     </Link>

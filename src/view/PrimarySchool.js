@@ -23,15 +23,16 @@ class PrimarySchool extends Component {
 		/*请求接口并缓存在本地*/
         if (this.props.primary_school.article_list.length === 0) {
             http.request({
-                url: '/desktop/xietong/website/index',
+                url: '/desktop/xietong/website/department/init',
                 data: {
-
+					organization_id: this.props.primary_school.organization_id
                 },
                 success: function (data) {
                     this.props.dispatch({
                         type: 'primary_school',
                         data: {
-                            article_list: data
+                            article_list: data.articleList,
+                            student_list: data.studentList
                         }
                     });
                 }.bind(this),
@@ -57,50 +58,19 @@ class PrimarySchool extends Component {
 		return (
 			<div className="index">
 				<Header history={this.props.history} website_menu_id="home"/>
-				<div className="content-background-1">
-					<div className="container">
-						<div className="row margin-top-20 margin-bottom-20">
-							<div className="col-md-4 col-xs-4 col-padding">
-								<div className="department">
-									<Link to="">
-										<img src="image/department0.jpg" alt=""/>
-										<div className="department-mask">小学部</div>
-									</Link>
-								</div>
-							</div>
-							<div className="col-md-4 col-xs-4 col-padding">
-								<div className="department">
-									<Link to="">
-										<img src="image/department1.jpg" alt=""/>
-										<div className="department-mask">中学部</div>
-									</Link>
-								</div>
-							</div>
-							<div className="col-md-4 col-xs-4 col-padding">
-								<div className="department">
-									<Link to="">
-										<img src="image/department2.jpg" alt=""/>
-										<div className="department-mask">国际部</div>
-									</Link>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 				<div className="container margin-bottom-20">
 					<div className="row margin-top">
 						<div className="col-md-8 col-padding">
 							<div className="title">
 								<div className="pull-left">
 									<div className="title-icon"></div>
-									<Link to="/article/index/c9dd8759a7a04aaeb038973c3246d863">
-										<div className="title-text">学校新闻</div>
+									<Link to="/article/index/9d8508d24242499ebcf344e17d8222de">
+										<div className="title-text">新闻速递</div>
 									</Link>
 									<div className="title-line"></div>
 								</div>
 								<div className="pull-right">
-									<Link to="/article/index/c9dd8759a7a04aaeb038973c3246d863">更多</Link>
+									<Link to="/article/index/9d8508d24242499ebcf344e17d8222de">更多</Link>
 								</div>
 							</div>
 							<div className="col-md-6 col-padding">
@@ -108,7 +78,7 @@ class PrimarySchool extends Component {
                                     {
                                         this.props.primary_school.article_list.map(function (article) {
                                             return (
-                                                article.article_category_id === 'c9dd8759a7a04aaeb038973c3246d863' ?
+                                                article.article_category_id === '9d8508d24242499ebcf344e17d8222de' ?
 													<Carousel.Item key={article.article_id}>
 														<Link to={"/article/detail/" + article.article_id}>
 															<img className="school-article-image"
@@ -127,7 +97,7 @@ class PrimarySchool extends Component {
                                 {
                                     this.props.primary_school.article_list.map(function (article) {
                                         return (
-                                            article.article_category_id === 'c9dd8759a7a04aaeb038973c3246d863' ?
+                                            article.article_category_id === '9d8508d24242499ebcf344e17d8222de' ?
 												<div key={article.article_id} className={"article-item margin-top"}>
 													<Link to={"/article/detail/" + article.article_id}>
 														<img className="article-item-image img-thumbnail"
@@ -150,13 +120,13 @@ class PrimarySchool extends Component {
 								<div className="title">
 									<div className="pull-left">
 										<div className="title-icon"></div>
-										<Link to="/article/index/c9dd8759a7a04aaeb038973c3246d863">
-											<div className="title-text">学校新闻</div>
+										<Link to="/article/index/9c204d00ccd446298c22cff6350bb6ff">
+											<div className="title-text">特色活动</div>
 										</Link>
 										<div className="title-line"></div>
 									</div>
 									<div className="pull-right">
-										<Link to="/article/index/c9dd8759a7a04aaeb038973c3246d863">更多</Link>
+										<Link to="/article/index/9c204d00ccd446298c22cff6350bb6ff">更多</Link>
 									</div>
 								</div>
 								<div className="col-md-6 col-padding">
@@ -164,7 +134,7 @@ class PrimarySchool extends Component {
                                         {
                                             this.props.primary_school.article_list.map(function (article) {
                                                 return (
-                                                    article.article_category_id === 'c9dd8759a7a04aaeb038973c3246d863' ?
+                                                    article.article_category_id === '9c204d00ccd446298c22cff6350bb6ff' ?
 														<Carousel.Item key={article.article_id}>
 															<Link to={"/article/detail/" + article.article_id}>
 																<img className="school-article-image"
@@ -183,7 +153,7 @@ class PrimarySchool extends Component {
                                     {
                                         this.props.primary_school.article_list.map(function (article) {
                                             return (
-                                                article.article_category_id === 'c9dd8759a7a04aaeb038973c3246d863' ?
+                                                article.article_category_id === '9c204d00ccd446298c22cff6350bb6ff' ?
 													<div key={article.article_id} className={"article-item margin-top"}>
 														<Link to={"/article/detail/" + article.article_id}>
 															<img className="article-item-image img-thumbnail"
@@ -208,52 +178,33 @@ class PrimarySchool extends Component {
 							<div className="title">
 								<div className="pull-left">
 									<div className="title-icon"></div>
-									<Link to="/article/index/7e84950e6d96412b860b5be55f46d5e8">
+									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
 										<div className="title-text">优秀学生</div>
 									</Link>
 									<div className="title-line"></div>
 								</div>
 								<div className="pull-right">
-									<Link to="/article/index/7e84950e6d96412b860b5be55f46d5e8">更多</Link>
+									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">更多</Link>
 								</div>
 							</div>
                             {
-                                this.props.primary_school.article_list.map(function (article) {
+                                this.props.primary_school.student_list.map(function (student) {
                                     return (
-                                        article.article_category_id === '7e84950e6d96412b860b5be55f46d5e8' ?
-											<div key={article.article_id} className={"article-item margin-top"}>
-												<Link to={"/article/detail/" + article.article_id}>
-													<div className="dpar_cont">
-														<div className="col-md-6 col-sm-6 col-xs-6 dp_r margin-top best-student">
-															<img src="image/sight-1.jpg" alt=""/>
-															<p>国际交流活动为学生</p>
-														</div>
-														<div className="col-md-6 col-sm-6 col-xs-6 dp_r margin-top best-student">
-															<img src="image/sight-1.jpg" alt=""/>
-															<p>国际交流活动为学生</p>
-														</div>
-														<div className="col-md-6 col-sm-6 col-xs-6 dp_r margin-top best-student">
-															<img src="image/sight-1.jpg" alt=""/>
-															<p>国际交流活动为学生</p>
-														</div>
-														<div className="col-md-6 col-sm-6 col-xs-6 dp_r margin-top best-student">
-															<img src="image/sight-1.jpg" alt=""/>
-															<p>国际交流活动为学生</p>
-														</div>
+										<div key={student.student_id} className={"article-item margin-top"}>
+											<Link to={"/student/detail/" + student.student_id}>
+												<div className="dpar_cont">
+													<div className="col-md-6 col-sm-6 col-xs-6 dp_r margin-top best-student">
+														<img src={constant.image_host + student.student_image} alt=""/>
+														<p>{student.student_name}</p>
 													</div>
-												</Link>
-											</div>
-                                            :
-                                            ''
+												</div>
+											</Link>
+										</div>
                                     )
                                 })
                             }
 						</div>
 					</div>
-
-
-
-
 				</div>
 
 				<div className="content-background-1">
@@ -325,6 +276,6 @@ class PrimarySchool extends Component {
 
 export default connect((state) => {
 	return {
-        primary_school: state.primary_school,
+        primary_school: state.primary_school
 	}
 })(PrimarySchool);

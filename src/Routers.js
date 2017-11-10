@@ -59,8 +59,7 @@ const Routers = () =>
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" onEnter={handleEnter}>
-                <IndexRedirect to="/primary/school"/>
-                <Route path="/primary/school" component={PrimarySchool}/>
+                <IndexRedirect to="/index"/>
                 <Route path="/index" component={Index}/>
                 <Route path="/page/:page_id" component={Page}/>
                 <Route path="/article/index/:article_category_id" component={ArticleIndex}/>
@@ -79,6 +78,7 @@ const Routers = () =>
                 <Route path="/sign/pupilcheck" component={SignUpPupilCheck}/>
                 <Route path="/sign/juniorcheck" component={SignUpJuniorCheck}/>
                 <Route path="/train/:page_id" component={Train}/>
+                <Route path="/primary/school" component={PrimarySchool}/>
             </Route>
         </Router>
     </Provider>
