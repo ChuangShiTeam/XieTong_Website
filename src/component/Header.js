@@ -11,7 +11,9 @@ class Header extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+
+        }
     }
 
     componentDidMount() {
@@ -110,10 +112,10 @@ class Header extends Component {
                     <div className="container col-padding">
                         <div className="pull-left"><Link to="/index">您好，欢迎光临佛山协同(国际)学校！</Link></div>
                         <div className="pull-right hidden-xs">
-                            <Link className="margin-right" to="/student/login">我是学生</Link>
-                            |
-                            <Link className="margin-left" to="/teacher/login">我是老师</Link>
-                        </div>
+                                <Link className="margin-right" to="/student/login">我是学生</Link>
+                                |
+                                <Link className="margin-left" to="/teacher/login">我是老师</Link>
+                            </div>
                     </div>
                 </div>
                 <div className="main">
