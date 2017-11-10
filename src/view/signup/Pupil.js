@@ -111,7 +111,7 @@ class Recruitment extends Component {
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
-                            <Form horizontal style={{marginTop: '20px'}}>
+                            <Form horizontal className="margin-top-20">
                                 <FormGroup {...getFieldProps('student_name', {
                                     rules: [{
                                         required: true,
