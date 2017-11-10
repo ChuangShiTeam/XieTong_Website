@@ -28,6 +28,8 @@ class ArticleDetail extends Component {
                 article_id: this.props.params.article_id
             },
             success: function (data) {
+                util.setTitle(data.article_name);
+
                 this.setState({
                     article: data,
                 });

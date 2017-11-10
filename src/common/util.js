@@ -3,6 +3,11 @@ function scrollToTop(number) {
     document.body.scrollTop = number;
 }
 
+function setTitle(title) {
+    document.title = title + ' - 佛山协同(国际)学校';
+}
+
 export default {
-    scrollToTop: scrollToTop
+    scrollToTop: scrollToTop,
+    setTitle: setTitle
 };

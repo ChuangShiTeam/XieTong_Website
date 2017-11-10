@@ -26,11 +26,13 @@ class TeacherRecruitment extends Component {
     }
 
     componentDidMount() {
+        util.setTitle('教师招聘');
+
         util.scrollToTop(0);
     }
 
     componentWillReceiveProps(nextProps) {
-        util.scrollToTop(0);
+
     }
 
     handleUpload() {
@@ -78,6 +80,7 @@ class TeacherRecruitment extends Component {
                         result_type: 'success',
                         result_message: '提交成功'
                     });
+
                     this.props.form.resetFields();
                 }.bind(this),
                 error: function (data) {

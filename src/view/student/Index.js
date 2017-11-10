@@ -63,6 +63,8 @@ class Team extends Component {
             page_name: page_name
         });
 
+        util.setTitle(page_name);
+
         if (this.props.student.list.length === 0) {
             http.request({
                 url: '/desktop/xietong/student/list',

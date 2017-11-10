@@ -25,6 +25,8 @@ class StudentAdmissions extends Component {
     }
 
     componentDidMount() {
+        util.setTitle('学生报名');
+
         util.scrollToTop(0);
     }
 

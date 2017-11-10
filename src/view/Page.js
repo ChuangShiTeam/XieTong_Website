@@ -54,6 +54,8 @@ class Page extends Component {
         var is_exit = false;
         for (var i = 0; i < this.state.page_list.length; i++) {
             if (this.state.page_list[i].page_id === this.state.page_id) {
+                util.setTitle(this.state.page_list[i].page_name);
+
                 this.setState({
                     page: this.state.page_list[i]
                 });
@@ -76,6 +78,8 @@ class Page extends Component {
                     page_id: this.state.page_id
                 },
                 success: function (data) {
+                    util.setTitle(data.page_name);
+
                     var page_list = this.state.page_list;
                     page_list.push(data);
 

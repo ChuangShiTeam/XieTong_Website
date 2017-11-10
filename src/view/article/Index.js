@@ -26,6 +26,8 @@ class ArticleIndex extends Component {
     }
 
     componentDidMount() {
+        util.setTitle('学校新闻');
+
         util.scrollToTop(0);
 
         this.setState({

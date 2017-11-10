@@ -24,6 +24,8 @@ class TeacherLogin extends Component {
     }
 
     componentDidMount() {
+        util.setTitle('老师登录');
+
         util.scrollToTop(0);
     }
 

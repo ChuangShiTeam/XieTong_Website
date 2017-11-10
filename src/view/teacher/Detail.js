@@ -39,6 +39,8 @@ class ArticleDetail extends Component {
                     page_id = 'e253866195a64d059d9f66100f11680f';
                 }
 
+                util.setTitle(data.teacher_name);
+
                 this.setState({
                     teacher: data,
                     page_id: page_id

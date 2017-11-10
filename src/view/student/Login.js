@@ -24,6 +24,8 @@ class StudentLogin extends Component {
     }
 
     componentDidMount() {
+        util.setTitle('学生登录');
+
         util.scrollToTop(0);
     }
 
