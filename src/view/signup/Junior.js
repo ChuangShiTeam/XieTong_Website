@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createForm} from 'rc-form';
-import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, HelpBlock, Button, Alert} from 'react-bootstrap';
+import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} from 'react-bootstrap';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
 import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
-import http from '../../util/http';
+import http from '../../common/http';
+import util from '../../common/util';
 
 class Recruitment extends Component {
     constructor(props) {
@@ -24,7 +25,11 @@ class Recruitment extends Component {
     }
 
     componentDidMount() {
+        util.scrollToTop(0);
+    }
 
+    componentWillReceiveProps(nextProps) {
+        util.scrollToTop(0);
     }
 
     componentWillUnmount() {

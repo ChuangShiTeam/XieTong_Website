@@ -522,7 +522,6 @@ body {
     right: 10px;
     width: 20px;
     height: 20px;
-    background-image: url("../image/right.png");
     background-size: contain;
 }
 
@@ -535,7 +534,7 @@ body {
 }
 
 .subnav .active .subnav-item-arrow {
-    background-image: url("../image/right-active.png");
+
 }
 
 .footer {
@@ -585,35 +584,35 @@ body {
     margin: 10px 0px;
 }
 
-.team-item {
+.teacher-item {
     min-height: 320px;
     background-color: #EEEEEE;
     vertical-align: middle
 }
 
-.team-image {
+.teacher-image {
     position: relative;
     height: 320px;
 }
 
-.team-image-item {
+.teacher-image-item {
     position: absolute;
     top: 50%;
     margin-top: -125px;
 }
 
-.team-image-item img {
+.teacher-image-item img {
     width: 250px;
     height: 250px;
 }
 
-.team-name {
+.teacher-name {
     font-size: 18px;
     margin-top: 18px;
     margin-bottom: 10px;
 }
 
-.team-description {
+.teacher-description {
     height: 250px;
     overflow: hidden;
 }

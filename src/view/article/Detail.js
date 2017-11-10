@@ -7,7 +7,8 @@ import Footer from '../../component/Footer';
 import ArticleSubNav from '../../component/ArticleSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
-import http from '../../util/http';
+import http from '../../common/http';
+import util from '../../common/util';
 
 class ArticleDetail extends Component {
     constructor(props) {
@@ -19,6 +20,8 @@ class ArticleDetail extends Component {
     }
 
     componentDidMount() {
+        util.scrollToTop(0);
+
         http.request({
             url: '/desktop/article/find',
             data: {
@@ -36,6 +39,10 @@ class ArticleDetail extends Component {
 
             }
         });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        util.scrollToTop(0);
     }
 
     componentWillUnmount() {

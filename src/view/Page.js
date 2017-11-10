@@ -7,7 +7,8 @@ import Footer from '../component/Footer';
 import PageSubNav from '../component/PageSubNav';
 import DepartmentSubNav from '../component/DepartmentSubNav';
 
-import http from '../util/http';
+import http from '../common/http';
+import util from '../common/util';
 
 class Page extends Component {
     constructor(props) {
@@ -22,6 +23,8 @@ class Page extends Component {
     }
 
     componentDidMount() {
+        util.scrollToTop(0);
+
         this.setState({
             page_id: this.props.params.page_id,
             page_list: this.props.page.list,
@@ -32,6 +35,8 @@ class Page extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        util.scrollToTop(0);
+
         if (this.state.page_id !== nextProps.params.page_id) {
             this.setState({
                 page_id: nextProps.params.page_id

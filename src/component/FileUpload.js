@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {HelpBlock, Button, Alert} from 'react-bootstrap';
 import Upload from 'rc-upload';
 
-import constant from '../util/constant';
-import storage from '../util/storage';
+import constant from '../common/constant';
+import storage from '../common/storage';
 
 class FileUpload extends Component {
 	constructor(props) {
@@ -190,7 +190,7 @@ class FileUpload extends Component {
 						return(
 							<div key={index}>
 								<a href={constant.host + file.file_path} style={{color: '#49a9ee'}}>{file.file_name}</a>
-								<a href="javascript:;" style={{marginLeft: '50px'}} onClick={this.removeFile.bind(this, index)}>删除</a>
+								<a style={{marginLeft: '50px'}} onClick={this.removeFile.bind(this, index)}>删除</a>
 							</div>
 						)
 					}) : null

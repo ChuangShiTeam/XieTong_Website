@@ -8,8 +8,9 @@ import Footer from '../../component/Footer';
 import ArticleSubNav from '../../component/ArticleSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
-import constant from '../../util/constant';
-import http from '../../util/http';
+import constant from '../../common/constant';
+import http from '../../common/http';
+import util from '../../common/util';
 
 class ArticleIndex extends Component {
     constructor(props) {
@@ -25,6 +26,8 @@ class ArticleIndex extends Component {
     }
 
     componentDidMount() {
+        util.scrollToTop(0);
+
         this.setState({
             article_category_id: this.props.params.article_category_id
         }, function () {
@@ -33,6 +36,8 @@ class ArticleIndex extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        util.scrollToTop(0);
+
         if (this.state.article_category_id !== nextProps.params.article_category_id) {
             this.setState({
                 article_category_id: nextProps.params.article_category_id

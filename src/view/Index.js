@@ -6,25 +6,24 @@ import {Carousel} from 'react-bootstrap';
 import Header from '../component/Header';
 import Footer from '../component/Footer';
 
-import constant from '../util/constant';
-import http from '../util/http';
+import constant from '../common/constant';
+import http from '../common/http';
+import util from '../common/util';
 
 class Index extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     componentDidMount() {
+        util.scrollToTop(0);
+
         if (this.props.index.article_list.length === 0) {
             http.request({
                 url: '/desktop/xietong/website/index',
-                data: {
-
-                },
+                data: {},
                 success: function (data) {
                     this.props.dispatch({
                         type: 'index',
@@ -200,11 +199,14 @@ class Index extends Component {
                                             <div key={article.article_id} className={"activity-item margin-top"}>
                                                 <Link to={"/article/detail/" + article.article_id}>
                                                     <div className="activity-item-date">
-                                                        <div className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
-                                                        <div className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                        <div
+                                                            className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                        <div
+                                                            className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
                                                     </div>
                                                     <div className="activity-item-title">{article.article_name}</div>
-                                                    <div className="activity-item-description">{article.article_summary}</div>
+                                                    <div
+                                                        className="activity-item-description">{article.article_summary}</div>
                                                 </Link>
                                             </div>
                                             :
@@ -234,11 +236,14 @@ class Index extends Component {
                                             <div key={article.article_id} className={"activity-item margin-top"}>
                                                 <Link to={"/article/detail/" + article.article_id}>
                                                     <div className="activity-item-date">
-                                                        <div className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
-                                                        <div className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                        <div
+                                                            className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                        <div
+                                                            className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
                                                     </div>
                                                     <div className="activity-item-title">{article.article_name}</div>
-                                                    <div className="activity-item-description">{article.article_summary}</div>
+                                                    <div
+                                                        className="activity-item-description">{article.article_summary}</div>
                                                 </Link>
                                             </div>
                                             :
@@ -290,7 +295,7 @@ class Index extends Component {
                     <div className="container">
                         <div className="row margin-top-20 margin-bottom-20">
                             <div className="col-md-3 hidden-xs hidden-sm     col-padding">
-                                <Link to="">
+                                <Link to="/page/1c4de3536a17485f87fa3fd2e2066172">
                                     <div className="sight">
                                         <img className="sight-image-0" src="image/sight-0.jpg" alt=""/>
                                         <div className="sight-mask">美丽校园</div>
@@ -299,7 +304,7 @@ class Index extends Component {
                             </div>
                             <div className="col-md-9 col-xs-12 col-no-padding">
                                 <div className="col-md-4 col-xs-6 col-padding">
-                                    <Link to="">
+                                    <Link to="/teacher/index/70699f5ca3df49bfb4c742827e1a060c">
                                         <div className="sight">
                                             <img className="sight-image-1" src="image/sight-1.jpg" alt=""/>
                                             <div className="sight-mask">教师风采</div>
@@ -307,7 +312,7 @@ class Index extends Component {
                                     </Link>
                                 </div>
                                 <div className="col-md-4 col-xs-6 col-padding">
-                                    <Link to="">
+                                    <Link to="/student/index/0bce6c38d8d3463bb62a3270251a126d">
                                         <div className="sight">
                                             <img className="sight-image-1" src="image/sight-2.jpg" alt=""/>
                                             <div className="sight-mask">学生社团</div>
@@ -317,7 +322,7 @@ class Index extends Component {
                                 <div
                                     className="col-xs-12 visible-xs-inline-block visible-sm-inline-block margin-top"></div>
                                 <div className="col-md-4 col-xs-6 col-padding">
-                                    <Link to="">
+                                    <Link to="/page/d7368f86afce4554ab477a441a636265">
                                         <div className="sight">
                                             <img className="sight-image-1" src="image/sight-3.jpg" alt=""/>
                                             <div className="sight-mask">课程选择</div>
@@ -326,7 +331,7 @@ class Index extends Component {
                                 </div>
                                 <div className="col-md-12 hidden-xs margin-top-20"></div>
                                 <div className="col-md-4 col-xs-6 col-padding">
-                                    <Link to="">
+                                    <Link to="/page/5c97043e47c14a2395c97b25c8257a67">
                                         <div className="sight">
                                             <img className="sight-image-1" src="image/sight-4.jpg" alt=""/>
                                             <div className="sight-mask">魅力课堂</div>
@@ -336,7 +341,7 @@ class Index extends Component {
                                 <div
                                     className="col-xs-12 visible-xs-inline-block visible-sm-inline-block margin-top"></div>
                                 <div className="col-md-8 col-xs-12 col-padding">
-                                    <Link to="">
+                                    <Link to="/page/1c4de3536a17485f87fa3fd2e2066172">
                                         <div className="sight">
                                             <img className="sight-image-2" src="image/sight-5.jpg" alt=""/>
                                             <div className="sight-mask">美丽校园</div>
