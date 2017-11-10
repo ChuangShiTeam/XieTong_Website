@@ -69,7 +69,7 @@ class Index extends Component {
                             </div>
                             <div className="col-md-4 col-xs-4 col-padding">
                                 <div className="department">
-                                    <Link to="/primary/school">
+                                    <Link to="/junior/school">
                                         <img src="image/department1.jpg" alt=""/>
                                         <div className="department-mask">中学部</div>
                                     </Link>
@@ -77,7 +77,7 @@ class Index extends Component {
                             </div>
                             <div className="col-md-4 col-xs-4 col-padding">
                                 <div className="department">
-                                    <Link to="/primary/school">
+                                    <Link to="/international/school">
                                         <img src="image/department2.jpg" alt=""/>
                                         <div className="department-mask">国际部</div>
                                     </Link>

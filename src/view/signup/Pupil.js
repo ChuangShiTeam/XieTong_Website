@@ -138,19 +138,21 @@ class Recruitment extends Component {
                                     <Col componentClass={ControlLabel} md={2}>
                                         性别
                                     </Col>
-                                    <Col md={4}>
-                                        <Radio name="student_sex" value="男">
-                                            男
-                                        </Radio>
-                                    </Col>
-                                    <Col md={4}>
-                                        <Radio name="student_sex" value="女">
-                                            女
-                                        </Radio>
-                                        <FormControl.Feedback/>
-                                    </Col>
-                                    <Col md={12}>
-                                        <span className="error-message">{getFieldError('student_sex')}</span>
+                                    <Col md={8} className="col-no-padding">
+                                        <Col md={6}>
+                                            <Radio name="student_sex" value="男">
+                                                男
+                                            </Radio>
+                                        </Col>
+                                        <Col md={6}>
+                                            <Radio name="student_sex" value="女">
+                                                女
+                                            </Radio>
+                                            <FormControl.Feedback/>
+                                        </Col>
+                                        <Col md={12}>
+                                            <span className="error-message">{getFieldError('student_sex')}</span>
+                                        </Col>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('student_birthday', {
@@ -197,27 +199,31 @@ class Recruitment extends Component {
                                     <Col componentClass={ControlLabel} md={2}>
                                         证件类型
                                     </Col>
-                                    <Col md={2}>
-                                        <Radio name="id_type" value="身份证">
-                                            身份证
-                                        </Radio>
-                                    </Col>
-                                    <Col md={2}>
-                                        <Radio name="id_type" value="户口本">
-                                            户口本
-                                        </Radio>
-                                    </Col>
-                                    <Col md={2}>
-                                        <Radio name="id_type" value="签证">
-                                            签证
-                                        </Radio>
-                                    </Col>
-                                    <Col md={2}>
-                                        <Radio name="id_type" value="护照">
-                                            护照
-                                        </Radio>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('id_type')}</span>
+                                    <Col md={8} className="col-no-padding">
+                                        <Col md={3}>
+                                            <Radio name="id_type" value="身份证">
+                                                身份证
+                                            </Radio>
+                                        </Col>
+                                        <Col md={3}>
+                                            <Radio name="id_type" value="户口本">
+                                                户口本
+                                            </Radio>
+                                        </Col>
+                                        <Col md={3}>
+                                            <Radio name="id_type" value="签证">
+                                                签证
+                                            </Radio>
+                                        </Col>
+                                        <Col md={3}>
+                                            <Radio name="id_type" value="护照">
+                                                护照
+                                            </Radio>
+                                            <FormControl.Feedback/>
+                                        </Col>
+                                        <Col md={12}>
+                                            <span className="error-message">{getFieldError('id_type')}</span>
+                                        </Col>
                                     </Col>
                                 </FormGroup>
 

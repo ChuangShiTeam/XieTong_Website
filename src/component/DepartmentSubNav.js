@@ -33,13 +33,13 @@ class DepartmentSubNav extends Component {
                     </Link>
                 </div>
                 <div className="department margin-top">
-                    <Link to="/primary/school">
+                    <Link to="/junior/school">
                         <img src="/image/department1.jpg" alt=""/>
                         <div className="department-mask">中学部</div>
                     </Link>
                 </div>
                 <div className="department margin-top">
-                    <Link to="/primary/school">
+                    <Link to="/international/school">
                         <img src="/image/department2.jpg" alt=""/>
                         <div className="department-mask">国际部</div>
                     </Link>

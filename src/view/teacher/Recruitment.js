@@ -126,10 +126,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_name') ? 'error' : getFieldValue('teacher_recruitment_name') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         姓名
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输入姓名"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -143,20 +143,24 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_sex') ? 'error' : getFieldValue('teacher_recruitment_sex') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         性别
                                     </Col>
-                                    <Col sm={10}>
-                                        <Radio name="teacher_recruitment_sex" value="男">
-                                            男
-                                        </Radio>
-                                        {' '}
-                                        <Radio name="teacher_recruitment_sex" value="女">
-                                            女
-                                        </Radio>
-                                        <FormControl.Feedback/>
-                                        <span
-                                            className="error-message">{getFieldError('teacher_recruitment_sex')}</span>
+                                    <Col md={8} className="col-no-padding">
+                                        <Col md={6}>
+                                            <Radio name="teacher_recruitment_sex" value="男">
+                                                男
+                                            </Radio>
+                                        </Col>
+                                        <Col md={6}>
+                                            <Radio name="teacher_recruitment_sex" value="女">
+                                                女
+                                            </Radio>
+                                            <FormControl.Feedback/>
+                                        </Col>
+                                        <Col md={12}>
+                                            <span className="error-message">{getFieldError('teacher_recruitment_sex')}</span>
+                                        </Col>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_birthday', {
@@ -166,10 +170,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_birthday') ? 'error' : getFieldValue('teacher_recruitment_birthday') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         出生日期
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="date" placeholder="请输入出生日期"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -183,10 +187,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_mobile') ? 'error' : getFieldValue('teacher_recruitment_mobile') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         手机号码
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="tel" placeholder="请输入手机号码"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -200,10 +204,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_email') ? 'error' : getFieldValue('teacher_recruitment_email') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         邮箱地址
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="email" placeholder="请输入邮箱地址"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -217,20 +221,24 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_faculty') ? 'error' : getFieldValue('teacher_recruitment_faculty') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         应聘学部
                                     </Col>
-                                    <Col sm={10}>
-                                        <Radio name="teacher_recruitment_faculty" value="中学部">
-                                            中学部
-                                        </Radio>
-                                        {' '}
-                                        <Radio name="teacher_recruitment_faculty" value="小学部">
-                                            小学部
-                                        </Radio>
-                                        <FormControl.Feedback/>
-                                        <span
-                                            className="error-message">{getFieldError('teacher_recruitment_faculty')}</span>
+                                    <Col md={8} className="col-no-padding">
+                                        <Col md={6}>
+                                            <Radio name="teacher_recruitment_faculty" value="小学部">
+                                                小学部
+                                            </Radio>
+                                        </Col>
+                                        <Col md={6}>
+                                            <Radio name="teacher_recruitment_faculty" value="中学部">
+                                                中学部
+                                            </Radio>
+                                            <FormControl.Feedback/>
+                                        </Col>
+                                        <Col md={12}>
+                                            <span className="error-message">{getFieldError('teacher_recruitment_faculty')}</span>
+                                        </Col>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_subject', {
@@ -240,10 +248,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_subject') ? 'error' : getFieldValue('teacher_recruitment_subject') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         应聘学科
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="text" placeholder="请输入应聘学科"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -257,35 +265,39 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_is_fresh_graduate') ? 'error' : getFieldValue('teacher_recruitment_is_fresh_graduate') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         是否应届毕业生
                                     </Col>
-                                    <Col sm={9}>
-                                        <Radio name="teacher_recruitment_is_fresh_graduate" value="true">
-                                            是
-                                        </Radio>
-                                        {' '}
-                                        <Radio name="teacher_recruitment_is_fresh_graduate" value="false">
-                                            否
-                                        </Radio>
-                                        <FormControl.Feedback/>
-                                        <span
-                                            className="error-message">{getFieldError('teacher_recruitment_is_fresh_graduate')}</span>
+                                    <Col md={8} className="col-no-padding">
+                                        <Col md={6}>
+                                            <Radio name="teacher_recruitment_is_fresh_graduate" value="true">
+                                                是
+                                            </Radio>
+                                        </Col>
+                                        <Col md={6}>
+                                            <Radio name="teacher_recruitment_is_fresh_graduate" value="false">
+                                                否
+                                            </Radio>
+                                            <FormControl.Feedback/>
+                                        </Col>
+                                        <Col md={12}>
+                                            <span className="error-message">{getFieldError('teacher_recruitment_is_fresh_graduate')}</span>
+                                        </Col>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_work_year', {initialValue: ''})} >
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         工作年限
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="text" placeholder="请输入工作年限"/>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_old_unit', {initialValue: ''})} >
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         原工作单位
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="text" placeholder="请输入原工作单位"/>
                                     </Col>
                                 </FormGroup>
@@ -296,10 +308,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_politics_status') ? 'error' : getFieldValue('teacher_recruitment_politics_status') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         政治面貌
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="text" placeholder="请输入政治面貌"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -307,10 +319,10 @@ class TeacherRecruitment extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_job_title', {initialValue: ''})}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         职称
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="text" placeholder="请输入职称"/>
                                     </Col>
                                 </FormGroup>
@@ -321,10 +333,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_education') ? 'error' : getFieldValue('teacher_recruitment_education') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         学历
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="text" placeholder="请输入学历"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -338,10 +350,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_major') ? 'error' : getFieldValue('teacher_recruitment_major') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         专业
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="text" placeholder="请输入专业"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -355,10 +367,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_grad_school') ? 'error' : getFieldValue('teacher_recruitment_grad_school') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         毕业院校
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输入毕业院校"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -372,10 +384,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_education_experience') ? 'error' : getFieldValue('teacher_recruitment_education_experience') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         教育经历
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl componentClass="textarea"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -383,18 +395,18 @@ class TeacherRecruitment extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_work_experience', {initialValue: ''})}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         工作经历
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl componentClass="textarea"/>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_representative_honor', {initialValue: ''})}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         所获代表性荣誉
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl componentClass="textarea"/>
                                     </Col>
                                 </FormGroup>
@@ -405,10 +417,10 @@ class TeacherRecruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('teacher_recruitment_now_address') ? 'error' : getFieldValue('teacher_recruitment_now_address') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         现住址
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl componentClass="textarea"/>
                                         <FormControl.Feedback/>
                                         <span
@@ -417,10 +429,10 @@ class TeacherRecruitment extends Component {
                                 </FormGroup>
 
                                 <FormGroup controlId="teacher_recruitment_file">
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         请上传您的电子版简历
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FileUpload ref="teacher_recruitment_file" name="teacher_recruitment_file"
                                                     type="application/msword, application/pdf" size={50} limit={1}/>
                                         上传格式限制pdf、word
@@ -428,14 +440,14 @@ class TeacherRecruitment extends Component {
                                 </FormGroup>
 
                                 <FormGroup>
-                                    <Col smOffset={2} sm={9}>
+                                    <Col smOffset={2} md={8}>
                                         <Button disabled={this.state.is_load} onClick={this.handlSubmit.bind(this)}>
                                             {this.state.is_load ? "加载中.." : "提交"}
                                         </Button>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Col smOffset={2} sm={9}>
+                                    <Col smOffset={2} md={8}>
                                         {
                                             this.state.result_type === "" ?
                                                 ""

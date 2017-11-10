@@ -14,6 +14,8 @@ import teacher from './store/teacher';
 import student from './store/student';
 import train from './store/train';
 import primary_school from './store/primary_school';
+import junior_school from './store/junior_school';
+import international_school from './store/international_school';
 
 import Index from './view/Index';
 import Page from './view/Page';
@@ -34,6 +36,8 @@ import SignUpPupilCheck from './view/signup/PupilCheck';
 import SignUpJuniorCheck from './view/signup/JuniorCheck';
 import Train from './view/teacher/Train';
 import PrimarySchool from './view/PrimarySchool';
+import JuniorSchool from './view/JuniorSchool';
+import InternationalSchool from './view/InternationalSchool';
 
 const store = createStore(
     combineReducers({
@@ -79,6 +83,9 @@ const Routers = () =>
                 <Route path="/sign/juniorcheck" component={SignUpJuniorCheck}/>
                 <Route path="/train/:page_id" component={Train}/>
                 <Route path="/primary/school" component={PrimarySchool}/>
+                <Route path="/primary/school" component={JuniorSchool}/>
+                <Route path="/junior/school" component={JuniorSchool}/>
+                <Route path="/international/school" component={InternationalSchool}/>
             </Route>
         </Router>
     </Provider>

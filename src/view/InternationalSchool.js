@@ -10,7 +10,7 @@ import constant from '../common/constant';
 import http from '../common/http';
 import util from '../common/util';
 
-class PrimarySchool extends Component {
+class InternationalSchool extends Component {
 	constructor(props) {
 		super(props);
 
@@ -65,7 +65,7 @@ class PrimarySchool extends Component {
 								<div className="pull-left">
 									<div className="title-icon"></div>
 									<Link to="/article/index/9d8508d24242499ebcf344e17d8222de">
-										<div className="title-text">小学部教学</div>
+										<div className="title-text">国际部教学</div>
 									</Link>
 									<div className="title-line"></div>
 								</div>
@@ -121,7 +121,7 @@ class PrimarySchool extends Component {
 									<div className="pull-left">
 										<div className="title-icon"></div>
 										<Link to="/article/index/9c204d00ccd446298c22cff6350bb6ff">
-											<div className="title-text">小学部活动</div>
+											<div className="title-text">国际部活动</div>
 										</Link>
 										<div className="title-line"></div>
 									</div>
@@ -179,7 +179,7 @@ class PrimarySchool extends Component {
 								<div className="pull-left">
 									<div className="title-icon"></div>
 									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
-										<div className="title-text">小学部优秀学生</div>
+										<div className="title-text">国际部优秀学生</div>
 									</Link>
 									<div className="title-line"></div>
 								</div>
@@ -218,4 +218,4 @@ export default connect((state) => {
 	return {
         primary_school: state.primary_school
 	}
-})(PrimarySchool);
+})(InternationalSchool);
