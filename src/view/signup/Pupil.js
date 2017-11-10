@@ -25,11 +25,13 @@ class Recruitment extends Component {
     }
 
     componentDidMount() {
+        util.setTitle('佛山协同(国际)学校2018年一年级新生报名');
+
         util.scrollToTop(0);
     }
 
     componentWillReceiveProps(nextProps) {
-        util.scrollToTop(0);
+
     }
 
     componentWillUnmount() {
@@ -71,6 +73,8 @@ class Recruitment extends Component {
                         result_type: 'success',
                         result_message: '提交成功'
                     });
+
+                    this.props.form.resetFields();
                 }.bind(this),
                 error: function (data) {
                     this.setState({
@@ -115,10 +119,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('student_name') ? 'error' : getFieldValue('student_name') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         姓名
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输入姓名"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('student_name')}</span>
@@ -131,18 +135,21 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('student_sex') ? 'error' : getFieldValue('student_sex') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         性别
                                     </Col>
-                                    <Col sm={10}>
+                                    <Col md={4}>
                                         <Radio name="student_sex" value="男">
                                             男
                                         </Radio>
-                                        {' '}
+                                    </Col>
+                                    <Col md={4}>
                                         <Radio name="student_sex" value="女">
                                             女
                                         </Radio>
                                         <FormControl.Feedback/>
+                                    </Col>
+                                    <Col md={12}>
                                         <span className="error-message">{getFieldError('student_sex')}</span>
                                     </Col>
                                 </FormGroup>
@@ -153,10 +160,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('student_birthday') ? 'error' : getFieldValue('student_birthday') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         出生日期
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="date" placeholder="请输入出生日期"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('student_birthday')}</span>
@@ -169,10 +176,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('kindergarten') ? 'error' : getFieldValue('kindergarten') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         原就读小学
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输入原就读幼儿园"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('kindergarten')}</span>
@@ -187,22 +194,25 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('id_type') ? 'error' : getFieldValue('id_type') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         证件类型
                                     </Col>
-                                    <Col sm={10}>
+                                    <Col md={2}>
                                         <Radio name="id_type" value="身份证">
                                             身份证
                                         </Radio>
-                                        {' '}
+                                    </Col>
+                                    <Col md={2}>
                                         <Radio name="id_type" value="户口本">
                                             户口本
                                         </Radio>
-                                        {' '}
+                                    </Col>
+                                    <Col md={2}>
                                         <Radio name="id_type" value="签证">
                                             签证
                                         </Radio>
-                                        {' '}
+                                    </Col>
+                                    <Col md={2}>
                                         <Radio name="id_type" value="护照">
                                             护照
                                         </Radio>
@@ -218,10 +228,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('id_no') ? 'error' : getFieldValue('id_no') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         证件号码
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输证件号码"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('id_no')}</span>
@@ -234,10 +244,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('permanent_address') ? 'error' : getFieldValue('permanent_address') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         户籍地址
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输户籍地址"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('permanent_address')}</span>
@@ -250,10 +260,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('live_addresss') ? 'error' : getFieldValue('live_addresss') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         居住地址
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输居住地址"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('live_addresss')}</span>
@@ -266,10 +276,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('father_name') ? 'error' : getFieldValue('father_name') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         父亲姓名
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输父亲姓名"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_name')}</span>
@@ -282,10 +292,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('father_id_no') ? 'error' : getFieldValue('father_id_no') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         父亲证件号码
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输父亲证件号码"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_id_no')}</span>
@@ -298,10 +308,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('father_work') ? 'error' : getFieldValue('father_work') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         父亲工作单位
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输父亲工作单位"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_work')}</span>
@@ -314,10 +324,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('father_phone') ? 'error' : getFieldValue('father_phone') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         手机号码
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="tel" placeholder="请输入手机号码"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_phone')}</span>
@@ -330,10 +340,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('mother_name') ? 'error' : getFieldValue('mother_name') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         母亲姓名
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输母亲姓名"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_name')}</span>
@@ -346,10 +356,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('mother_id_no') ? 'error' : getFieldValue('mother_id_no') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         母亲证件号码
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输母亲证件号码"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_id_no')}</span>
@@ -362,10 +372,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('mother_work') ? 'error' : getFieldValue('mother_work') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         母亲工作单位
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl placeholder="请输母亲工作单位"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_work')}</span>
@@ -378,10 +388,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('mother_phone') ? 'error' : getFieldValue('mother_phone') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         手机号码
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl type="tel" placeholder="请输入手机号码"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_phone')}</span>
@@ -395,10 +405,10 @@ class Recruitment extends Component {
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('remark') ? 'error' : getFieldValue('remark') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
+                                    <Col componentClass={ControlLabel} md={2}>
                                         兴趣、爱好、特长
                                     </Col>
-                                    <Col sm={9}>
+                                    <Col md={8}>
                                         <FormControl componentClass="textarea"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('remark')}</span>
@@ -407,14 +417,14 @@ class Recruitment extends Component {
 
 
                                 <FormGroup>
-                                    <Col smOffset={2} sm={9}>
+                                    <Col smOffset={2} md={8}>
                                         <Button disabled={this.state.is_load} onClick={this.handlSubmit.bind(this)}>
                                             {this.state.is_load ? "加载中.." : "提交"}
                                         </Button>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Col smOffset={2} sm={9}>
+                                    <Col smOffset={2} md={8}>
                                         {
                                             this.state.result_type === "" ?
                                                 ""

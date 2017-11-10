@@ -13,6 +13,8 @@ class NotFound extends Component {
     }
 
     componentDidMount() {
+        util.setTitle('404');
+
         util.scrollToTop(0);
     }
 

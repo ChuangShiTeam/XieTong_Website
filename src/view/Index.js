@@ -18,6 +18,8 @@ class Index extends Component {
     }
 
     componentDidMount() {
+        util.setTitle('首页');
+
         util.scrollToTop(0);
 
         if (this.props.index.article_list.length === 0) {

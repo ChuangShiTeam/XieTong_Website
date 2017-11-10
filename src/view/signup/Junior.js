@@ -25,6 +25,8 @@ class Recruitment extends Component {
     }
 
     componentDidMount() {
+        util.setTitle('佛山协同(国际)学校2018年小升初自荐报名');
+
         util.scrollToTop(0);
     }
 
@@ -66,12 +68,13 @@ class Recruitment extends Component {
             http.request({
                 url: '/mobile/xietong/signup/junior/save',
                 data: values,
-
                 success: function (data) {
                     this.setState({
                         result_type: 'success',
                         result_message: '提交成功'
                     });
+
+                    this.props.form.resetFields();
                 }.bind(this),
                 error: function (data) {
                     this.setState({

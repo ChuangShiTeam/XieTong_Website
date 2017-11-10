@@ -62,8 +62,9 @@ class Train extends Component {
 				page_id: this.state.page_id
 			},
 			success: function (data) {
+                util.setTitle(data.page_name);
 
-				this.setState({
+                this.setState({
 					page: data
 				});
 			}.bind(this),

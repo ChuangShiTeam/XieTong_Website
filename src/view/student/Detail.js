@@ -30,6 +30,8 @@ class ArticleDetail extends Component {
                 student_id: this.props.params.student_id
             },
             success: function (data) {
+                util.setTitle(data.student_name);
+
                 var page_id = '';
                 if (data.student_category_id === '0bce6c38d8d3463bb62a3270251a126d') {
                     page_id = '371b4d2376c54dea975f832fa95b96b7';
