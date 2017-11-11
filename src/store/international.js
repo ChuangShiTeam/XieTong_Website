@@ -6,7 +6,7 @@ const initialState = {
 
 function product(state = initialState, action) {
     switch (action.type) {
-        case 'international_school':
+        case 'international':
             return Object.assign({}, state, action.data);
 
         default :

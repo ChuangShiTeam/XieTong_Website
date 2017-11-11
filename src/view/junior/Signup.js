@@ -12,7 +12,7 @@ import DepartmentSubNav from '../../component/DepartmentSubNav';
 import http from '../../common/http';
 import util from '../../common/util';
 
-class Recruitment extends Component {
+class Signup extends Component {
     constructor(props) {
         super(props);
 
@@ -532,10 +532,10 @@ class Recruitment extends Component {
     }
 }
 
-Recruitment = createForm({})(Recruitment);
+Signup = createForm({})(Signup);
 
 export default connect((state) => {
     return {
 
     }
-})(Recruitment);
+})(Signup);

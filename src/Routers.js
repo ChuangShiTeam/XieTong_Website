@@ -13,9 +13,9 @@ import page from './store/page';
 import teacher from './store/teacher';
 import student from './store/student';
 import train from './store/train';
-import primary_school from './store/primary_school';
-import junior_school from './store/junior_school';
-import international_school from './store/international_school';
+import primary from './store/primary';
+import junior from './store/junior';
+import international from './store/international';
 
 import Index from './view/Index';
 import Page from './view/Page';
@@ -30,14 +30,14 @@ import TeacherDetail from './view/teacher/Detail';
 import TeacherLogin from './view/teacher/Login';
 import TeacherRecruitment from './view/teacher/Recruitment';
 import NotFound from './view/NotFound';
-import SignUpJunior from './view/signup/Junior';
-import SignUpPupil from './view/signup/Pupil';
-import SignUpPupilCheck from './view/signup/PupilCheck';
-import SignUpJuniorCheck from './view/signup/JuniorCheck';
 import Train from './view/teacher/Train';
-import PrimarySchool from './view/PrimarySchool';
-import JuniorSchool from './view/JuniorSchool';
-import InternationalSchool from './view/InternationalSchool';
+import PrimaryIndex from './view/primary/Index';
+import PrimarySignup from './view/primary/Signup';
+import PrimaryCheck from './view/primary/Check';
+import JuniorInde from './view/junior/Index';
+import JuniorSignup from './view/junior/Signup';
+import JuniorCheck from './view/junior/Check';
+import InternationalIndex from './view/international/Index';
 
 const store = createStore(
     combineReducers({
@@ -50,7 +50,9 @@ const store = createStore(
         teacher,
         student,
         train,
-        primary_school,
+        primary,
+        junior,
+        international,
         routing: routerReducer
     })
 );
@@ -77,15 +79,14 @@ const Routers = () =>
                 <Route path="/teacher/login" component={TeacherLogin}/>
                 <Route path="/teacher/recruitment" component={TeacherRecruitment}/>
                 <Route path="/not/found" component={NotFound}/>
-                <Route path="/sign/junior" component={SignUpJunior}/>
-                <Route path="/sign/pupil" component={SignUpPupil}/>
-                <Route path="/sign/pupilcheck" component={SignUpPupilCheck}/>
-                <Route path="/sign/juniorcheck" component={SignUpJuniorCheck}/>
                 <Route path="/train/:page_id" component={Train}/>
-                <Route path="/primary/school" component={PrimarySchool}/>
-                <Route path="/primary/school" component={JuniorSchool}/>
-                <Route path="/junior/school" component={JuniorSchool}/>
-                <Route path="/international/school" component={InternationalSchool}/>
+                <Route path="/primary/index" component={PrimaryIndex}/>
+                <Route path="/primary/signup" component={PrimarySignup}/>
+                <Route path="/primary/check" component={PrimaryCheck}/>
+                <Route path="/junior/index" component={JuniorInde}/>
+                <Route path="/junior/signup" component={JuniorSignup}/>
+                <Route path="/junior/check" component={JuniorCheck}/>
+                <Route path="/international/index" component={InternationalIndex}/>
             </Route>
         </Router>
     </Provider>

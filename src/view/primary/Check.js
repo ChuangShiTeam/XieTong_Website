@@ -28,7 +28,7 @@ class Recruitment extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        util.scrollToTop(0);
+
     }
 
     componentWillUnmount() {
@@ -62,7 +62,7 @@ class Recruitment extends Component {
             });
 
             http.request({
-                url: '/mobile/xietong/signup/junior/find',
+                url: '/mobile/xietong/signup/pupil/find',
                 data: values,
 
                 success: function (data) {
@@ -97,7 +97,7 @@ class Recruitment extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <Link to="/index">首页</Link> > 初中报名结果查询
+                            <Link to="/index">首页</Link> > 小学报名结果查询
                         </div>
                     </div>
                     <div className="row margin-top-20">

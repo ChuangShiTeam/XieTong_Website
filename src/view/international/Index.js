@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {Carousel} from 'react-bootstrap';
 
-import Header from '../component/Header';
-import Footer from '../component/Footer';
+import Header from '../../component/Header';
+import Footer from '../../component/Footer';
 
-import constant from '../common/constant';
-import http from '../common/http';
-import util from '../common/util';
+import constant from '../../common/constant';
+import http from '../../common/http';
+import util from '../../common/util';
 
-class InternationalSchool extends Component {
+class Index extends Component {
 	constructor(props) {
 		super(props);
 
@@ -21,15 +21,15 @@ class InternationalSchool extends Component {
 
 	componentDidMount() {
 		/*请求接口并缓存在本地*/
-        if (this.props.primary_school.article_list.length === 0) {
+        if (this.props.international.article_list.length === 0) {
             http.request({
                 url: '/desktop/xietong/website/department/init',
                 data: {
-					organization_id: this.props.primary_school.organization_id
+					organization_id: this.props.international.organization_id
                 },
                 success: function (data) {
                     this.props.dispatch({
-                        type: 'primary_school',
+                        type: 'international',
                         data: {
                             article_list: data.articleList,
                             student_list: data.studentList
@@ -76,7 +76,7 @@ class InternationalSchool extends Component {
 							<div className="col-md-6 col-padding">
 								<Carousel className="margin-top" interval={3000} keyboard={false}>
                                     {
-                                        this.props.primary_school.article_list.map(function (article) {
+                                        this.props.international.article_list.map(function (article) {
                                             return (
                                                 article.article_category_id === '9d8508d24242499ebcf344e17d8222de' ?
 													<Carousel.Item key={article.article_id}>
@@ -95,7 +95,7 @@ class InternationalSchool extends Component {
 							</div>
 							<div className="col-md-6 col-padding">
                                 {
-                                    this.props.primary_school.article_list.map(function (article) {
+                                    this.props.international.article_list.map(function (article) {
                                         return (
                                             article.article_category_id === '9d8508d24242499ebcf344e17d8222de' ?
 												<div key={article.article_id} className={"article-item margin-top"}>
@@ -132,7 +132,7 @@ class InternationalSchool extends Component {
 								<div className="col-md-6 col-padding">
 									<Carousel className="margin-top" interval={3000} keyboard={false}>
                                         {
-                                            this.props.primary_school.article_list.map(function (article) {
+                                            this.props.international.article_list.map(function (article) {
                                                 return (
                                                     article.article_category_id === '9c204d00ccd446298c22cff6350bb6ff' ?
 														<Carousel.Item key={article.article_id}>
@@ -151,7 +151,7 @@ class InternationalSchool extends Component {
 								</div>
 								<div className="col-md-6 col-padding">
                                     {
-                                        this.props.primary_school.article_list.map(function (article) {
+                                        this.props.international.article_list.map(function (article) {
                                             return (
                                                 article.article_category_id === '9c204d00ccd446298c22cff6350bb6ff' ?
 													<div key={article.article_id} className={"article-item margin-top"}>
@@ -188,7 +188,7 @@ class InternationalSchool extends Component {
 								</div>
 							</div>
                             {
-                                this.props.primary_school.student_list.map(function (student) {
+                                this.props.international.student_list.map(function (student) {
                                     return (
 										<div key={student.student_id} className={"article-item margin-top"}>
 											<Link to={"/student/detail/" + student.student_id}>
@@ -216,6 +216,6 @@ class InternationalSchool extends Component {
 
 export default connect((state) => {
 	return {
-        primary_school: state.primary_school
+        international: state.international
 	}
-})(InternationalSchool);
+})(Index);
