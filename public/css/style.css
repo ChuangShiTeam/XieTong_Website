@@ -598,6 +598,17 @@ body {
 .teacher-image {
     position: relative;
     height: 320px;
+    background-color: #EEEEEE;
+}
+
+.teacher-item-2 {
+    padding: 10px;
+    margin-bottom: 30px;
+    background-color: #EEEEEE;
+}
+
+.teacher-item-3 {
+    width: 100px;
 }
 
 .teacher-image > img{

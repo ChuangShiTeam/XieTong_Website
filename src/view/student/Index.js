@@ -110,14 +110,16 @@ class Team extends Component {
                                     return (
                                         student.student_category_id === this.state.student_category_id ?
                                             <div key={student.student_id} className="col-md-4">
-                                                <Link to={"/student/detail/" + student.student_id}
-                                                      className="teacher-image thumbnail">
-                                                    <img src={constant.image_host + student.file_path} alt=""/>
-                                                    <div>
-                                                        <div className="teacher-name">{student.student_name}</div>
-                                                        <div className="text-center">{student.clazz_name}</div>
-                                                    </div>
-                                                </Link>
+                                                <div className="teacher-item-2">
+                                                    <Link to={"/student/detail/" + student.student_id}
+                                                          className="teacher-image">
+                                                        <img src={constant.image_host + student.file_path} alt=""/>
+                                                        <div>
+                                                            <div className="teacher-name">{student.student_name}</div>
+                                                            <div className="text-center">{student.clazz_name}</div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
                                             </div>
                                             :
                                             ''

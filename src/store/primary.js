@@ -1,6 +1,6 @@
 const initialState = {
     organization_id: '6fd70c5e490e403b844ca722e0a5d756',
-    article_list: [],
+    teacher_list: [],
     student_list: []
 };
 

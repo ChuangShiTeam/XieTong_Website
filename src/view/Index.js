@@ -238,17 +238,6 @@ class Index extends Component {
                                             <div key={article.article_id} className={"activity-item margin-top"}>
                                                 {
                                                     article.article_is_outer_link?
-                                                        <Link to={"/article/detail/" + article.article_id}>
-                                                            <div className="activity-item-date">
-                                                                <div
-                                                                    className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
-                                                                <div
-                                                                    className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
-                                                            </div>
-                                                            <div className="activity-item-title">{article.article_name}</div>
-                                                            <div className="activity-item-description">{article.article_summary}</div>
-                                                        </Link>
-                                                        :
                                                         <a href={article.article_outer_link} target="_blank">
                                                             <div className="activity-item-date">
                                                                 <div
@@ -259,6 +248,17 @@ class Index extends Component {
                                                             <div className="activity-item-title">{article.article_name}</div>
                                                             <div className="activity-item-description">{article.article_summary}</div>
                                                         </a>
+                                                        :
+                                                        <Link to={"/article/detail/" + article.article_id}>
+                                                            <div className="activity-item-date">
+                                                                <div
+                                                                    className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                                <div
+                                                                    className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                            </div>
+                                                            <div className="activity-item-title">{article.article_name}</div>
+                                                            <div className="activity-item-description">{article.article_summary}</div>
+                                                        </Link>
                                                 }
                                             </div>
                                             :
