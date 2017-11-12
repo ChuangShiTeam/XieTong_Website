@@ -436,7 +436,33 @@ body {
 
 .enter-item {
     position: relative;
+    padding-left: 0px;
+}
+
+.enter-item-odd{
+    padding-right: 6px;
+}
+
+.enter-item-odd .enter-item-icon{
+    left: 4px;
+}
+
+.enter-item-odd .enter-item-text{
+    left: 34px;
+}
+
+.enter-item-odd .enter-item-arrow{
+    right: 15px;
+}
+
+.enter-item-even{
+    padding-left: 6px;
+    padding-right: 0px;
+}
+
+.enter-item-box{
     height: 42px;
+    padding: 0px 12px 0px 10px;
     background-color: #EEEEEE;
 }
 
@@ -450,8 +476,8 @@ body {
 
 .enter-item-text {
     position: absolute;
-    top: 0px;
-    left: 50px;
+    top: -1px;
+    left: 40px;
     font-size: 18px;
     line-height: 44px;
 }
@@ -579,7 +605,7 @@ body {
 }
 
 .teacher-name {
-    text-align: center;
+    text-align: left;
     font-size: 18px;
     margin: 10px 0px;
 }
@@ -593,6 +619,10 @@ body {
 .teacher-image {
     position: relative;
     height: 320px;
+}
+
+.teacher-image > img{
+    border-radius: 50%;
 }
 
 .teacher-image-item {
