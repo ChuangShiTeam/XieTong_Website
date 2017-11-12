@@ -27,12 +27,10 @@ class Recruitment extends Component {
 
     componentDidMount() {
         util.scrollToTop(0);
-        console.log('test1');
         if (storage.getPrimaryToken()) {
-            console.log('test2');
             this.setState({
                 is_login: true
-            })
+            });
             this.handleFind();
         }
     }

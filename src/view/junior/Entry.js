@@ -38,7 +38,7 @@ class Entry extends Component {
 
     handleBrochures() {
         this.props.history.push({
-            pathname: "/page/e8417cd60aeb474aad40d4ecc8d52b22",
+            pathname: "/page/26b436febeb348d480a681825b44ccb4",
             query: {}
         });
     }
