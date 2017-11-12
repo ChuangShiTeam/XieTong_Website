@@ -275,31 +275,39 @@ class Index extends Component {
                                 <div className="title-line"></div>
                             </div>
                             <Link to="/teacher/recruitment">
-                                <div className="enter-item margin-top-20">
-                                    <img className="enter-item-icon" src="../image/location.png" alt=""/>
-                                    <div className="enter-item-text">教师应聘入口</div>
-                                    <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                <div className="enter-item margin-top-20 col-md-6 enter-item-odd">
+                                    <div className="enter-item-box">
+                                        <img className="enter-item-icon" src="../image/location.png" alt=""/>
+                                        <div className="enter-item-text">教师应聘入口</div>
+                                        <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                    </div>
                                 </div>
                             </Link>
                             <Link to="/sign/pupil">
-                                <div className="enter-item margin-top-20">
-                                    <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
-                                    <div className="enter-item-text">小学报读入口</div>
-                                    <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                <div className="enter-item margin-top-20 col-md-6 enter-item-even">
+                                    <div className="enter-item-box">
+                                        <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
+                                        <div className="enter-item-text">小学报读入口</div>
+                                        <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                    </div>
                                 </div>
                             </Link>
                             <Link to="/sign/junior">
-                                <div className="enter-item margin-top-20">
-                                    <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
-                                    <div className="enter-item-text">初中报读入口</div>
-                                    <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                <div className="enter-item margin-top-20 col-md-6 enter-item-odd">
+                                    <div className="enter-item-box">
+                                        <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
+                                        <div className="enter-item-text">初中报读入口</div>
+                                        <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                    </div>
                                 </div>
                             </Link>
                             <Link to="/student/login">
-                                <div className="enter-item margin-top-20">
-                                    <img className="enter-item-icon" src="../image/round_check.png" alt=""/>
-                                    <div className="enter-item-text">课程选择入口</div>
-                                    <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                <div className="enter-item margin-top-20 col-md-6 enter-item-even">
+                                    <div className="enter-item-box">
+                                        <img className="enter-item-icon" src="../image/round_check.png" alt=""/>
+                                        <div className="enter-item-text">课程选择入口</div>
+                                        <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                    </div>
                                 </div>
                             </Link>
                         </div>
@@ -309,7 +317,7 @@ class Index extends Component {
                 <div className="content-background-1">
                     <div className="container">
                         <div className="row margin-top-20 margin-bottom-20">
-                            <div className="col-md-3 hidden-xs hidden-sm     col-padding">
+                            <div className="col-md-3 hidden-xs hidden-sm col-padding">
                                 <Link to="/page/1c4de3536a17485f87fa3fd2e2066172">
                                     <div className="sight">
                                         <img className="sight-image-0" src="image/sight-0.jpg" alt=""/>
