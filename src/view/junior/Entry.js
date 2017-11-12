@@ -74,13 +74,11 @@ class Entry extends Component {
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
-                            <div className="col-md-9">
-                                <ButtonGroup justified vertical>
-                                    <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleBrochures.bind(this)} href="#">招生简章</Button>
-                                    <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleSignup.bind(this)} href="#">开始报名</Button>
-                                    <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleCheck.bind(this)} href="#">报名查询</Button>
-                                </ButtonGroup>
-                            </div>
+                            <ButtonGroup justified vertical>
+                                <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleBrochures.bind(this)} href="#">招生简章</Button>
+                                <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleSignup.bind(this)} href="#">开始报名</Button>
+                                <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleCheck.bind(this)} href="#">报名查询</Button>
+                            </ButtonGroup>
                         </div>
                     </div>
                 </div>

@@ -63,7 +63,7 @@ class Signup extends Component {
             });
 
             http.request({
-                url: '/mobile/xietong/signup/junior/save',
+                url: '/desktop/xietong/signup/junior/save',
                 data: values,
                 success: function (data) {
                     this.setState({
