@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createForm} from 'rc-form';
-import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} from 'react-bootstrap';
+import {Form, FormGroup, Col, ControlLabel, FormControl, Button, Alert, HelpBlock} from 'react-bootstrap';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -10,6 +10,7 @@ import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../common/http';
 import util from '../../common/util';
+import storage from '../../common/storage';
 
 class Recruitment extends Component {
     constructor(props) {
@@ -19,12 +20,21 @@ class Recruitment extends Component {
             is_load: false,
             result_type: '',
             result_message: '',
-            menu_index: 1
+            menu_index: 1,
+            is_login: false
         }
     }
 
     componentDidMount() {
         util.scrollToTop(0);
+        console.log('test1');
+        if (storage.getPrimaryToken()) {
+            console.log('test2');
+            this.setState({
+                is_login: true
+            })
+            this.handleFind();
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -32,10 +42,6 @@ class Recruitment extends Component {
     }
 
     componentWillUnmount() {
-
-    }
-
-    handleUpload() {
 
     }
 
@@ -62,7 +68,7 @@ class Recruitment extends Component {
             });
 
             http.request({
-                url: '/mobile/xietong/signup/pupil/find',
+                url: '/desktop/xietong/signup/pupil/login',
                 data: values,
 
                 success: function (data) {
@@ -76,6 +82,13 @@ class Recruitment extends Component {
                         result_type: 'danger',
                         result_message: data.message
                     });
+                    if (data.token) {
+                        storage.setPrimaryToken(data.token);
+                        this.setState({
+                            is_login: true
+                        });
+                        this.handleFind();
+                    }
                 }.bind(this),
                 complete: function () {
                     this.setState({
@@ -84,6 +97,33 @@ class Recruitment extends Component {
                 }.bind(this)
             });
         });
+    }
+
+    handleFind() {
+        this.setState({
+            result_type: ""
+        });
+
+        http.request({
+            url: '/desktop/xietong/signup/pupil/find',
+            data: {},
+            token: storage.getPrimaryToken(),
+            success: function (data) {
+                this.setState({
+                    result_type: 'success',
+                    result_message: '提交成功'
+                });
+            }.bind(this),
+            error: function (data) {
+                this.setState({
+                    result_type: 'danger',
+                    result_message: data.message
+                });
+            }.bind(this),
+            complete: function () {
+
+            }
+        })
     }
 
     render() {
@@ -106,65 +146,56 @@ class Recruitment extends Component {
                         </div>
                         <div className="col-md-9">
                             <Form horizontal style={{marginTop: '20px'}}>
+                                {
+                                    this.state.is_login?
+                                        null
+                                        :
+                                        <span>
+                                            <FormGroup {...getFieldProps('user_account', {
+                                                rules: [{
+                                                    required: true,
+                                                    message: '证件号码不能为空'
+                                                }],
+                                                initialValue: ''
+                                            })} validationState={getFieldError('user_account') ? 'error' : getFieldValue('user_account') === '' ? null : 'success'}>
+                                                <Col componentClass={ControlLabel} sm={2}>
+                                                    证件号码
+                                                </Col>
+                                                <Col sm={7}>
+                                                    <FormControl placeholder="请输入证件号码"/>
+                                                    <FormControl.Feedback/>
+                                                    <span className="error-message">{getFieldError('user_account')}</span>
+                                                </Col>
+                                            </FormGroup>
 
+                                            <FormGroup {...getFieldProps('user_password', {
+                                                rules: [{
+                                                    required: true,
+                                                    message: '登录密码不能为空'
+                                                }],
+                                                initialValue: ''
+                                            })} validationState={getFieldError('user_password') ? 'error' : getFieldValue('user_password') === '' ? null : 'success'}>
+                                                <Col componentClass={ControlLabel} sm={2}>
+                                                    密码
+                                                </Col>
+                                                <Col sm={7}>
+                                                    <FormControl type="password" placeholder="请输入登录密码"/>
+                                                    <HelpBlock>(初始密码123456)</HelpBlock>
+                                                    <FormControl.Feedback/>
+                                                    <span className="error-message">{getFieldError('user_password')}</span>
+                                                </Col>
+                                            </FormGroup>
 
-                                <FormGroup {...getFieldProps('id_type', {
-                                    rules: [{
-                                        required: true,
-                                        message: '证件类型'
-                                    }],
-                                    initialValue: ''
-                                })} validationState={getFieldError('id_type') ? 'error' : getFieldValue('id_type') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
-                                        证件类型
-                                    </Col>
-                                    <Col sm={10}>
-                                        <Radio name="id_type" value="身份证">
-                                            身份证
-                                        </Radio>
-                                        {' '}
-                                        <Radio name="id_type" value="户口本">
-                                            户口本
-                                        </Radio>
-                                        {' '}
-                                        <Radio name="id_type" value="签证">
-                                            签证
-                                        </Radio>
-                                        {' '}
-                                        <Radio name="id_type" value="护照">
-                                            护照
-                                        </Radio>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('id_type')}</span>
-                                    </Col>
-                                </FormGroup>
-
-                                <FormGroup {...getFieldProps('id_no', {
-                                    rules: [{
-                                        required: true,
-                                        message: '证件号码'
-                                    }],
-                                    initialValue: ''
-                                })} validationState={getFieldError('id_no') ? 'error' : getFieldValue('id_no') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} sm={2}>
-                                        证件号码
-                                    </Col>
-                                    <Col sm={9}>
-                                        <FormControl placeholder="请输证件号码"/>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('id_no')}</span>
-                                    </Col>
-                                </FormGroup>
-
-
-
-                                <FormGroup>
-                                    <Col smOffset={2} sm={9}>
-                                        <Button disabled={this.state.is_load} onClick={this.handlSubmit.bind(this)}>
-                                            {this.state.is_load ? "加载中.." : "提交"}
-                                        </Button>
-                                    </Col>
-                                </FormGroup>
+                                            <FormGroup>
+                                                <Col smOffset={2} sm={7}>
+                                                    <Button disabled={this.state.is_load}
+                                                            onClick={this.handlSubmit.bind(this)}>
+                                                        {this.state.is_load ? "加载中.." : "登录系统"}
+                                                    </Button>
+                                                </Col>
+                                            </FormGroup>
+                                        </span>
+                                }
                                 <FormGroup>
                                     <Col smOffset={2} sm={9}>
                                         {

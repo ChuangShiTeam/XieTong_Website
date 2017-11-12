@@ -236,17 +236,30 @@ class Index extends Component {
                                     return (
                                         article.article_category_id === 'da9b1750e8ea4f959df23cbdcba53f9a' ?
                                             <div key={article.article_id} className={"activity-item margin-top"}>
-                                                <Link to={"/article/detail/" + article.article_id}>
-                                                    <div className="activity-item-date">
-                                                        <div
-                                                            className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
-                                                        <div
-                                                            className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
-                                                    </div>
-                                                    <div className="activity-item-title">{article.article_name}</div>
-                                                    <div
-                                                        className="activity-item-description">{article.article_summary}</div>
-                                                </Link>
+                                                {
+                                                    article.article_is_outer_link?
+                                                        <Link to={"/article/detail/" + article.article_id}>
+                                                            <div className="activity-item-date">
+                                                                <div
+                                                                    className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                                <div
+                                                                    className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                            </div>
+                                                            <div className="activity-item-title">{article.article_name}</div>
+                                                            <div className="activity-item-description">{article.article_summary}</div>
+                                                        </Link>
+                                                        :
+                                                        <a href={article.article_outer_link} target="_blank">
+                                                            <div className="activity-item-date">
+                                                                <div
+                                                                    className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                                <div
+                                                                    className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                            </div>
+                                                            <div className="activity-item-title">{article.article_name}</div>
+                                                            <div className="activity-item-description">{article.article_summary}</div>
+                                                        </a>
+                                                }
                                             </div>
                                             :
                                             ''

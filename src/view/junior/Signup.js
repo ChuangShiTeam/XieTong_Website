@@ -11,6 +11,7 @@ import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../common/http';
 import util from '../../common/util';
+import storage from '../../common/storage';
 
 class Signup extends Component {
     constructor(props) {
@@ -35,10 +36,6 @@ class Signup extends Component {
     }
 
     componentWillUnmount() {
-
-    }
-
-    handleUpload() {
 
     }
 
@@ -73,7 +70,7 @@ class Signup extends Component {
                         result_type: 'success',
                         result_message: '提交成功'
                     });
-
+                    storage.setJuniorToken(data.token);
                     this.props.form.resetFields();
                 }.bind(this),
                 error: function (data) {

@@ -11,6 +11,7 @@ import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../common/http';
 import util from '../../common/util';
+import storage from '../../common/storage';
 
 class Signup extends Component {
     constructor(props) {
@@ -38,10 +39,6 @@ class Signup extends Component {
 
     }
 
-    handleUpload() {
-
-    }
-
     handlSubmit() {
         this.props.form.validateFields((errors, values) => {
             if (!!errors) {
@@ -65,7 +62,7 @@ class Signup extends Component {
             });
 
             http.request({
-                url: '/mobile/xietong/signup/pupil/save',
+                url: '/desktop/xietong/signup/pupil/save',
                 data: values,
 
                 success: function (data) {
@@ -73,7 +70,7 @@ class Signup extends Component {
                         result_type: 'success',
                         result_message: '提交成功'
                     });
-
+                    storage.setPrimaryToken(data.token);
                     this.props.form.resetFields();
                 }.bind(this),
                 error: function (data) {
@@ -179,7 +176,7 @@ class Signup extends Component {
                                     initialValue: ''
                                 })} validationState={getFieldError('kindergarten') ? 'error' : getFieldValue('kindergarten') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
-                                        原就读小学
+                                        原就读幼儿园
                                     </Col>
                                     <Col md={8}>
                                         <FormControl placeholder="请输入原就读幼儿园"/>

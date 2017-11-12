@@ -34,6 +34,7 @@ import Train from './view/teacher/Train';
 import PrimaryIndex from './view/primary/Index';
 import PrimarySignup from './view/primary/Signup';
 import PrimaryCheck from './view/primary/Check';
+import PrimaryEntry from './view/primary/Entry';
 import JuniorInde from './view/junior/Index';
 import JuniorSignup from './view/junior/Signup';
 import JuniorCheck from './view/junior/Check';
@@ -83,6 +84,7 @@ const Routers = () =>
                 <Route path="/primary/index" component={PrimaryIndex}/>
                 <Route path="/primary/signup" component={PrimarySignup}/>
                 <Route path="/primary/check" component={PrimaryCheck}/>
+                <Route path="/primary/entry" component={PrimaryEntry}/>
                 <Route path="/junior/index" component={JuniorInde}/>
                 <Route path="/junior/signup" component={JuniorSignup}/>
                 <Route path="/junior/check" component={JuniorCheck}/>

@@ -211,7 +211,7 @@ class TeacherRecruitment extends Component {
                                         <FormControl type="email" placeholder="请输入邮箱地址"/>
                                         <FormControl.Feedback/>
                                         <span
-                                            className="error-message">{getFieldError('teacher_recruitment_mobile')}</span>
+                                            className="error-message">{getFieldError('teacher_recruitment_email')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('teacher_recruitment_faculty', {

@@ -13,7 +13,7 @@ function request(config) {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'app_id': constant.app_id,
-            'token': storage.getToken(),
+            'token': config.token?config.token:storage.getToken(),
             'platform': constant.platform,
             'version': constant.version
         },
