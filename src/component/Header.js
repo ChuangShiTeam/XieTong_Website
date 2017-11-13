@@ -18,47 +18,7 @@ class Header extends Component {
 
     componentDidMount() {
         if (this.props.website_menu.list.length === 0) {
-            http.request({
-                url: '/desktop/xietong/website/init',
-                data: {
-
-                },
-                success: function (data) {
-                    var website_menu_list = data.website_menu_list;
-                    for (var i = 0; i < website_menu_list.length; i++) {
-                        for (var j = 0; j < website_menu_list[i].children.length; j++) {
-                            website_menu_list[i].children[j].website_menu_parent_id = website_menu_list[i].website_menu_id;
-                        }
-                    }
-
-                    this.props.dispatch({
-                        type: 'website_menu',
-                        data: {
-                            list: website_menu_list
-                        }
-                    });
-
-                    this.props.dispatch({
-                        type: 'advertisement',
-                        data: {
-                            list: data.advertisement_list
-                        }
-                    });
-
-                    this.props.dispatch({
-                        type: 'article_category',
-                        data: {
-                            list: data.article_category_list
-                        }
-                    });
-                }.bind(this),
-                error: function (data) {
-
-                },
-                complete: function () {
-
-                }
-            });
+            this.handleLoad();
         }
     }
 
@@ -68,6 +28,50 @@ class Header extends Component {
 
     componentWillUnmount() {
 
+    }
+
+    handleLoad() {
+        http.request({
+            url: '/desktop/xietong/website/init',
+            data: {
+
+            },
+            success: function (data) {
+                var website_menu_list = data.website_menu_list;
+                for (var i = 0; i < website_menu_list.length; i++) {
+                    for (var j = 0; j < website_menu_list[i].children.length; j++) {
+                        website_menu_list[i].children[j].website_menu_parent_id = website_menu_list[i].website_menu_id;
+                    }
+                }
+
+                this.props.dispatch({
+                    type: 'website_menu',
+                    data: {
+                        list: website_menu_list
+                    }
+                });
+
+                this.props.dispatch({
+                    type: 'advertisement',
+                    data: {
+                        list: data.advertisement_list
+                    }
+                });
+
+                this.props.dispatch({
+                    type: 'article_category',
+                    data: {
+                        list: data.article_category_list
+                    }
+                });
+            }.bind(this),
+            error: function (data) {
+
+            },
+            complete: function () {
+
+            }
+        });
     }
 
     handleClickeMenu(url) {
