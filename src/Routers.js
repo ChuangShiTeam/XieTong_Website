@@ -21,6 +21,7 @@ import Index from './view/Index';
 import Page from './view/Page';
 import ArticleIndex from './view/article/Index';
 import ArticleDetail from './view/article/Detail';
+import ArticleSingle from './view/article/Single';
 import StudentIndex from './view/student/Index';
 import StudentDetail from './view/student/Detail';
 import StudentLogin from './view/student/Login';
@@ -72,6 +73,7 @@ const Routers = () =>
                 <Route path="/page/:page_id" component={Page}/>
                 <Route path="/article/index/:article_category_id" component={ArticleIndex}/>
                 <Route path="/article/detail/:article_id" component={ArticleDetail}/>
+                <Route path="/article/single/:page_id/:article_category_id" component={ArticleSingle}/>
                 <Route path="/student/index/:student_category_id" component={StudentIndex}/>
                 <Route path="/student/detail/:student_id" component={StudentDetail}/>
                 <Route path="/student/login" component={StudentLogin}/>

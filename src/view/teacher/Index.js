@@ -137,14 +137,16 @@ class Team extends Component {
                                                 </div>
                                                 :
                                                 <div key={teacher.teacher_id} className="col-md-4">
-                                                    <Link to={"/teacher/detail/" + teacher.teacher_id}
-                                                          className="teacher-image thumbnail">
-                                                        <img src={constant.image_host + teacher.file_path} alt=""/>
-                                                        <div>
-                                                            <div className="teacher-name">{teacher.teacher_name}</div>
-                                                            <div>{teacher.teacher_title}</div>
-                                                        </div>
-                                                    </Link>
+                                                    <div className="teacher-item-2">
+                                                        <Link to={"/teacher/detail/" + teacher.teacher_id}
+                                                              className="teacher-image">
+                                                            <img src={constant.image_host + teacher.file_path} alt=""/>
+                                                            <div>
+                                                                <div className="teacher-name">{teacher.teacher_name}</div>
+                                                                <div>{teacher.teacher_title}</div>
+                                                            </div>
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             :
                                             ''

@@ -238,17 +238,6 @@ class Index extends Component {
                                             <div key={article.article_id} className={"activity-item margin-top"}>
                                                 {
                                                     article.article_is_outer_link?
-                                                        <Link to={"/article/detail/" + article.article_id}>
-                                                            <div className="activity-item-date">
-                                                                <div
-                                                                    className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
-                                                                <div
-                                                                    className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
-                                                            </div>
-                                                            <div className="activity-item-title">{article.article_name}</div>
-                                                            <div className="activity-item-description">{article.article_summary}</div>
-                                                        </Link>
-                                                        :
                                                         <a href={article.article_outer_link} target="_blank">
                                                             <div className="activity-item-date">
                                                                 <div
@@ -259,6 +248,17 @@ class Index extends Component {
                                                             <div className="activity-item-title">{article.article_name}</div>
                                                             <div className="activity-item-description">{article.article_summary}</div>
                                                         </a>
+                                                        :
+                                                        <Link to={"/article/detail/" + article.article_id}>
+                                                            <div className="activity-item-date">
+                                                                <div
+                                                                    className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                                <div
+                                                                    className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                            </div>
+                                                            <div className="activity-item-title">{article.article_name}</div>
+                                                            <div className="activity-item-description">{article.article_summary}</div>
+                                                        </Link>
                                                 }
                                             </div>
                                             :
@@ -274,42 +274,74 @@ class Index extends Component {
                                 <div className="title-text">用户导航</div>
                                 <div className="title-line"></div>
                             </div>
-                            <Link to="/teacher/recruitment">
-                                <div className="enter-item margin-top-20 col-md-6 enter-item-odd">
-                                    <div className="enter-item-box">
-                                        <img className="enter-item-icon" src="../image/location.png" alt=""/>
-                                        <div className="enter-item-text">教师应聘入口</div>
-                                        <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                            <div className="col-md-6 col-padding">
+                                <Link to="/teacher/recruitment">
+                                    <div className="enter-item margin-top-20">
+                                        <div className="enter-item-box">
+                                            <img className="enter-item-icon" src="../image/location.png" alt=""/>
+                                            <div className="enter-item-text">教师应聘入口</div>
+                                            <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                            <Link to="/primary/entry">
-                                <div className="enter-item margin-top-20 col-md-6 enter-item-even">
-                                    <div className="enter-item-box">
-                                        <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
-                                        <div className="enter-item-text">小学报读入口</div>
-                                        <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                </Link>
+                                <Link to="/sign/pupil">
+                                    <div className="enter-item margin-top-20">
+                                        <div className="enter-item-box">
+                                            <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
+                                            <div className="enter-item-text">小学报读入口</div>
+                                            <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                            <Link to="/junior/entry">
-                                <div className="enter-item margin-top-20 col-md-6 enter-item-odd">
-                                    <div className="enter-item-box">
-                                        <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
-                                        <div className="enter-item-text">初中报读入口</div>
-                                        <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                </Link>
+                                <Link to="/sign/junior">
+                                    <div className="enter-item margin-top-20">
+                                        <div className="enter-item-box">
+                                            <img className="enter-item-icon" src="../image/mail.png" alt=""/>
+                                            <div className="enter-item-text">初中报读入口</div>
+                                            <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                            <Link to="/student/login">
-                                <div className="enter-item margin-top-20 col-md-6 enter-item-even">
-                                    <div className="enter-item-box">
-                                        <img className="enter-item-icon" src="../image/round_check.png" alt=""/>
-                                        <div className="enter-item-text">课程选择入口</div>
-                                        <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                </Link>
+                                <Link to="/student/login">
+                                    <div className="enter-item margin-top-20">
+                                        <div className="enter-item-box">
+                                            <img className="enter-item-icon" src="../image/round_check.png" alt=""/>
+                                            <div className="enter-item-text">课程选择入口</div>
+                                            <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
+                            </div>
+                            <div className="col-md-6 col-padding">
+                                <Link to="">
+                                    <div className="enter-item margin-top-20">
+                                        <div className="enter-item-box">
+
+                                        </div>
+                                    </div>
+                                </Link>
+                                <Link to="">
+                                    <div className="enter-item margin-top-20">
+                                        <div className="enter-item-box">
+
+                                        </div>
+                                    </div>
+                                </Link>
+                                <Link to="">
+                                    <div className="enter-item margin-top-20">
+                                        <div className="enter-item-box">
+
+                                        </div>
+                                    </div>
+                                </Link>
+                                <Link to="">
+                                    <div className="enter-item margin-top-20">
+                                        <div className="enter-item-box">
+
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

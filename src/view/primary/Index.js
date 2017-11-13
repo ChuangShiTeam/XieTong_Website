@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {Carousel} from 'react-bootstrap';
+import Slider from 'react-slick';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -21,28 +22,28 @@ class Index extends Component {
 
 	componentDidMount() {
 		/*请求接口并缓存在本地*/
-        if (this.props.primary.article_list.length === 0) {
-            http.request({
-                url: '/desktop/xietong/website/department/init',
-                data: {
-					organization_id: this.props.primary.organization_id
-                },
-                success: function (data) {
-                    this.props.dispatch({
-                        type: 'primary',
-                        data: {
-                            article_list: data.articleList,
-                            student_list: data.studentList
-                        }
-                    });
-                }.bind(this),
-                error: function (data) {
-
-                },
-                complete: function () {
-
-                }
-            });
+        if (this.props.primary.teacher_list.length === 0) {
+            // http.request({
+            //     url: '/desktop/xietong/primary/school/init',
+            //     data: {
+				// 	organization_id: this.props.primary.organization_id
+            //     },
+            //     success: function (data) {
+            //         this.props.dispatch({
+            //             type: 'primary',
+            //             data: {
+            //                 teacher_list: data.teacher_list,
+            //                 student_list: data.student_list
+            //             }
+            //         });
+            //     }.bind(this),
+            //     error: function (data) {
+            //
+            //     },
+            //     complete: function () {
+            //
+            //     }
+            // });
         }
     }
 
@@ -55,17 +56,24 @@ class Index extends Component {
 	}
 
 	render() {
+		const settings = {
+            infinite: true,
+            speed: 500,
+            slidesToShow: 2,
+            slidesToScroll: 1
+        };
+
 		return (
 			<div className="index">
 				<Header history={this.props.history} website_menu_id="home"/>
 				<div className="container margin-bottom-20">
 					<div className="row margin-top">
-						<div className="col-md-8 col-padding">
+						<div className="col-md-6 col-padding">
 							<div className="title">
 								<div className="pull-left">
 									<div className="title-icon"></div>
 									<Link to="/article/index/9d8508d24242499ebcf344e17d8222de">
-										<div className="title-text">小学部教学</div>
+										<div className="title-text">小学部教师风采</div>
 									</Link>
 									<div className="title-line"></div>
 								</div>
@@ -73,113 +81,30 @@ class Index extends Component {
 									<Link to="/article/index/9d8508d24242499ebcf344e17d8222de">更多</Link>
 								</div>
 							</div>
-							<div className="col-md-6 col-padding">
-								<Carousel className="margin-top" interval={3000} keyboard={false}>
-                                    {
-                                        this.props.primary.article_list.map(function (article) {
-                                            return (
-                                                article.article_category_id === '9d8508d24242499ebcf344e17d8222de' ?
-													<Carousel.Item key={article.article_id}>
-														<Link to={"/article/detail/" + article.article_id}>
-															<img className="school-article-image"
-																 src={constant.image_host + article.file_path}
-																 alt=""/>
-														</Link>
-													</Carousel.Item>
-                                                    :
-                                                    ''
-                                            )
-                                        })
-                                    }
-								</Carousel>
-							</div>
-							<div className="col-md-6 col-padding">
-                                {
-                                    this.props.primary.article_list.map(function (article) {
-                                        return (
-                                            article.article_category_id === '9d8508d24242499ebcf344e17d8222de' ?
-												<div key={article.article_id} className={"article-item margin-top"}>
-													<Link to={"/article/detail/" + article.article_id}>
-														<img className="article-item-image img-thumbnail"
-															 src={constant.image_host + article.file_path}
-															 alt=""/>
-														<div className="article-item-title">{article.article_name}</div>
-														<div className="article-item-description">
-                                                            {article.article_summary}
-														</div>
-													</Link>
-												</div>
-                                                :
-                                                ''
-                                        )
-                                    })
-                                }
-							</div>
-							<div className="clear-both"></div>
-							<div className="margin-top-20">
-								<div className="title">
-									<div className="pull-left">
-										<div className="title-icon"></div>
-										<Link to="/article/index/9c204d00ccd446298c22cff6350bb6ff">
-											<div className="title-text">小学部活动</div>
-										</Link>
-										<div className="title-line"></div>
-									</div>
-									<div className="pull-right">
-										<Link to="/article/index/9c204d00ccd446298c22cff6350bb6ff">更多</Link>
-									</div>
-								</div>
-								<div className="col-md-6 col-padding">
-									<Carousel className="margin-top" interval={3000} keyboard={false}>
-                                        {
-                                            this.props.primary.article_list.map(function (article) {
-                                                return (
-                                                    article.article_category_id === '9c204d00ccd446298c22cff6350bb6ff' ?
-														<Carousel.Item key={article.article_id}>
-															<Link to={"/article/detail/" + article.article_id}>
-																<img className="school-article-image"
-																	 src={constant.image_host + article.file_path}
-																	 alt=""/>
-															</Link>
-														</Carousel.Item>
-                                                        :
-                                                        ''
-                                                )
-                                            })
-                                        }
-									</Carousel>
-								</div>
-								<div className="col-md-6 col-padding">
-                                    {
-                                        this.props.primary.article_list.map(function (article) {
-                                            return (
-                                                article.article_category_id === '9c204d00ccd446298c22cff6350bb6ff' ?
-													<div key={article.article_id} className={"article-item margin-top"}>
-														<Link to={"/article/detail/" + article.article_id}>
-															<img className="article-item-image img-thumbnail"
-																 src={constant.image_host + article.file_path}
-																 alt=""/>
-															<div className="article-item-title">{article.article_name}</div>
-															<div className="article-item-description">
-                                                                {article.article_summary}
-															</div>
-														</Link>
-													</div>
-                                                    :
-                                                    ''
-                                            )
-                                        })
-                                    }
-								</div>
-							</div>
+							<Slider {...settings}>
+                            {/*{*/}
+                                {/*this.props.primary.teacher_list.map(function (teacher) {*/}
+                                    {/*return (*/}
+										{/*<div key={teacher.student_id} className="teacher-item-3">*/}
+											{/*<div className="teacher-image">*/}
+												{/*<img src={constant.image_host + teacher.file_path} alt=""/>*/}
+												{/*<div>*/}
+													{/*<div className="teacher-name">{teacher.student_name}</div>*/}
+													{/*<div className="text-center">{teacher.clazz_name}</div>*/}
+												{/*</div>*/}
+											{/*</div>*/}
+										{/*</div>*/}
+                                    {/*)*/}
+                                {/*}.bind(this))*/}
+                            {/*}*/}
+							</Slider>
 						</div>
-						<div className="col-md-4 visible-xs-inline margin-top"></div>
-						<div className="col-md-4 col-padding">
+						<div className="col-md-6 col-padding">
 							<div className="title">
 								<div className="pull-left">
 									<div className="title-icon"></div>
 									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
-										<div className="title-text">小学部优秀学生</div>
+										<div className="title-text">小学部情境课堂</div>
 									</Link>
 									<div className="title-line"></div>
 								</div>
@@ -187,22 +112,53 @@ class Index extends Component {
 									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">更多</Link>
 								</div>
 							</div>
-                            {
-                                this.props.primary.student_list.map(function (student) {
-                                    return (
-										<div key={student.student_id} className={"article-item margin-top"}>
-											<Link to={"/student/detail/" + student.student_id}>
-												<div className="dpar_cont">
-													<div className="col-md-6 col-sm-6 col-xs-6 dp_r margin-top best-student">
-														<img src={constant.image_host + student.student_image} alt=""/>
-														<p>{student.student_name}</p>
-													</div>
-												</div>
-											</Link>
-										</div>
-                                    )
-                                })
-                            }
+
+						</div>
+						<div className="col-md-6 col-padding">
+							<div className="title">
+								<div className="pull-left">
+									<div className="title-icon"></div>
+									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
+										<div className="title-text">小学部学生作品</div>
+									</Link>
+									<div className="title-line"></div>
+								</div>
+								<div className="pull-right">
+									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">更多</Link>
+								</div>
+							</div>
+
+						</div>
+						<div className="col-md-6 col-padding">
+							<div className="title">
+								<div className="pull-left">
+									<div className="title-icon"></div>
+									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
+										<div className="title-text">小学部学生领袖</div>
+									</Link>
+									<div className="title-line"></div>
+								</div>
+								<div className="pull-right">
+									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">更多</Link>
+								</div>
+							</div>
+							<Slider {...settings}>
+                            {/*{*/}
+                                {/*this.props.primary.student_list.map(function (student) {*/}
+                                    {/*return (*/}
+										{/*<div key={student.student_id} className="teacher-item-2">*/}
+											{/*<div className="teacher-image">*/}
+												{/*<img src={constant.image_host + student.file_path} alt=""/>*/}
+												{/*<div>*/}
+													{/*<div className="teacher-name">{student.student_name}</div>*/}
+													{/*<div className="text-center">{student.clazz_name}</div>*/}
+												{/*</div>*/}
+											{/*</div>*/}
+										{/*</div>*/}
+                                    {/*)*/}
+                                {/*}.bind(this))*/}
+                            {/*}*/}
+							</Slider>
 						</div>
 					</div>
 				</div>
