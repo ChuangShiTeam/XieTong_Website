@@ -61,14 +61,18 @@ class Signup extends Component {
                 is_load: true,
                 result_type: ""
             });
-
+            values.father_id_no = '';
+            values.mother_id_no = '';
+            values.chinese_score = '';
+            values.math_score = '';
+            values.english_score = '';
             http.request({
                 url: '/desktop/xietong/signup/junior/save',
                 data: values,
                 success: function (data) {
                     this.setState({
                         result_type: 'success',
-                        result_message: '提交成功'
+                        result_message: '提交成功, 账号为证件号码，初始密码123456，可查询报名'
                     });
                     storage.setJuniorToken(data.token);
                     this.props.form.resetFields();
@@ -318,22 +322,6 @@ class Signup extends Component {
                                         <span className="error-message">{getFieldError('father_name')}</span>
                                     </Col>
                                 </FormGroup>
-                                <FormGroup {...getFieldProps('father_id_no', {
-                                    rules: [{
-                                        required: true,
-                                        message: '父亲证件号码'
-                                    }],
-                                    initialValue: ''
-                                })} validationState={getFieldError('father_id_no') ? 'error' : getFieldValue('father_id_no') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} md={2}>
-                                        父亲证件号码
-                                    </Col>
-                                    <Col md={8}>
-                                        <FormControl placeholder="请输父亲证件号码"/>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('father_id_no')}</span>
-                                    </Col>
-                                </FormGroup>
                                 <FormGroup {...getFieldProps('father_work', {
                                     rules: [{
                                         required: true,
@@ -380,22 +368,6 @@ class Signup extends Component {
                                         <FormControl placeholder="请输母亲姓名"/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_name')}</span>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup {...getFieldProps('mother_id_no', {
-                                    rules: [{
-                                        required: true,
-                                        message: '母亲证件号码'
-                                    }],
-                                    initialValue: ''
-                                })} validationState={getFieldError('mother_id_no') ? 'error' : getFieldValue('mother_id_no') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} md={2}>
-                                        母亲证件号码
-                                    </Col>
-                                    <Col md={8}>
-                                        <FormControl placeholder="请输母亲证件号码"/>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('mother_id_no')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('mother_work', {
@@ -447,57 +419,6 @@ class Signup extends Component {
                                         <span className="error-message">{getFieldError('remark')}</span>
                                     </Col>
                                 </FormGroup>
-
-                                <FormGroup {...getFieldProps('math_score', {
-                                    rules: [{
-                                        required: true,
-                                        message: '最近数学成绩'
-                                    }],
-                                    initialValue: ''
-                                })} validationState={getFieldError('math_score') ? 'error' : getFieldValue('math_score') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} md={2}>
-                                        最近数学成绩
-                                    </Col>
-                                    <Col md={8}>
-                                        <FormControl placeholder="请输最近数学成绩"/>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('math_score')}</span>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup {...getFieldProps('english_score', {
-                                    rules: [{
-                                        required: true,
-                                        message: '最近英语成绩'
-                                    }],
-                                    initialValue: ''
-                                })} validationState={getFieldError('english_score') ? 'error' : getFieldValue('english_score') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} md={2}>
-                                        最近英语成绩
-                                    </Col>
-                                    <Col md={8}>
-                                        <FormControl placeholder="请输最近英语成绩"/>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('english_score')}</span>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup {...getFieldProps('chinese_score', {
-                                    rules: [{
-                                        required: true,
-                                        message: '最近语文成绩'
-                                    }],
-                                    initialValue: ''
-                                })} validationState={getFieldError('chinese_score') ? 'error' : getFieldValue('chinese_score') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} md={2}>
-                                        最近语文成绩
-                                    </Col>
-                                    <Col md={8}>
-                                        <FormControl placeholder="请输最近语文成绩"/>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('chinese_score')}</span>
-                                    </Col>
-                                </FormGroup>
-
-
                                 <FormGroup>
                                     <Col smOffset={2} md={8}>
                                         <Button disabled={this.state.is_load} onClick={this.handlSubmit.bind(this)}>
