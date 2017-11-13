@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createForm} from 'rc-form';
-import {Form, FormGroup, Col, ControlLabel, FormControl, Button, Alert, HelpBlock} from 'react-bootstrap';
+import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} from 'react-bootstrap';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -12,7 +12,7 @@ import http from '../../common/http';
 import util from '../../common/util';
 import storage from '../../common/storage';
 
-class Recruitment extends Component {
+class Check extends Component {
     constructor(props) {
         super(props);
 
@@ -21,16 +21,15 @@ class Recruitment extends Component {
             result_type: '',
             result_message: '',
             menu_index: 1,
-            is_login: false
+            signup_id: '',
+            system_version: '',
+            user_id: ''
         }
     }
 
     componentDidMount() {
         util.scrollToTop(0);
         if (storage.getPrimaryToken()) {
-            this.setState({
-                is_login: true
-            });
             this.handleFind();
         }
     }
@@ -64,15 +63,21 @@ class Recruitment extends Component {
                 is_load: true,
                 result_type: ""
             });
+            values.signup_id = this.state.signup_id;
+            values.system_version = this.state.system_version;
+            values.user_id = this.state.user_id;
 
+            values.father_id_no = '';
+            values.mother_id_no = '';
             http.request({
-                url: '/desktop/xietong/signup/pupil/login',
+                url: '/desktop/xietong/signup/pupil/update',
                 data: values,
 
                 success: function (data) {
                     this.setState({
                         result_type: 'success',
-                        result_message: '提交成功'
+                        result_message: '保存成功',
+                        system_version: this.state.system_version + 1
                     });
                 }.bind(this),
                 error: function (data) {
@@ -80,13 +85,6 @@ class Recruitment extends Component {
                         result_type: 'danger',
                         result_message: data.message
                     });
-                    if (data.token) {
-                        storage.setPrimaryToken(data.token);
-                        this.setState({
-                            is_login: true
-                        });
-                        this.handleFind();
-                    }
                 }.bind(this),
                 complete: function () {
                     this.setState({
@@ -109,13 +107,35 @@ class Recruitment extends Component {
             success: function (data) {
                 this.setState({
                     result_type: 'success',
-                    result_message: '提交成功'
+                    result_message: data.tip,
+                    signup_id: data.signup_pupil.signup_id,
+                    system_version: data.signup_pupil.system_version,
+                    user_id: data.signup_pupil.user_id
+                }, function() {
+                    this.props.form.setFieldsValue({
+                        student_name: data.signup_pupil.student_name,
+                        student_sex: data.signup_pupil.student_sex,
+                        student_birthday: data.signup_pupil.student_birthday,
+                        kindergarten: data.signup_pupil.kindergarten,
+                        id_type: data.signup_pupil.id_type,
+                        id_no: data.signup_pupil.id_no,
+                        permanent_address: data.signup_pupil.permanent_address,
+                        live_addresss: data.signup_pupil.live_addresss,
+                        father_name: data.signup_pupil.father_name,
+                        father_work: data.signup_pupil.father_work,
+                        father_phone: data.signup_pupil.father_phone,
+                        mother_name: data.signup_pupil.mother_name,
+                        mother_work: data.signup_pupil.mother_work,
+                        mother_phone: data.signup_pupil.mother_phone,
+                        remark: data.signup_pupil.remark
+                    });
                 });
             }.bind(this),
             error: function (data) {
                 this.setState({
                     result_type: 'danger',
-                    result_message: data.message
+                    result_message: data.message,
+                    is_update: false
                 });
             }.bind(this),
             complete: function () {
@@ -144,56 +164,289 @@ class Recruitment extends Component {
                         </div>
                         <div className="col-md-9">
                             <Form horizontal style={{marginTop: '20px'}}>
-                                {
-                                    this.state.is_login?
-                                        null
-                                        :
-                                        <span>
-                                            <FormGroup {...getFieldProps('user_account', {
-                                                rules: [{
-                                                    required: true,
-                                                    message: '证件号码不能为空'
-                                                }],
-                                                initialValue: ''
-                                            })} validationState={getFieldError('user_account') ? 'error' : getFieldValue('user_account') === '' ? null : 'success'}>
-                                                <Col componentClass={ControlLabel} sm={2}>
-                                                    证件号码
-                                                </Col>
-                                                <Col sm={7}>
-                                                    <FormControl placeholder="请输入证件号码"/>
-                                                    <FormControl.Feedback/>
-                                                    <span className="error-message">{getFieldError('user_account')}</span>
-                                                </Col>
-                                            </FormGroup>
+                                <FormGroup {...getFieldProps('student_name', {
+                                    rules: [{
+                                        required: true,
+                                        message: '姓名不能为空'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('student_name') ? 'error' : getFieldValue('student_name') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        姓名
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl placeholder="请输入姓名" value={getFieldValue('student_name')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('student_name')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('student_sex', {
+                                    rules: [{
+                                        required: true,
+                                        message: '性别不能为空'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('student_sex') ? 'error' : getFieldValue('student_sex') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        性别
+                                    </Col>
+                                    <Col md={8} className="col-no-padding">
+                                        <Col md={6}>
+                                            <Radio name="student_sex" value="男" checked={getFieldValue('student_sex') === '男'}>
+                                                男
+                                            </Radio>
+                                        </Col>
+                                        <Col md={6}>
+                                            <Radio name="student_sex" value="女" checked={getFieldValue('student_sex') === '女'}>
+                                                女
+                                            </Radio>
+                                            <FormControl.Feedback/>
+                                        </Col>
+                                        <Col md={12}>
+                                            <span className="error-message">{getFieldError('student_sex')}</span>
+                                        </Col>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('student_birthday', {
+                                    rules: [{
+                                        required: true,
+                                        message: '出生日期不能为空'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('student_birthday') ? 'error' : getFieldValue('student_birthday') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        出生日期
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl type="date" placeholder="请输入出生日期" value={getFieldValue('student_birthday')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('student_birthday')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('kindergarten', {
+                                    rules: [{
+                                        required: true,
+                                        message: '原就读幼儿园'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('kindergarten') ? 'error' : getFieldValue('kindergarten') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        原就读幼儿园
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl placeholder="请输入原就读幼儿园" value={getFieldValue('kindergarten')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('kindergarten')}</span>
+                                    </Col>
+                                </FormGroup>
 
-                                            <FormGroup {...getFieldProps('user_password', {
-                                                rules: [{
-                                                    required: true,
-                                                    message: '登录密码不能为空'
-                                                }],
-                                                initialValue: ''
-                                            })} validationState={getFieldError('user_password') ? 'error' : getFieldValue('user_password') === '' ? null : 'success'}>
-                                                <Col componentClass={ControlLabel} sm={2}>
-                                                    密码
-                                                </Col>
-                                                <Col sm={7}>
-                                                    <FormControl type="password" placeholder="请输入登录密码"/>
-                                                    <HelpBlock>(初始密码123456)</HelpBlock>
-                                                    <FormControl.Feedback/>
-                                                    <span className="error-message">{getFieldError('user_password')}</span>
-                                                </Col>
-                                            </FormGroup>
 
-                                            <FormGroup>
-                                                <Col smOffset={2} sm={7}>
-                                                    <Button disabled={this.state.is_load}
-                                                            onClick={this.handlSubmit.bind(this)}>
-                                                        {this.state.is_load ? "加载中.." : "登录系统"}
-                                                    </Button>
-                                                </Col>
-                                            </FormGroup>
-                                        </span>
-                                }
+                                <FormGroup {...getFieldProps('id_type', {
+                                    rules: [{
+                                        required: true,
+                                        message: '证件类型'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('id_type') ? 'error' : getFieldValue('id_type') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        证件类型
+                                    </Col>
+                                    <Col md={8} className="col-no-padding">
+                                        <Col md={3}>
+                                            <Radio name="id_type" value="身份证" checked={getFieldValue('id_type') === '身份证'}>
+                                                身份证
+                                            </Radio>
+                                        </Col>
+                                        <Col md={3}>
+                                            <Radio name="id_type" value="户口本" checked={getFieldValue('id_type') === '户口本'}>
+                                                户口本
+                                            </Radio>
+                                        </Col>
+                                        <Col md={3}>
+                                            <Radio name="id_type" value="签证" checked={getFieldValue('id_type') === '签证'}>
+                                                签证
+                                            </Radio>
+                                        </Col>
+                                        <Col md={3}>
+                                            <Radio name="id_type" value="护照" checked={getFieldValue('id_type') === '护照'}>
+                                                护照
+                                            </Radio>
+                                            <FormControl.Feedback/>
+                                        </Col>
+                                        <Col md={12}>
+                                            <span className="error-message">{getFieldError('id_type')}</span>
+                                        </Col>
+                                    </Col>
+                                </FormGroup>
+
+                                <FormGroup {...getFieldProps('id_no', {
+                                    rules: [{
+                                        required: true,
+                                        message: '证件号码'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('id_no') ? 'error' : getFieldValue('id_no') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        证件号码
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl placeholder="请输证件号码" value={getFieldValue('id_no')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('id_no')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('permanent_address', {
+                                    rules: [{
+                                        required: true,
+                                        message: '户籍地址'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('permanent_address') ? 'error' : getFieldValue('permanent_address') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        户籍地址
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl placeholder="请输户籍地址" value={getFieldValue('permanent_address')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('permanent_address')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('live_addresss', {
+                                    rules: [{
+                                        required: true,
+                                        message: '居住地址'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('live_addresss') ? 'error' : getFieldValue('live_addresss') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        居住地址
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl placeholder="请输居住地址" value={getFieldValue('live_addresss')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('live_addresss')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('father_name', {
+                                    rules: [{
+                                        required: true,
+                                        message: '父亲姓名'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('father_name') ? 'error' : getFieldValue('father_name') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        父亲姓名
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl placeholder="请输父亲姓名" value={getFieldValue('father_name')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('father_name')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('father_work', {
+                                    rules: [{
+                                        required: true,
+                                        message: '父亲工作单位'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('father_work') ? 'error' : getFieldValue('father_work') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        父亲工作单位
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl placeholder="请输父亲工作单位" value={getFieldValue('father_work')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('father_work')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('father_phone', {
+                                    rules: [{
+                                        required: true,
+                                        message: '手机号码不能为空'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('father_phone') ? 'error' : getFieldValue('father_phone') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        手机号码
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl type="tel" placeholder="请输入手机号码" value={getFieldValue('father_phone')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('father_phone')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('mother_name', {
+                                    rules: [{
+                                        required: true,
+                                        message: '母亲姓名'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('mother_name') ? 'error' : getFieldValue('mother_name') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        母亲姓名
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl placeholder="请输母亲姓名" value={getFieldValue('mother_name')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('mother_name')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('mother_work', {
+                                    rules: [{
+                                        required: true,
+                                        message: '母亲工作单位'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('mother_work') ? 'error' : getFieldValue('mother_work') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        母亲工作单位
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl placeholder="请输母亲工作单位" value={getFieldValue('mother_work')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('mother_work')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup {...getFieldProps('mother_phone', {
+                                    rules: [{
+                                        required: true,
+                                        message: '手机号码不能为空'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('mother_phone') ? 'error' : getFieldValue('mother_phone') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        手机号码
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl type="tel" placeholder="请输入手机号码" value={getFieldValue('mother_phone')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('mother_phone')}</span>
+                                    </Col>
+                                </FormGroup>
+
+                                <FormGroup {...getFieldProps('remark', {
+                                    rules: [{
+                                        required: true,
+                                        message: '兴趣、爱好、特长'
+                                    }],
+                                    initialValue: ''
+                                })} validationState={getFieldError('remark') ? 'error' : getFieldValue('remark') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        兴趣、爱好、特长
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl componentClass="textarea" value={getFieldValue('remark')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('remark')}</span>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Col smOffset={2} md={8}>
+                                        <Button disabled={this.state.is_load} onClick={this.handlSubmit.bind(this)}>
+                                            {this.state.is_load ? "加载中.." : "保存"}
+                                        </Button>
+                                    </Col>
+                                </FormGroup>
                                 <FormGroup>
                                     <Col smOffset={2} sm={9}>
                                         {
@@ -218,8 +471,8 @@ class Recruitment extends Component {
     }
 }
 
-Recruitment = createForm({})(Recruitment);
+Check = createForm({})(Check);
 
 export default connect((state) => {
     return {}
-})(Recruitment);
+})(Check);

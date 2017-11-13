@@ -121,7 +121,7 @@ class Signup extends Component {
                                         姓名
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输入姓名"/>
+                                        <FormControl placeholder="请输入姓名" value={getFieldValue('student_name')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('student_name')}</span>
                                     </Col>
@@ -138,12 +138,12 @@ class Signup extends Component {
                                     </Col>
                                     <Col md={8} className="col-no-padding">
                                         <Col md={6}>
-                                            <Radio name="student_sex" value="男">
+                                            <Radio name="student_sex" value="男" checked={getFieldValue('student_sex') === '男'}>
                                                 男
                                             </Radio>
                                         </Col>
                                         <Col md={6}>
-                                            <Radio name="student_sex" value="女">
+                                            <Radio name="student_sex" value="女" checked={getFieldValue('student_sex') === '女'}>
                                                 女
                                             </Radio>
                                             <FormControl.Feedback/>
@@ -164,7 +164,7 @@ class Signup extends Component {
                                         出生日期
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl type="date" placeholder="请输入出生日期"/>
+                                        <FormControl type="date" placeholder="请输入出生日期" value={getFieldValue('student_birthday')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('student_birthday')}</span>
                                     </Col>
@@ -180,7 +180,7 @@ class Signup extends Component {
                                         原就读幼儿园
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输入原就读幼儿园"/>
+                                        <FormControl placeholder="请输入原就读幼儿园" value={getFieldValue('kindergarten')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('kindergarten')}</span>
                                     </Col>
@@ -199,22 +199,22 @@ class Signup extends Component {
                                     </Col>
                                     <Col md={8} className="col-no-padding">
                                         <Col md={3}>
-                                            <Radio name="id_type" value="身份证">
+                                            <Radio name="id_type" value="身份证" checked={getFieldValue('id_type') === '身份证'}>
                                                 身份证
                                             </Radio>
                                         </Col>
                                         <Col md={3}>
-                                            <Radio name="id_type" value="户口本">
+                                            <Radio name="id_type" value="户口本" checked={getFieldValue('id_type') === '户口本'}>
                                                 户口本
                                             </Radio>
                                         </Col>
                                         <Col md={3}>
-                                            <Radio name="id_type" value="签证">
+                                            <Radio name="id_type" value="签证" checked={getFieldValue('id_type') === '签证'}>
                                                 签证
                                             </Radio>
                                         </Col>
                                         <Col md={3}>
-                                            <Radio name="id_type" value="护照">
+                                            <Radio name="id_type" value="护照" checked={getFieldValue('id_type') === '护照'}>
                                                 护照
                                             </Radio>
                                             <FormControl.Feedback/>
@@ -236,7 +236,7 @@ class Signup extends Component {
                                         证件号码
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输证件号码"/>
+                                        <FormControl placeholder="请输证件号码" value={getFieldValue('id_no')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('id_no')}</span>
                                     </Col>
@@ -252,7 +252,7 @@ class Signup extends Component {
                                         户籍地址
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输户籍地址"/>
+                                        <FormControl placeholder="请输户籍地址" value={getFieldValue('permanent_address')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('permanent_address')}</span>
                                     </Col>
@@ -268,7 +268,7 @@ class Signup extends Component {
                                         居住地址
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输居住地址"/>
+                                        <FormControl placeholder="请输居住地址" value={getFieldValue('live_addresss')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('live_addresss')}</span>
                                     </Col>
@@ -284,7 +284,7 @@ class Signup extends Component {
                                         父亲姓名
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输父亲姓名"/>
+                                        <FormControl placeholder="请输父亲姓名" value={getFieldValue('father_name')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_name')}</span>
                                     </Col>
@@ -300,7 +300,7 @@ class Signup extends Component {
                                         父亲工作单位
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输父亲工作单位"/>
+                                        <FormControl placeholder="请输父亲工作单位" value={getFieldValue('father_work')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_work')}</span>
                                     </Col>
@@ -316,7 +316,7 @@ class Signup extends Component {
                                         手机号码
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl type="tel" placeholder="请输入手机号码"/>
+                                        <FormControl type="tel" placeholder="请输入手机号码" value={getFieldValue('father_phone')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_phone')}</span>
                                     </Col>
@@ -332,7 +332,7 @@ class Signup extends Component {
                                         母亲姓名
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输母亲姓名"/>
+                                        <FormControl placeholder="请输母亲姓名" value={getFieldValue('mother_name')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_name')}</span>
                                     </Col>
@@ -348,7 +348,7 @@ class Signup extends Component {
                                         母亲工作单位
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输母亲工作单位"/>
+                                        <FormControl placeholder="请输母亲工作单位" value={getFieldValue('mother_work')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_work')}</span>
                                     </Col>
@@ -364,7 +364,7 @@ class Signup extends Component {
                                         手机号码
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl type="tel" placeholder="请输入手机号码"/>
+                                        <FormControl type="tel" placeholder="请输入手机号码" value={getFieldValue('mother_phone')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_phone')}</span>
                                     </Col>
@@ -381,7 +381,7 @@ class Signup extends Component {
                                         兴趣、爱好、特长
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl componentClass="textarea"/>
+                                        <FormControl componentClass="textarea" value={getFieldValue('remark')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('remark')}</span>
                                     </Col>

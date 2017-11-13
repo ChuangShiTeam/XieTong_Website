@@ -43,9 +43,9 @@ class Entry extends Component {
         });
     }
 
-    handleCheck() {
+    handleLogin() {
         this.props.history.push({
-            pathname: "/junior/check",
+            pathname: "/junior/login",
             query: {}
         });
     }
@@ -77,7 +77,7 @@ class Entry extends Component {
                             <ButtonGroup justified vertical>
                                 <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleBrochures.bind(this)} href="#">招生简章</Button>
                                 <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleSignup.bind(this)} href="#">开始报名</Button>
-                                <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleCheck.bind(this)} href="#">报名查询</Button>
+                                <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleLogin.bind(this)} href="#">报名查询</Button>
                             </ButtonGroup>
                         </div>
                     </div>
