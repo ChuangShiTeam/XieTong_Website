@@ -316,7 +316,11 @@ class Index extends Component {
                                 <Link to="">
                                     <div className="enter-item margin-top-20">
                                         <div className="enter-item-box">
-
+                                            <div className="enter-item-box">
+                                                <img className="enter-item-icon" src="../image/activity.png" alt=""/>
+                                                <div className="enter-item-text">OA系统入口</div>
+                                                <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                            </div>
                                         </div>
                                     </div>
                                 </Link>

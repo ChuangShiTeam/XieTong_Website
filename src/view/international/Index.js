@@ -24,7 +24,7 @@ class Index extends Component {
         /*请求接口并缓存在本地*/
         if (this.props.international.teacher_list.length === 0) {
             http.request({
-                url: '/desktop/xietong/primary/school/init',
+                url: '/desktop/xietong/international/school/init',
                 data: {
                     organization_id: this.props.international.organization_id
                 },
