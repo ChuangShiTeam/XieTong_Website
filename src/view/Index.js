@@ -284,7 +284,7 @@ class Index extends Component {
                                         </div>
                                     </div>
                                 </Link>
-                                <Link to="/sign/pupil">
+                                <Link to="/primary/entry">
                                     <div className="enter-item margin-top-20">
                                         <div className="enter-item-box">
                                             <img className="enter-item-icon" src="../image/evaluate.png" alt=""/>
@@ -293,7 +293,7 @@ class Index extends Component {
                                         </div>
                                     </div>
                                 </Link>
-                                <Link to="/sign/junior">
+                                <Link to="/junior/entry">
                                     <div className="enter-item margin-top-20">
                                         <div className="enter-item-box">
                                             <img className="enter-item-icon" src="../image/mail.png" alt=""/>

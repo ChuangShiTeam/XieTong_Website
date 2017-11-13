@@ -34,10 +34,12 @@ import PrimaryIndex from './view/primary/Index';
 import PrimarySignup from './view/primary/Signup';
 import PrimaryCheck from './view/primary/Check';
 import PrimaryEntry from './view/primary/Entry';
+import PrimaryLogin from './view/primary/Login';
 import JuniorInde from './view/junior/Index';
 import JuniorSignup from './view/junior/Signup';
 import JuniorCheck from './view/junior/Check';
 import JuniorEntry from './view/junior/Entry';
+import JuniorLogin from './view/junior/Login';
 import InternationalIndex from './view/international/Index';
 
 const store = createStore(
@@ -84,10 +86,12 @@ const Routers = () =>
                 <Route path="/primary/signup" component={PrimarySignup}/>
                 <Route path="/primary/check" component={PrimaryCheck}/>
                 <Route path="/primary/entry" component={PrimaryEntry}/>
+                <Route path="/primary/login" component={PrimaryLogin}/>
                 <Route path="/junior/index" component={JuniorInde}/>
                 <Route path="/junior/signup" component={JuniorSignup}/>
                 <Route path="/junior/check" component={JuniorCheck}/>
                 <Route path="/junior/entry" component={JuniorEntry}/>
+                <Route path="/junior/login" component={JuniorLogin}/>
                 <Route path="/international/index" component={InternationalIndex}/>
             </Route>
         </Router>
