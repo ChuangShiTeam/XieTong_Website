@@ -63,7 +63,7 @@ class Team extends Component {
         } else if (this.state.teacher_category_id === 'df17d19a032b41c78dc159ba548c8dcb') {
             page_id = '0bc1615e1b824359ae1120fca932f60e';
             page_name = '生涯导师';
-        } else if (this.state.teacher_category_id === '5a3e3e701efe486383eaa54dbbe80467') {
+        } else if (this.state.teacher_category_id.indexOf('5a3e3e701efe486383eaa54dbbe80467') > -1) {
             page_id = 'a3c0f17fa1bd4847be48cd00295d5551';
             page_name = '学术科组';
         }
@@ -118,7 +118,7 @@ class Team extends Component {
                             {
                                 this.props.teacher.list.map(function (teacher) {
                                     return (
-                                        teacher.teacher_category_id === this.state.teacher_category_id ?
+                                        this.state.teacher_category_id.indexOf(teacher.teacher_category_id) > -1 ?
                                             this.state.teacher_category_id === '70699f5ca3df49bfb4c742827e1a060c' ?
                                                 <div key={teacher.teacher_id} className="teacher-image">
                                                     <div className="teacher-item margin-top-20">

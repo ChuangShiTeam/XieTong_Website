@@ -20,7 +20,7 @@ class Train extends Component {
 			is_load: false,
 			page_index: 1,
 			page_size: 10,
-			article_category_id: '194dfd824f2042d58dd101d374272455',
+			article_category_id: '',
 			article_list: [],
 			page_id: '',
 			page: {}

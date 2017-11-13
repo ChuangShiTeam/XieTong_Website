@@ -12,7 +12,6 @@ import article_category from './store/article_category';
 import page from './store/page';
 import teacher from './store/teacher';
 import student from './store/student';
-import train from './store/train';
 import primary from './store/primary';
 import junior from './store/junior';
 import international from './store/international';
@@ -31,7 +30,6 @@ import TeacherDetail from './view/teacher/Detail';
 import TeacherLogin from './view/teacher/Login';
 import TeacherRecruitment from './view/teacher/Recruitment';
 import NotFound from './view/NotFound';
-import Train from './view/teacher/Train';
 import PrimaryIndex from './view/primary/Index';
 import PrimarySignup from './view/primary/Signup';
 import PrimaryCheck from './view/primary/Check';
@@ -52,7 +50,6 @@ const store = createStore(
         page,
         teacher,
         student,
-        train,
         primary,
         junior,
         international,
@@ -83,7 +80,6 @@ const Routers = () =>
                 <Route path="/teacher/login" component={TeacherLogin}/>
                 <Route path="/teacher/recruitment" component={TeacherRecruitment}/>
                 <Route path="/not/found" component={NotFound}/>
-                <Route path="/train/:page_id" component={Train}/>
                 <Route path="/primary/index" component={PrimaryIndex}/>
                 <Route path="/primary/signup" component={PrimarySignup}/>
                 <Route path="/primary/check" component={PrimaryCheck}/>
