@@ -69,7 +69,7 @@ class Index extends Component {
 
         return (
 			<div className="index">
-				<Header history={this.props.history} website_menu_id="home"/>
+				<Header history={this.props.history} website_menu_id=""/>
 				<div className="container margin-bottom-20">
 					<div className="row">
 						<div className="col-md-6 col-padding margin-top-20">
