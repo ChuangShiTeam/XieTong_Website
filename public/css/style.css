@@ -595,10 +595,14 @@ body {
     vertical-align: middle
 }
 
-.teacher-image {
+.teacher-item-left {
     position: relative;
     height: 320px;
     background-color: #EEEEEE;
+}
+
+.teacher-item-right {
+    vertical-align: middle;
 }
 
 .teacher-item-2 {
@@ -611,7 +615,7 @@ body {
     width: 100px;
 }
 
-.teacher-image > img{
+.teacher-image {
     border-radius: 50%;
 }
 
@@ -627,14 +631,42 @@ body {
 }
 
 .teacher-name {
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 18px;
     margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.teacher-title {
+    text-align: center;
 }
 
 .teacher-description {
     height: 250px;
     overflow: hidden;
+}
+
+.slider-item {
+    width: 200px;
+    text-align: center;
+}
+
+.slider-item-body {
+    margin: 10px 5px 5px 5px;
+    padding-top: 15px;
+    background-color: #EEEEEE;
+}
+
+.slider-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.slider-name {
+    height: 40px;
+    line-height: 40px;
 }
 
 .navbar-default {

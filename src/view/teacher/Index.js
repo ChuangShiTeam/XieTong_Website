@@ -122,13 +122,13 @@ class Team extends Component {
                                             this.state.teacher_category_id === '70699f5ca3df49bfb4c742827e1a060c' ?
                                                 <div key={teacher.teacher_id} className="teacher-image">
                                                     <div className="teacher-item margin-top-20">
-                                                        <div className="col-md-4 teacher-image">
+                                                        <div className="col-md-4 teacher-item-left">
                                                             <div className="teacher-image-item">
                                                                 <img className="img-circle"
                                                                      src={constant.image_host + teacher.file_path} alt=""/>
                                                             </div>
                                                         </div>
-                                                        <div className="col-md-8 col-no-padding-left">
+                                                        <div className="col-md-8 col-no-padding-left teacher-item-right">
                                                             <div className="teacher-name">{teacher.teacher_name}</div>
                                                             <div className="teacher-description"
                                                                  dangerouslySetInnerHTML={{__html: teacher.teacher_description}}></div>
@@ -138,13 +138,10 @@ class Team extends Component {
                                                 :
                                                 <div key={teacher.teacher_id} className="col-md-4">
                                                     <div className="teacher-item-2">
-                                                        <Link to={"/teacher/detail/" + teacher.teacher_id}
-                                                              className="teacher-image">
-                                                            <img src={constant.image_host + teacher.file_path} alt=""/>
-                                                            <div>
-                                                                <div className="teacher-name">{teacher.teacher_name}</div>
-                                                                <div>{teacher.teacher_title}</div>
-                                                            </div>
+                                                        <Link to={"/teacher/detail/" + teacher.teacher_id}>
+                                                            <img className="teacher-image" src={constant.image_host + teacher.file_path} alt=""/>
+                                                            <div className="teacher-name">{teacher.teacher_name}</div>
+                                                            <div className="teacher-title">{teacher.teacher_title}</div>
                                                         </Link>
                                                     </div>
                                                 </div>
