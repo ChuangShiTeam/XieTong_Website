@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {Carousel} from 'react-bootstrap';
 import Slider from 'react-slick';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
 
+import constant from '../../common/constant';
+import http from '../../common/http';
 import util from '../../common/util';
 
 class Index extends Component {
