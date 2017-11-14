@@ -74,11 +74,37 @@ class Entry extends Component {
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
-                            <ButtonGroup justified vertical>
-                                <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleBrochures.bind(this)} href="#">招生简章</Button>
-                                <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleSignup.bind(this)} href="#">开始报名</Button>
-                                <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={this.handleLogin.bind(this)} href="#">报名查询</Button>
-                            </ButtonGroup>
+                            <div className="col-xs-12 visible-xs-inline-block visible-sm-inline-block margin-top-30"></div>
+                            <div className="col-xs-4 col-md-4">
+                                <Link to="/page/e8417cd60aeb474aad40d4ecc8d52b22" className="thumbnail">
+                                    <div className="signup-enter-item">
+                                        <div className="signup-enter-item-text">
+                                            <img className="signup-enter-item-icon" src="../image/evaluate.png" alt=""/>
+                                            招生简章
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+                            <div className="col-xs-4 col-md-4">
+                                <Link to="/primary/signup" className="thumbnail">
+                                    <div className="signup-enter-item">
+                                        <div className="signup-enter-item-text">
+                                            <img className="signup-enter-item-icon" src="../image/activity.png" alt=""/>
+                                            开始报名
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+                            <div className="col-xs-4 col-md-4">
+                                <Link to="/primary/login" className="thumbnail">
+                                    <div className="signup-enter-item">
+                                        <div className="signup-enter-item-text">
+                                            <img className="signup-enter-item-icon" src="../image/location.png" alt=""/>
+                                            报名查询
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
