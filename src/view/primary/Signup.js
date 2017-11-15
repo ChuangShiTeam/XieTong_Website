@@ -100,7 +100,7 @@ class Signup extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <Link to="/index">首页</Link> > 招生招聘 > 小学报名
+                            <Link to="/index">首页</Link> > 招生招聘 > 小学报名 > 小学报名信息填写
                         </div>
                     </div>
                     <div className="row margin-top-20">
@@ -292,6 +292,18 @@ class Signup extends Component {
                                         <span className="error-message">{getFieldError('father_name')}</span>
                                     </Col>
                                 </FormGroup>
+                                <FormGroup {...getFieldProps('father_phone', {
+                                    initialValue: ''
+                                })} validationState={getFieldError('father_phone') ? 'error' : getFieldValue('father_phone') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        父亲手机号码
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl type="tel" placeholder="请输入父亲手机号码" value={getFieldValue('father_phone')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('father_phone')}</span>
+                                    </Col>
+                                </FormGroup>
                                 <FormGroup {...getFieldProps('father_work', {
                                     initialValue: ''
                                 })} validationState={getFieldError('father_work') ? 'error' : getFieldValue('father_work') === '' ? null : 'success'}>
@@ -302,18 +314,6 @@ class Signup extends Component {
                                         <FormControl placeholder="请输父亲工作单位" value={getFieldValue('father_work')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_work')}</span>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup {...getFieldProps('father_phone', {
-                                    initialValue: ''
-                                })} validationState={getFieldError('father_phone') ? 'error' : getFieldValue('father_phone') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} md={2}>
-                                        手机号码
-                                    </Col>
-                                    <Col md={8}>
-                                        <FormControl type="tel" placeholder="请输入手机号码" value={getFieldValue('father_phone')}/>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('father_phone')}</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('mother_name', {
@@ -328,6 +328,18 @@ class Signup extends Component {
                                         <span className="error-message">{getFieldError('mother_name')}</span>
                                     </Col>
                                 </FormGroup>
+                                <FormGroup {...getFieldProps('mother_phone', {
+                                    initialValue: ''
+                                })} validationState={getFieldError('mother_phone') ? 'error' : getFieldValue('mother_phone') === '' ? null : 'success'}>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                        母亲手机号码
+                                    </Col>
+                                    <Col md={8}>
+                                        <FormControl type="tel" placeholder="请输入母亲手机号码" value={getFieldValue('mother_phone')}/>
+                                        <FormControl.Feedback/>
+                                        <span className="error-message">{getFieldError('mother_phone')}</span>
+                                    </Col>
+                                </FormGroup>
                                 <FormGroup {...getFieldProps('mother_work', {
                                     initialValue: ''
                                 })} validationState={getFieldError('mother_work') ? 'error' : getFieldValue('mother_work') === '' ? null : 'success'}>
@@ -340,19 +352,6 @@ class Signup extends Component {
                                         <span className="error-message">{getFieldError('mother_work')}</span>
                                     </Col>
                                 </FormGroup>
-                                <FormGroup {...getFieldProps('mother_phone', {
-                                    initialValue: ''
-                                })} validationState={getFieldError('mother_phone') ? 'error' : getFieldValue('mother_phone') === '' ? null : 'success'}>
-                                    <Col componentClass={ControlLabel} md={2}>
-                                        手机号码
-                                    </Col>
-                                    <Col md={8}>
-                                        <FormControl type="tel" placeholder="请输入手机号码" value={getFieldValue('mother_phone')}/>
-                                        <FormControl.Feedback/>
-                                        <span className="error-message">{getFieldError('mother_phone')}</span>
-                                    </Col>
-                                </FormGroup>
-
                                 <FormGroup {...getFieldProps('remark', {
                                     initialValue: ''
                                 })} validationState={getFieldError('remark') ? 'error' : getFieldValue('remark') === '' ? null : 'success'}>

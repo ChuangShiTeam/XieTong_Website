@@ -6,6 +6,7 @@ import Print from 'rc-print';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
+import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../common/http';
@@ -87,11 +88,12 @@ class Check extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <Link to="/index">首页</Link> > 小学报名结果查询
+                            <Link to="/index">首页</Link>  > 招生招聘 > 小学报名 > 小学报名结果查询
                         </div>
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
+                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="5b68b36ca31c49839f38aacf6ac65450"/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
@@ -100,7 +102,7 @@ class Check extends Component {
                                 <div style={{marginBottom: '50px'}}></div>
                                 <Row>
                                     <Col md={12} style={{textAlign: 'center'}}>
-                                        <h4>佛山协同（国际）学校一年级新生报名表</h4>
+                                        <h3>佛山协同（国际）学校一年级新生报名表</h3>
                                     </Col>
                                 </Row>
                                 <div style={{marginBottom: '50px'}}></div>
@@ -228,10 +230,10 @@ class Check extends Component {
                             <Row>
                                 <Col smOffset={4} md={7}>
                                     <Button disabled={this.state.is_load} style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={() => {this.refs.print.onPrint();}}>
-                                        {this.state.is_load ? "加载中.." : "打印查询结果"}
+                                        {this.state.is_load ? "加载中.." : "打印报名表"}
                                     </Button>
                                     <Button disabled={this.state.is_load} style={{backgroundColor: '#C26B60', color: 'white', marginLeft: '30px'}} bsSize="large" onClick={this.handleEdit.bind(this)}>
-                                        {this.state.is_load ? "加载中.." : "编辑"}
+                                        {this.state.is_load ? "加载中.." : "修改报名信息"}
                                     </Button>
                                 </Col>
                             </Row>

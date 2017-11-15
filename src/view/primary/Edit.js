@@ -6,6 +6,7 @@ import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} f
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
+import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../common/http';
@@ -155,11 +156,12 @@ class Edit extends Component {
 					<div className="title margin-top-20">
 						<div className="title-icon"></div>
 						<div className="title-breadcrumb">
-							<Link to="/index">首页</Link> > 小学报名结果查询
+							<Link to="/index">首页</Link>  > 招生招聘 > 小学报名 > 小学报名信息修改
 						</div>
 					</div>
 					<div className="row margin-top-20">
 						<div className="subnav col-md-3 hidden-xs">
+							<PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="5b68b36ca31c49839f38aacf6ac65450"/>
 							<DepartmentSubNav/>
 						</div>
 						<div className="col-md-9">
@@ -335,10 +337,6 @@ class Edit extends Component {
 									</Col>
 								</FormGroup>
 								<FormGroup {...getFieldProps('father_name', {
-									rules: [{
-										required: true,
-										message: '父亲姓名'
-									}],
 									initialValue: ''
 								})} validationState={getFieldError('father_name') ? 'error' : getFieldValue('father_name') === '' ? null : 'success'}>
 									<Col componentClass={ControlLabel} md={2}>
@@ -350,11 +348,19 @@ class Edit extends Component {
 										<span className="error-message">{getFieldError('father_name')}</span>
 									</Col>
 								</FormGroup>
+								<FormGroup {...getFieldProps('father_phone', {
+									initialValue: ''
+								})} validationState={getFieldError('father_phone') ? 'error' : getFieldValue('father_phone') === '' ? null : 'success'}>
+									<Col componentClass={ControlLabel} md={2}>
+										父亲手机号码
+									</Col>
+									<Col md={8}>
+										<FormControl type="tel" placeholder="请输入父亲手机号码" value={getFieldValue('father_phone')}/>
+										<FormControl.Feedback/>
+										<span className="error-message">{getFieldError('father_phone')}</span>
+									</Col>
+								</FormGroup>
 								<FormGroup {...getFieldProps('father_work', {
-									rules: [{
-										required: true,
-										message: '父亲工作单位'
-									}],
 									initialValue: ''
 								})} validationState={getFieldError('father_work') ? 'error' : getFieldValue('father_work') === '' ? null : 'success'}>
 									<Col componentClass={ControlLabel} md={2}>
@@ -366,27 +372,7 @@ class Edit extends Component {
 										<span className="error-message">{getFieldError('father_work')}</span>
 									</Col>
 								</FormGroup>
-								<FormGroup {...getFieldProps('father_phone', {
-									rules: [{
-										required: true,
-										message: '手机号码不能为空'
-									}],
-									initialValue: ''
-								})} validationState={getFieldError('father_phone') ? 'error' : getFieldValue('father_phone') === '' ? null : 'success'}>
-									<Col componentClass={ControlLabel} md={2}>
-										手机号码
-									</Col>
-									<Col md={8}>
-										<FormControl type="tel" placeholder="请输入手机号码" value={getFieldValue('father_phone')}/>
-										<FormControl.Feedback/>
-										<span className="error-message">{getFieldError('father_phone')}</span>
-									</Col>
-								</FormGroup>
 								<FormGroup {...getFieldProps('mother_name', {
-									rules: [{
-										required: true,
-										message: '母亲姓名'
-									}],
 									initialValue: ''
 								})} validationState={getFieldError('mother_name') ? 'error' : getFieldValue('mother_name') === '' ? null : 'success'}>
 									<Col componentClass={ControlLabel} md={2}>
@@ -398,11 +384,19 @@ class Edit extends Component {
 										<span className="error-message">{getFieldError('mother_name')}</span>
 									</Col>
 								</FormGroup>
+								<FormGroup {...getFieldProps('mother_phone', {
+									initialValue: ''
+								})} validationState={getFieldError('mother_phone') ? 'error' : getFieldValue('mother_phone') === '' ? null : 'success'}>
+									<Col componentClass={ControlLabel} md={2}>
+										母亲手机号码
+									</Col>
+									<Col md={8}>
+										<FormControl type="tel" placeholder="请输入母亲手机号码" value={getFieldValue('mother_phone')}/>
+										<FormControl.Feedback/>
+										<span className="error-message">{getFieldError('mother_phone')}</span>
+									</Col>
+								</FormGroup>
 								<FormGroup {...getFieldProps('mother_work', {
-									rules: [{
-										required: true,
-										message: '母亲工作单位'
-									}],
 									initialValue: ''
 								})} validationState={getFieldError('mother_work') ? 'error' : getFieldValue('mother_work') === '' ? null : 'success'}>
 									<Col componentClass={ControlLabel} md={2}>
@@ -414,28 +408,7 @@ class Edit extends Component {
 										<span className="error-message">{getFieldError('mother_work')}</span>
 									</Col>
 								</FormGroup>
-								<FormGroup {...getFieldProps('mother_phone', {
-									rules: [{
-										required: true,
-										message: '手机号码不能为空'
-									}],
-									initialValue: ''
-								})} validationState={getFieldError('mother_phone') ? 'error' : getFieldValue('mother_phone') === '' ? null : 'success'}>
-									<Col componentClass={ControlLabel} md={2}>
-										手机号码
-									</Col>
-									<Col md={8}>
-										<FormControl type="tel" placeholder="请输入手机号码" value={getFieldValue('mother_phone')}/>
-										<FormControl.Feedback/>
-										<span className="error-message">{getFieldError('mother_phone')}</span>
-									</Col>
-								</FormGroup>
-
 								<FormGroup {...getFieldProps('remark', {
-									rules: [{
-										required: true,
-										message: '兴趣、爱好、特长'
-									}],
 									initialValue: ''
 								})} validationState={getFieldError('remark') ? 'error' : getFieldValue('remark') === '' ? null : 'success'}>
 									<Col componentClass={ControlLabel} md={2}>

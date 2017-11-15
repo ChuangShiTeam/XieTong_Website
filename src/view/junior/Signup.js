@@ -102,7 +102,7 @@ class Signup extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <Link to="/index">首页</Link> > 招生招聘 >  初中报名
+                            <Link to="/index">首页</Link> > 招生招聘 >  初中报名 > 初中报名信息填写
                         </div>
                     </div>
                     <div className="row margin-top-20">
