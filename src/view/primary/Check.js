@@ -88,7 +88,7 @@ class Check extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <Link to="/index">首页</Link>  > 招生招聘 > 小学报名 > 小学报名结果查询
+                            <Link to="/index">首页</Link>  > <Link to="/page/e8417cd60aeb474aad40d4ecc8d52b22">招生招聘</Link> > <Link to="/primary/entry">小学报名</Link> > 小学报名结果查询
                         </div>
                     </div>
                     <div className="row margin-top-20">
