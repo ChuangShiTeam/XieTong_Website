@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createForm} from 'rc-form';
-import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} from 'react-bootstrap';
+import {Form, FormGroup, Col, ControlLabel, FormControl, Button, Alert, Radio} from 'react-bootstrap';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -29,7 +29,7 @@ class Edit extends Component {
 
 	componentDidMount() {
 		util.scrollToTop(0);
-		if (storage.getPrimaryToken()) {
+		if (storage.getJuniorToken()) {
 			this.handleFind();
 		}
 	}
@@ -70,13 +70,13 @@ class Edit extends Component {
 			values.father_id_no = '';
 			values.mother_id_no = '';
 			http.request({
-				url: '/desktop/xietong/signup/pupil/update',
+				url: '/desktop/xietong/signup/junior/update',
 				data: values,
 
 				success: function (data) {
 					this.setState({
 						result_type: 'success',
-						result_message: '保存成功',
+						result_message: '修改成功',
 						system_version: this.state.system_version + 1
 					});
 				}.bind(this),
@@ -101,41 +101,42 @@ class Edit extends Component {
 		});
 
 		http.request({
-			url: '/desktop/xietong/signup/pupil/find',
+			url: '/desktop/xietong/signup/junior/find',
 			data: {},
-			token: storage.getPrimaryToken(),
+			token: storage.getJuniorToken(),
 			success: function (data) {
 				this.setState({
 					result_type: 'success',
 					result_message: data.tip,
-					signup_id: data.signup_pupil.signup_id,
-					system_version: data.signup_pupil.system_version,
-					user_id: data.signup_pupil.user_id
+					signup_id: data.signup_junior.signup_id,
+					system_version: data.signup_junior.system_version,
+					user_id: data.signup_junior.user_id
 				}, function() {
 					this.props.form.setFieldsValue({
-						student_name: data.signup_pupil.student_name,
-						student_sex: data.signup_pupil.student_sex,
-						student_birthday: data.signup_pupil.student_birthday,
-						kindergarten: data.signup_pupil.kindergarten,
-						id_type: data.signup_pupil.id_type,
-						id_no: data.signup_pupil.id_no,
-						permanent_address: data.signup_pupil.permanent_address,
-						live_addresss: data.signup_pupil.live_addresss,
-						father_name: data.signup_pupil.father_name,
-						father_work: data.signup_pupil.father_work,
-						father_phone: data.signup_pupil.father_phone,
-						mother_name: data.signup_pupil.mother_name,
-						mother_work: data.signup_pupil.mother_work,
-						mother_phone: data.signup_pupil.mother_phone,
-						remark: data.signup_pupil.remark
+						student_name: data.signup_junior.student_name,
+						student_sex: data.signup_junior.student_sex,
+						student_birthday: data.signup_junior.student_birthday,
+						primary_school: data.signup_junior.primary_school,
+						primary_school_class: data.signup_junior.primary_school_class,
+						job: data.signup_junior.job,
+						id_type: data.signup_junior.id_type,
+						id_no: data.signup_junior.id_no,
+						permanent_address: data.signup_junior.permanent_address,
+						live_addresss: data.signup_junior.live_addresss,
+						father_name: data.signup_junior.father_name,
+						father_work: data.signup_junior.father_work,
+						father_phone: data.signup_junior.father_phone,
+						mother_name: data.signup_junior.mother_name,
+						mother_work: data.signup_junior.mother_work,
+						mother_phone: data.signup_junior.mother_phone,
+						remark: data.signup_junior.remark
 					});
 				});
 			}.bind(this),
 			error: function (data) {
 				this.setState({
 					result_type: 'danger',
-					result_message: data.message,
-					is_update: false
+					result_message: data.message
 				});
 			}.bind(this),
 			complete: function () {
@@ -155,7 +156,7 @@ class Edit extends Component {
 					<div className="title margin-top-20">
 						<div className="title-icon"></div>
 						<div className="title-breadcrumb">
-							<Link to="/index">首页</Link> > 小学报名结果查询
+							<Link to="/index">首页</Link> > 中学报名结果查询
 						</div>
 					</div>
 					<div className="row margin-top-20">
@@ -168,7 +169,7 @@ class Edit extends Component {
 									<Col componentClass={ControlLabel} md={2}>
 									</Col>
 									<Col md={8} style={{textAlign: 'center'}}>
-										<h3>佛山协同（国际）学校2018年小学一年级新生报名</h3>
+										<h3>佛山协同（国际）学校2018年初中七年级新生报名</h3>
 									</Col>
 								</FormGroup>
 								<FormGroup {...getFieldProps('student_name', {
@@ -230,23 +231,54 @@ class Edit extends Component {
 										<span className="error-message">{getFieldError('student_birthday')}</span>
 									</Col>
 								</FormGroup>
-								<FormGroup {...getFieldProps('kindergarten', {
+								<FormGroup {...getFieldProps('primary_school', {
 									rules: [{
 										required: true,
-										message: '原就读幼儿园'
+										message: '原就读小学'
 									}],
 									initialValue: ''
-								})} validationState={getFieldError('kindergarten') ? 'error' : getFieldValue('kindergarten') === '' ? null : 'success'}>
+								})} validationState={getFieldError('primary_school') ? 'error' : getFieldValue('primary_school') === '' ? null : 'success'}>
 									<Col componentClass={ControlLabel} md={2}>
-										原就读幼儿园
+										原就读小学
 									</Col>
 									<Col md={8}>
-										<FormControl placeholder="请输入原就读幼儿园" value={getFieldValue('kindergarten')}/>
+										<FormControl placeholder="请输入原就读小学" value={getFieldValue('primary_school')}/>
 										<FormControl.Feedback/>
-										<span className="error-message">{getFieldError('kindergarten')}</span>
+										<span className="error-message">{getFieldError('primary_school')}</span>
 									</Col>
 								</FormGroup>
-
+								<FormGroup {...getFieldProps('primary_school_class', {
+									rules: [{
+										required: true,
+										message: '小学班级'
+									}],
+									initialValue: ''
+								})} validationState={getFieldError('primary_school_class') ? 'error' : getFieldValue('primary_school_class') === '' ? null : 'success'}>
+									<Col componentClass={ControlLabel} md={2}>
+										小学班级
+									</Col>
+									<Col md={8}>
+										<FormControl placeholder="请输入小学班级" value={getFieldValue('primary_school_class')}/>
+										<FormControl.Feedback/>
+										<span className="error-message">{getFieldError('primary_school_class')}</span>
+									</Col>
+								</FormGroup>
+								<FormGroup {...getFieldProps('job', {
+									rules: [{
+										required: true,
+										message: '担任职务'
+									}],
+									initialValue: ''
+								})} validationState={getFieldError('job') ? 'error' : getFieldValue('job') === '' ? null : 'success'}>
+									<Col componentClass={ControlLabel} md={2}>
+										担任职务
+									</Col>
+									<Col md={8}>
+										<FormControl placeholder="请输担任职务" value={getFieldValue('job')}/>
+										<FormControl.Feedback/>
+										<span className="error-message">{getFieldError('job')}</span>
+									</Col>
+								</FormGroup>
 
 								<FormGroup {...getFieldProps('id_type', {
 									rules: [{

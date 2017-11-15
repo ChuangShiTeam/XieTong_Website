@@ -110,6 +110,13 @@ class Signup extends Component {
                         </div>
                         <div className="col-md-9">
                             <Form horizontal className="margin-top-20">
+                                <FormGroup>
+                                    <Col componentClass={ControlLabel} md={2}>
+                                    </Col>
+                                    <Col md={8} style={{textAlign: 'center'}}>
+                                        <h3>佛山协同（国际）学校2018年小学一年级新生报名</h3>
+                                    </Col>
+                                </FormGroup>
                                 <FormGroup {...getFieldProps('student_name', {
                                     rules: [{
                                         required: true,
@@ -274,10 +281,6 @@ class Signup extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('father_name', {
-                                    rules: [{
-                                        required: true,
-                                        message: '父亲姓名'
-                                    }],
                                     initialValue: ''
                                 })} validationState={getFieldError('father_name') ? 'error' : getFieldValue('father_name') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
@@ -290,10 +293,6 @@ class Signup extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('father_work', {
-                                    rules: [{
-                                        required: true,
-                                        message: '父亲工作单位'
-                                    }],
                                     initialValue: ''
                                 })} validationState={getFieldError('father_work') ? 'error' : getFieldValue('father_work') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
@@ -306,10 +305,6 @@ class Signup extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('father_phone', {
-                                    rules: [{
-                                        required: true,
-                                        message: '手机号码不能为空'
-                                    }],
                                     initialValue: ''
                                 })} validationState={getFieldError('father_phone') ? 'error' : getFieldValue('father_phone') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
@@ -322,10 +317,6 @@ class Signup extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('mother_name', {
-                                    rules: [{
-                                        required: true,
-                                        message: '母亲姓名'
-                                    }],
                                     initialValue: ''
                                 })} validationState={getFieldError('mother_name') ? 'error' : getFieldValue('mother_name') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
@@ -338,10 +329,6 @@ class Signup extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('mother_work', {
-                                    rules: [{
-                                        required: true,
-                                        message: '母亲工作单位'
-                                    }],
                                     initialValue: ''
                                 })} validationState={getFieldError('mother_work') ? 'error' : getFieldValue('mother_work') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
@@ -354,10 +341,6 @@ class Signup extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('mother_phone', {
-                                    rules: [{
-                                        required: true,
-                                        message: '手机号码不能为空'
-                                    }],
                                     initialValue: ''
                                 })} validationState={getFieldError('mother_phone') ? 'error' : getFieldValue('mother_phone') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
@@ -371,10 +354,6 @@ class Signup extends Component {
                                 </FormGroup>
 
                                 <FormGroup {...getFieldProps('remark', {
-                                    rules: [{
-                                        required: true,
-                                        message: '兴趣、爱好、特长'
-                                    }],
                                     initialValue: ''
                                 })} validationState={getFieldError('remark') ? 'error' : getFieldValue('remark') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>

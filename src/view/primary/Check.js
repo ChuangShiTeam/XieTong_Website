@@ -17,6 +17,7 @@ class Check extends Component {
         super(props);
 
         this.state = {
+            is_load: false,
             result_type: '',
             result_message: '',
             menu_index: 1,
@@ -49,6 +50,7 @@ class Check extends Component {
 
     handleFind() {
         this.setState({
+            is_load: true,
             result_type: ""
         });
 
@@ -70,8 +72,10 @@ class Check extends Component {
                 });
             }.bind(this),
             complete: function () {
-
-            }
+                this.setState({
+                    is_load: false
+                })
+            }.bind(this)
         })
     }
 
@@ -96,33 +100,33 @@ class Check extends Component {
                                 <div style={{marginBottom: '50px'}}></div>
                                 <Row>
                                     <Col md={12} style={{textAlign: 'center'}}>
-                                        <h4>佛山协同佛山协同（国际）学校一年级新生报名表</h4>
+                                        <h4>佛山协同（国际）学校一年级新生报名表</h4>
                                     </Col>
                                 </Row>
                                 <div style={{marginBottom: '50px'}}></div>
                                 <table width="100%" style={{width: '100%', border: 'solid 1px black'}}>
                                     <tr>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black'}}>
+                                        <td style={{width: '25%',padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             姓名
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{width: '25%',padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.student_name}
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{width: '25%',padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             性别
                                         </td>
-                                        <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{width: '25%',padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.student_sex}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             出生年月日
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.student_birthday}
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             原就读幼儿园
                                         </td>
                                         <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
@@ -130,104 +134,104 @@ class Check extends Component {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             证件类型
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.id_type}
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             证件号码
                                         </td>
-                                        <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.id_no}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             户籍地址
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.permanent_address}
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             居住地址
                                         </td>
-                                        <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.live_addresss}
                                         </td>
                                     </tr>
-                                    <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: center">家庭主要成员</td>`}}></tr>
+                                    <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 15px; border-bottom: solid 1px black; text-align: center">家庭主要成员</td>`}}></tr>
                                     <tr>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             姓名
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             称谓
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             联系电话
                                         </td>
-                                        <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             工作单位
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.father_name}
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             父亲
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.father_phone}
                                         </td>
-                                        <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.father_work}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.mother_name}
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             母亲
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.mother_phone}
                                         </td>
-                                        <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.mother_work}
                                         </td>
                                     </tr>
-                                    <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: center">需要说明事项</td>`}}></tr>
-                                    <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: left">${this.state.signup_pupil.remark}</td>`}}></tr>
+                                    <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 15px; border-bottom: solid 1px black; text-align: center">需要说明事项</td>`}}></tr>
+                                    <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 15px; border-bottom: solid 1px black; text-align: left">${this.state.signup_pupil.remark}</td>`}}></tr>
                                     <tr>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             家长签名
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
 
                                         </td>
-                                        <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             学校受理人签名
                                         </td>
-                                        <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                        <td style={{padding: '15px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
 
                                         </td>
                                     </tr>
-                                    <tr dangerouslySetInnerHTML={{__html: `<td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center">报名状态</td><td colspan='3' style="padding: 10px; text-align: left">${this.state.tip}</td>`}}></tr>
+                                    <tr dangerouslySetInnerHTML={{__html: `<td colspan='1' style="padding: 15px; border-right: solid 1px black; text-align: center">填报日期</td><td colspan='1' style="padding: 15px; border-right: solid 1px black; text-align: center"></td><td colspan='1' style="padding: 15px; border-right: solid 1px black; text-align: center">报名状态</td><td colspan='1' style="padding: 15px; text-align: left">${this.state.tip}</td>`}}></tr>
                                 </table>
                             </div>
                             </Print>
                             <div style={{marginBottom: '50px'}}></div>
                             <Row>
                                 <Col smOffset={4} md={7}>
-                                    <Button style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={() => {this.refs.print.onPrint();}}>
-                                        打印查询结果
+                                    <Button disabled={this.state.is_load} style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={() => {this.refs.print.onPrint();}}>
+                                        {this.state.is_load ? "加载中.." : "打印查询结果"}
                                     </Button>
-                                    <Button style={{backgroundColor: '#C26B60', color: 'white', marginLeft: '30px'}} bsSize="large" onClick={this.handleEdit.bind(this)}>
-                                        编辑
+                                    <Button disabled={this.state.is_load} style={{backgroundColor: '#C26B60', color: 'white', marginLeft: '30px'}} bsSize="large" onClick={this.handleEdit.bind(this)}>
+                                        {this.state.is_load ? "加载中.." : "编辑"}
                                     </Button>
                                 </Col>
                             </Row>

@@ -41,6 +41,7 @@ import JuniorSignup from './view/junior/Signup';
 import JuniorCheck from './view/junior/Check';
 import JuniorEntry from './view/junior/Entry';
 import JuniorLogin from './view/junior/Login';
+import JuniorEdit from './view/junior/Edit';
 import InternationalIndex from './view/international/Index';
 
 const store = createStore(
@@ -94,6 +95,7 @@ const Routers = () =>
                 <Route path="/junior/check" component={JuniorCheck}/>
                 <Route path="/junior/entry" component={JuniorEntry}/>
                 <Route path="/junior/login" component={JuniorLogin}/>
+                <Route path="/junior/edit" component={JuniorEdit}/>
                 <Route path="/international/index" component={InternationalIndex}/>
             </Route>
         </Router>
