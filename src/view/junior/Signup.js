@@ -116,7 +116,7 @@ class Signup extends Component {
                                     <Col componentClass={ControlLabel} md={2}>
                                     </Col>
                                     <Col md={8} style={{textAlign: 'center'}}>
-                                        <h3>佛山协同（国际）学校2018年初中七年级新生报名</h3>
+                                        <span style={{fontSize: '24px', fontWeight: '1000'}}>佛山协同（国际）学校2018年初一新生自荐报名</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('student_name', {

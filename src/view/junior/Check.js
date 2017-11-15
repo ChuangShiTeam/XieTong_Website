@@ -102,7 +102,7 @@ class Check extends Component {
                                     <div style={{marginBottom: '50px'}}></div>
                                     <Row>
                                         <Col md={12} style={{textAlign: 'center'}}>
-                                            <h3>佛山协同（国际）学校七年级新生报名表</h3>
+                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校初一新生报名表</span>
                                         </Col>
                                     </Row>
                                     <div style={{marginBottom: '50px'}}></div>
