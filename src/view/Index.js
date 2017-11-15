@@ -390,7 +390,7 @@ class Index extends Component {
                                 </div>
                                 <div className="col-md-12 hidden-xs margin-top-20"></div>
                                 <div className="col-md-4 col-xs-6 col-padding">
-                                    <Link to="/page/5c97043e47c14a2395c97b25c8257a67">
+                                    <Link to="/article/single/5c97043e47c14a2395c97b25c8257a67/7108da1a6abc49d29d6715755fe221d0">
                                         <div className="sight">
                                             <img className="sight-image-1" src="image/sight-4.jpg" alt=""/>
                                             <div className="sight-mask">魅力课堂</div>
