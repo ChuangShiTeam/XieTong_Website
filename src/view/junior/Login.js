@@ -6,6 +6,7 @@ import {Form, FormGroup, Col, ControlLabel, FormControl, Button, Alert, HelpBloc
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
+import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import http from '../../common/http';
@@ -105,11 +106,12 @@ class Login extends Component {
 					<div className="title margin-top-20">
 						<div className="title-icon"></div>
 						<div className="title-breadcrumb">
-							<Link to="/index">首页</Link> > 中学报名查询登录
+							<Link to="/index">首页</Link> > 招生招聘 >  初中报名  > 初中报名查询登录
 						</div>
 					</div>
 					<div className="row margin-top-20">
 						<div className="subnav col-md-3 hidden-xs">
+							<PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="7d32e0491eed4fa58a2e05cf2079303c"/>
 							<DepartmentSubNav/>
 						</div>
 						<div className="col-md-9">
