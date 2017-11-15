@@ -75,7 +75,7 @@ class Entry extends Component {
                         </div>
                         <div className="col-md-9">
                             <div className="col-xs-12 visible-xs-inline-block visible-sm-inline-block margin-top-30"></div>
-                            <div className="col-xs-4 col-md-4">
+                            <div className="col-xs-12 col-md-4">
                                 <Link to="/page/26b436febeb348d480a681825b44ccb4" className="thumbnail">
                                     <div className="signup-enter-item">
                                         <div className="signup-enter-item-text">
@@ -85,7 +85,7 @@ class Entry extends Component {
                                     </div>
                                 </Link>
                             </div>
-                            <div className="col-xs-4 col-md-4">
+                            <div className="col-xs-12 col-md-4">
                                 <Link to="/junior/signup" className="thumbnail">
                                     <div className="signup-enter-item">
                                         <div className="signup-enter-item-text">
@@ -95,7 +95,7 @@ class Entry extends Component {
                                     </div>
                                 </Link>
                             </div>
-                            <div className="col-xs-4 col-md-4">
+                            <div className="col-xs-12 col-md-4">
                                 <Link to="/junior/login" className="thumbnail">
                                     <div className="signup-enter-item">
                                         <div className="signup-enter-item-text">
