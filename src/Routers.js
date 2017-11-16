@@ -24,7 +24,6 @@ import ArticleSingle from './view/article/Single';
 import StudentIndex from './view/student/Index';
 import StudentDetail from './view/student/Detail';
 import StudentLogin from './view/student/Login';
-import StudentAdmissions from './view/student/Admissions';
 import TeacherIndex from './view/teacher/Index';
 import TeacherDetail from './view/teacher/Detail';
 import TeacherLogin from './view/teacher/Login';
@@ -78,7 +77,6 @@ const Routers = () =>
                 <Route path="/student/index/:student_category_id" component={StudentIndex}/>
                 <Route path="/student/detail/:student_id" component={StudentDetail}/>
                 <Route path="/student/login" component={StudentLogin}/>
-                <Route path="/student/admissions" component={StudentAdmissions}/>
                 <Route path="/teacher/index/:teacher_category_id" component={TeacherIndex}/>
                 <Route path="/teacher/detail/:teacher_id" component={TeacherDetail}/>
                 <Route path="/teacher/login" component={TeacherLogin}/>
