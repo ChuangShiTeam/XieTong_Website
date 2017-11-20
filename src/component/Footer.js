@@ -41,7 +41,7 @@ class Footer extends Component {
                     <div className="line hidden-xs"></div>
                     <div className="row copyright margin-top-20">
                         <div className="col-md-3 col-xs-12">
-                            郑老师 82596128 18188718581(中小学)
+                            郑老师 82596128 18188719581(中小学)
                         </div>
                         <div className="col-md-3 col-xs-12">
                             董老师 82596004(中小学)
