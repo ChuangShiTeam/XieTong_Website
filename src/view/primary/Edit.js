@@ -115,6 +115,7 @@ class Edit extends Component {
 				}, function() {
 					this.props.form.setFieldsValue({
 						student_name: data.signup_pupil.student_name,
+						student_category: data.signup_pupil.student_category,
 						student_sex: data.signup_pupil.student_sex,
 						student_birthday: data.signup_pupil.student_birthday,
 						kindergarten: data.signup_pupil.kindergarten,
@@ -167,10 +168,10 @@ class Edit extends Component {
 						<div className="col-md-9">
 							<Form horizontal style={{marginTop: '20px'}}>
 								<FormGroup>
-									<Col componentClass={ControlLabel} md={2}>
+									<Col componentClass={ControlLabel} md={1}>
 									</Col>
-									<Col md={8} style={{textAlign: 'center'}}>
-										<span style={{fontSize: '24px', fontWeight: '1000'}}>佛山协同（国际）学校2018年小学一年级新生报名</span>
+									<Col md={9} style={{textAlign: 'center'}}>
+										<span style={{fontSize: '24px', fontWeight: '1000'}}>佛山协同（国际）学校2018年小学一年级新生、插班生报名</span>
 									</Col>
 								</FormGroup>
 								<FormGroup {...getFieldProps('student_name', {
@@ -232,18 +233,45 @@ class Edit extends Component {
 										<span className="error-message">{getFieldError('student_birthday')}</span>
 									</Col>
 								</FormGroup>
+								<FormGroup {...getFieldProps('student_category', {
+									rules: [{
+										required: true,
+										message: '分类不能为空'
+									}],
+									initialValue: ''
+								})} validationState={getFieldError('student_category') ? 'error' : getFieldValue('student_category') === '' ? null : 'success'}>
+									<Col componentClass={ControlLabel} md={2}>
+										分类
+									</Col>
+									<Col md={8} className="col-no-padding">
+										<Col md={6}>
+											<Radio name="student_category" value="小学一年级新生" checked={getFieldValue('student_category') === '小学一年级新生'}>
+												小学一年级新生
+											</Radio>
+										</Col>
+										<Col md={6}>
+											<Radio name="student_category" value="插班生" checked={getFieldValue('student_category') === '插班生'}>
+												插班生
+											</Radio>
+											<FormControl.Feedback/>
+										</Col>
+										<Col md={12}>
+											<span className="error-message">{getFieldError('student_category')}</span>
+										</Col>
+									</Col>
+								</FormGroup>
 								<FormGroup {...getFieldProps('kindergarten', {
 									rules: [{
 										required: true,
-										message: '原就读幼儿园'
+										message: '原就读幼儿园或小学不能为空'
 									}],
 									initialValue: ''
 								})} validationState={getFieldError('kindergarten') ? 'error' : getFieldValue('kindergarten') === '' ? null : 'success'}>
 									<Col componentClass={ControlLabel} md={2}>
-										原就读幼儿园
+										原就读幼儿园或小学
 									</Col>
 									<Col md={8}>
-										<FormControl placeholder="请输入原就读幼儿园" value={getFieldValue('kindergarten')}/>
+										<FormControl placeholder="请输入原就读幼儿园或小学" value={getFieldValue('kindergarten')}/>
 										<FormControl.Feedback/>
 										<span className="error-message">{getFieldError('kindergarten')}</span>
 									</Col>

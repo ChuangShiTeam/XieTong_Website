@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {Row, Col, Button, Table, Alert, ListGroup, ListGroupItem} from 'react-bootstrap';
+import {Row, Col, Button, Alert} from 'react-bootstrap';
 import Print from 'rc-print';
 
 import Header from '../../component/Header';
@@ -102,7 +102,7 @@ class Check extends Component {
                                     <div style={{marginBottom: '50px'}}></div>
                                     <Row>
                                         <Col md={12} style={{textAlign: 'center'}}>
-                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校初一新生自荐报名表</span>
+                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校{this.state.signup_junior.student_category === '插班生'? '插班生':'初一新生'}自荐报名表</span>
                                         </Col>
                                     </Row>
                                     <div style={{marginBottom: '50px'}}></div>
@@ -129,7 +129,7 @@ class Check extends Component {
                                                 {this.state.signup_junior.student_birthday}
                                             </td>
                                             <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                原就读小学
+                                                原就读小学或中学
                                             </td>
                                             <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                 {this.state.signup_junior.primary_school}
