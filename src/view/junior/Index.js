@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {Carousel} from 'react-bootstrap';
 import Slider from 'react-slick';
 
 import Header from '../../component/Header';
@@ -15,9 +14,7 @@ class Index extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     componentDidMount() {
@@ -68,131 +65,142 @@ class Index extends Component {
         };
 
         return (
-			<div className="index">
-				<Header history={this.props.history} website_menu_id=""/>
-				<div className="container margin-bottom-20">
-					<div className="row">
-						<div className="col-md-6 col-padding margin-top-20">
-							<div className="title">
-								<div className="pull-left">
-									<div className="title-icon"></div>
-									<Link to="/article/index/9d8508d24242499ebcf344e17d8222de">
-										<div className="title-text">中学部教师风采</div>
-									</Link>
-									<div className="title-line"></div>
-								</div>
-								<div className="pull-right">
-									<Link to="/article/index/9d8508d24242499ebcf344e17d8222de">更多</Link>
-								</div>
-							</div>
-							<Slider {...settings}>
+            <div className="index">
+                <Header history={this.props.history} website_menu_id=""/>
+                <div className="container margin-bottom-20">
+                    <div className="row">
+                        <div className="col-md-6 col-padding margin-top-20">
+                            <div className="title">
+                                <div className="pull-left">
+                                    <div className="title-icon"></div>
+                                    <Link to="/teacher/index/75b1b7bca5214bad9c79a9927659f8cb">
+                                        <div className="title-text">中学部教师风采</div>
+                                    </Link>
+                                    <div className="title-line"></div>
+                                </div>
+                                <div className="pull-right">
+                                    <Link to="/teacher/index/75b1b7bca5214bad9c79a9927659f8cb">更多</Link>
+                                </div>
+                            </div>
+                            <Slider {...settings}>
                                 {
                                     this.props.junior.teacher_list.map(function (teacher) {
                                         return (
-											<div key={teacher.teacher_id} className="slider-item">
-												<div className="slider-item-body">
-													<img className="slider-image center-block" src={constant.image_host + teacher.file_path} alt=""/>
-													<div className="slider-name">{teacher.teacher_name}</div>
-													<div className="slider-title">{teacher.teacher_title}</div>
-												</div>
-											</div>
+                                            <div key={teacher.teacher_id} className="slider-item">
+                                                <div className="slider-item-body">
+                                                    <Link to={"/teacher/detail/" + teacher.teacher_id}>
+                                                        <img className="slider-image center-block"
+                                                             src={constant.image_host + teacher.file_path} alt=""/>
+                                                        <div className="slider-name">{teacher.teacher_name}</div>
+                                                        <div className="slider-title">{teacher.teacher_title}</div>
+                                                    </Link>
+                                                </div>
+                                            </div>
                                         )
                                     }.bind(this))
                                 }
-							</Slider>
-						</div>
-						<div className="col-md-6 col-padding margin-top-20">
-							<div className="title">
-								<div className="pull-left">
-									<div className="title-icon"></div>
-									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
-										<div className="title-text">中学部学生领袖</div>
-									</Link>
-									<div className="title-line"></div>
-								</div>
-								<div className="pull-right">
-									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">更多</Link>
-								</div>
-							</div>
-							<Slider {...settings}>
+                            </Slider>
+                        </div>
+                        <div className="col-md-6 col-padding margin-top-20">
+                            <div className="title">
+                                <div className="pull-left">
+                                    <div className="title-icon"></div>
+                                    <Link to="/student/index/1d49d03576954b3c998608b8f43be324">
+                                        <div className="title-text">中学部学生领袖</div>
+                                    </Link>
+                                    <div className="title-line"></div>
+                                </div>
+                                <div className="pull-right">
+                                    <Link to="/student/index/1d49d03576954b3c998608b8f43be324">更多</Link>
+                                </div>
+                            </div>
+                            <Slider {...settings}>
                                 {
                                     this.props.junior.student_list.map(function (student) {
                                         return (
-											<div key={student.student_id} className="slider-item">
-												<div className="slider-item-body">
-													<img className="slider-image center-block" src={constant.image_host + student.file_path} alt=""/>
-													<div className="slider-name">{student.student_name}</div>
-													<div className="slider-title">{student.clazz_name}</div>
-												</div>
-											</div>
+                                            <div key={student.student_id} className="slider-item">
+                                                <div className="slider-item-body">
+                                                    <Link to={"/student/detail/" + student.student_id}>
+                                                        <img className="slider-image center-block"
+                                                             src={constant.image_host + student.file_path} alt=""/>
+                                                        <div className="slider-name">{student.student_name}</div>
+                                                        <div className="slider-title">{student.clazz_name}</div>
+                                                    </Link>
+                                                </div>
+                                            </div>
                                         )
                                     }.bind(this))
                                 }
-							</Slider>
-						</div>
-						<div className="col-md-6 col-padding margin-top-20">
-							<div className="title">
-								<div className="pull-left">
-									<div className="title-icon"></div>
-									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
-										<div className="title-text">中学部学生作品</div>
-									</Link>
-									<div className="title-line"></div>
-								</div>
-								<div className="pull-right">
-									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">更多</Link>
-								</div>
-							</div>
-							<Slider {...settings}>
+                            </Slider>
+                        </div>
+                        <div className="col-md-6 col-padding margin-top-20">
+                            <div className="title">
+                                <div className="pull-left">
+                                    <div className="title-icon"></div>
+                                    <Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
+                                        <div className="title-text">中学部学生作品</div>
+                                    </Link>
+                                    <div className="title-line"></div>
+                                </div>
+                                <div className="pull-right">
+                                    <Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">更多</Link>
+                                </div>
+                            </div>
+                            <Slider {...settings}>
                                 {
                                     this.props.junior.teacher_list_2.map(function (teacher) {
                                         return (
-											<div key={teacher.teacher_id} className="slider-item">
-												<div className="slider-item-body">
-													<img className="slider-image center-block" src={constant.image_host + teacher.file_path} alt=""/>
-													<div className="slider-name">{teacher.teacher_name}</div>
-													<div className="slider-title">{teacher.teacher_title}</div>
-												</div>
-											</div>
+                                            <div key={teacher.teacher_id} className="slider-item">
+                                                <div className="slider-item-body">
+                                                    <img className="slider-image center-block"
+                                                         src={constant.image_host + teacher.file_path} alt=""/>
+                                                    <div className="slider-name">{teacher.teacher_name}</div>
+                                                    <div className="slider-title">{teacher.teacher_title}</div>
+                                                </div>
+                                            </div>
                                         )
                                     }.bind(this))
                                 }
-							</Slider>
-						</div>
-						<div className="col-md-6 col-padding margin-top-20">
-							<div className="title">
-								<div className="pull-left">
-									<div className="title-icon"></div>
-									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
-										<div className="title-text">中学部情境课堂</div>
-									</Link>
-									<div className="title-line"></div>
-								</div>
-								<div className="pull-right">
-									<Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">更多</Link>
-								</div>
-							</div>
-							<Slider {...settings}>
+                            </Slider>
+                        </div>
+                        <div className="col-md-6 col-padding margin-top-20">
+                            <div className="title">
+                                <div className="pull-left">
+                                    <div className="title-icon"></div>
+                                    <Link to="/article/index/9d8508d24242499ebcf344e17d8222de">
+                                        <div className="title-text">中学部情境课堂</div>
+                                    </Link>
+                                    <div className="title-line"></div>
+                                </div>
+                                <div className="pull-right">
+                                    <Link to="/article/index/9d8508d24242499ebcf344e17d8222de">更多</Link>
+                                </div>
+                            </div>
+                            <Slider {...settings}>
                                 {
                                     this.props.junior.article_list.map(function (article, index) {
                                         return (
-											<div key={article.article_id} className="slider-item">
-												<div className="slider-item-body">
-													<img className="slider-image center-block" src={constant.image_host + article.file_path} alt=""/>
-													<div className="slider-name">{article.article_name}</div>
-												</div>
-											</div>
+                                            <div key={article.article_id} className="slider-item">
+                                                <div className="slider-item-body">
+                                                    <Link key={article.article_id}
+                                                          to={"/article/detail/" + article.article_id}>
+                                                        <img className="slider-image center-block"
+                                                             src={constant.image_host + article.file_path} alt=""/>
+                                                        <div className="slider-name">{article.article_name}</div>
+                                                    </Link>
+                                                </div>
+                                            </div>
                                         )
                                     }.bind(this))
                                 }
-							</Slider>
-						</div>
-					</div>
-				</div>
+                            </Slider>
+                        </div>
+                    </div>
+                </div>
 
 
-				<Footer/>
-			</div>
+                <Footer/>
+            </div>
         );
     }
 }

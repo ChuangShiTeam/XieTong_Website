@@ -88,7 +88,7 @@ class ArticleDetail extends Component {
                             <div className="margin-top-30 col-md-6 col-no-padding">
                                 {
                                     this.state.teacher.file_original_path ?
-                                        <img src={constant.image_host + this.state.teacher.file_original_path} alt=""/>
+                                        <img className="img-circle" src={constant.image_host + this.state.teacher.file_original_path} alt=""/>
                                         :
                                         ''
                                 }
