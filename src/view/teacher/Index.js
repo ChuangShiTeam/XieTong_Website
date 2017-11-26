@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {Pagination} from 'react-bootstrap';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -11,14 +12,18 @@ import constant from '../../common/constant';
 import http from '../../common/http';
 import util from '../../common/util';
 
-class Team extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             teacher_category_id: '',
             page_id: '',
-            page_name: ''
+            page_name: '',
+            page_index: 1,
+            page_size: 9,
+            total: 0,
+            teacher_list: []
         }
     }
 
@@ -37,6 +42,8 @@ class Team extends Component {
 
         if (this.state.teacher_category_id !== nextProps.params.teacher_category_id) {
             this.setState({
+                page_index: 1,
+                page_size: 9,
                 teacher_category_id: nextProps.params.teacher_category_id
             }, function () {
                 this.handleLoad();
@@ -51,9 +58,11 @@ class Team extends Component {
     handleLoad() {
         var page_id = '';
         var page_name = '';
+        var page_size = this.state.page_size;
         if (this.state.teacher_category_id === '70699f5ca3df49bfb4c742827e1a060c') {
             page_id = 'bda8c7a0c4584abf8e41d60685af5c57';
             page_name = '管理团队';
+            page_size = 100;
         } else if (this.state.teacher_category_id === '75b1b7bca5214bad9c79a9927659f8cb') {
             page_id = 'cac641d6533e413a820ed8b019b3b100';
             page_name = '优秀教师';
@@ -75,26 +84,34 @@ class Team extends Component {
 
         util.setTitle(page_name);
 
-        if (this.props.teacher.list.length === 0) {
-            http.request({
-                url: '/desktop/xietong/teacher/list',
-                data: {},
-                success: function (data) {
-                    this.props.dispatch({
-                        type: 'teacher',
-                        data: {
-                            list: data
-                        }
-                    });
-                }.bind(this),
-                error: function (data) {
+        http.request({
+            url: '/desktop/xietong/teacher/list',
+            data: {
+                teacher_category_id: this.state.teacher_category_id,
+                page_index: this.state.page_index,
+                page_size: page_size
+            },
+            success: function (data) {
+                this.setState({
+                    total: data.total,
+                    teacher_list: data.list
+                });
+            }.bind(this),
+            error: function (data) {
 
-                },
-                complete: function () {
+            },
+            complete: function () {
 
-                }
-            });
-        }
+            }
+        });
+    }
+
+    handlePagination(page_index) {
+        this.setState({
+            page_index: page_index
+        }, function () {
+            this.handleLoad();
+        }.bind(this));
     }
 
     render() {
@@ -116,39 +133,59 @@ class Team extends Component {
                         </div>
                         <div className="col-md-9">
                             {
-                                this.props.teacher.list.map(function (teacher) {
+                                this.state.teacher_category_id === '70699f5ca3df49bfb4c742827e1a060c' ?
+                                this.state.teacher_list.map(function (teacher) {
                                     return (
-                                        this.state.teacher_category_id.indexOf(teacher.teacher_category_id) > -1 ?
-                                            this.state.teacher_category_id === '70699f5ca3df49bfb4c742827e1a060c' ?
-                                                <div key={teacher.teacher_id} className="teacher-image">
-                                                    <div className="teacher-item margin-top-20">
-                                                        <div className="col-md-4 teacher-item-left">
-                                                            <div className="teacher-image-item">
-                                                                <img className="img-circle"
-                                                                     src={constant.image_host + teacher.file_path} alt=""/>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-8 col-no-padding-left teacher-item-right">
-                                                            <div className="teacher-name">{teacher.teacher_name}</div>
-                                                            <div className="teacher-description"
-                                                                 dangerouslySetInnerHTML={{__html: teacher.teacher_description}}></div>
-                                                        </div>
+                                        <div key={teacher.teacher_id} className="teacher-image">
+                                            <div className="teacher-item margin-top-20">
+                                                <div className="col-md-4 teacher-item-left">
+                                                    <div className="teacher-image-item">
+                                                        <img className="img-circle"
+                                                             src={constant.image_host + teacher.file_path} alt=""/>
                                                     </div>
                                                 </div>
-                                                :
+                                                <div className="col-md-8 col-no-padding-left teacher-item-right">
+                                                    <div className="teacher-name">{teacher.teacher_name}</div>
+                                                    <div className="teacher-description"
+                                                         dangerouslySetInnerHTML={{__html: teacher.teacher_description}}></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                }.bind(this))
+                                :
+                                <div>
+                                    {
+                                        this.state.teacher_list.map(function (teacher) {
+                                            return (
                                                 <div key={teacher.teacher_id} className="col-md-4">
                                                     <div className="teacher-item-2">
                                                         <Link to={"/teacher/detail/" + teacher.teacher_id}>
-                                                            <img className="teacher-image" src={constant.image_host + teacher.file_path} alt=""/>
+                                                            <img className="teacher-image"
+                                                                 src={constant.image_host + teacher.file_path} alt=""/>
                                                             <div className="teacher-name">{teacher.teacher_name}</div>
                                                             <div className="teacher-title">{teacher.teacher_title}</div>
                                                         </Link>
                                                     </div>
                                                 </div>
+                                            )
+                                        }.bind(this))
+                                    }
+                                    {
+                                        this.state.teacher_list.length > 0 ?
+                                            <Pagination
+                                                ellipsis
+                                                boundaryLinks
+                                                items={Math.ceil(this.state.total / this.state.page_size)}
+                                                maxButtons={5}
+                                                activePage={this.state.page_index}
+                                                onSelect={this.handlePagination.bind(this)}
+                                            />
                                             :
                                             ''
-                                    )
-                                }.bind(this))
+                                    }
+                                </div>
+
                             }
                         </div>
                     </div>
@@ -163,4 +200,4 @@ export default connect((state) => {
     return {
         teacher: state.teacher
     }
-})(Team);
+})(Index);
