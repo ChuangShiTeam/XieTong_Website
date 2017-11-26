@@ -59,13 +59,13 @@ class ArticleDetail extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <Link to="/index">首页</Link> > <Link to="">学校新闻</Link>
+                            <Link to="/index">首页</Link> > <Link to="">{this.state.article.article_name}</Link>
                         </div>
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
-                            <ArticleSubNav history={this.props.history}
-                                           article_category_id={this.state.article.article_category_id ? this.state.article.article_category_id : ''}/>
+                            {/*<ArticleSubNav history={this.props.history}*/}
+                                           {/*article_category_id={this.state.article.article_category_id ? this.state.article.article_category_id : ''}/>*/}
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
@@ -73,7 +73,7 @@ class ArticleDetail extends Component {
                                 <h3>{this.state.article.article_name}</h3>
                             </div>
                             <div className="article-summary margin-top-20">
-                                作者： admin 更新时间：{this.state.article.system_create_time}
+                                <span>作者： admin</span> <span style={{marginLeft: '30px'}}>更新时间：{this.state.article.system_create_time}</span>
                             </div>
                             <div className="margin-top-30" dangerouslySetInnerHTML={{__html: this.state.article.article_content}}></div>
                         </div>

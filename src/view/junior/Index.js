@@ -30,9 +30,9 @@ class Index extends Component {
                         type: 'junior',
                         data: {
                             teacher_list: data.teacher_list,
-                            teacher_list_2: data.teacher_list_2,
                             student_list: data.student_list,
-                            article_list: data.article_list
+                            article_list: data.article_list,
+                            article_list_2: data.article_list_2
                         }
                     });
                 }.bind(this),
@@ -137,25 +137,27 @@ class Index extends Component {
                             <div className="title">
                                 <div className="pull-left">
                                     <div className="title-icon"></div>
-                                    <Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">
+                                    <Link to="/article/index/7ee46fef73a04bbf94cf73e4a09655b5">
                                         <div className="title-text">中学部学生作品</div>
                                     </Link>
                                     <div className="title-line"></div>
                                 </div>
                                 <div className="pull-right">
-                                    <Link to="/student/index/858ccb59a12047d5ad0525a6f3f1ce9c">更多</Link>
+                                    <Link to="/article/index/7ee46fef73a04bbf94cf73e4a09655b5">更多</Link>
                                 </div>
                             </div>
                             <Slider {...settings}>
                                 {
-                                    this.props.junior.teacher_list_2.map(function (teacher) {
+                                    this.props.junior.article_list_2.map(function (article) {
                                         return (
-                                            <div key={teacher.teacher_id} className="slider-item">
+                                            <div key={article.article_id} className="slider-item">
                                                 <div className="slider-item-body">
-                                                    <img className="slider-image center-block"
-                                                         src={constant.image_host + teacher.file_path} alt=""/>
-                                                    <div className="slider-name">{teacher.teacher_name}</div>
-                                                    <div className="slider-title">{teacher.teacher_title}</div>
+                                                    <Link key={article.article_id}
+                                                          to={"/article/detail/" + article.article_id}>
+                                                        <img className="slider-image center-block"
+                                                             src={constant.image_host + article.file_path} alt=""/>
+                                                        <div className="slider-name">{article.article_name}</div>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         )
