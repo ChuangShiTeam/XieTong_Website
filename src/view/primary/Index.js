@@ -61,6 +61,7 @@ class Index extends Component {
             arrows: false,
             speed: 500,
             slidesToShow: 3,
+            autoplaySpeed: 4000,
             slidesToScroll: 1
         };
 

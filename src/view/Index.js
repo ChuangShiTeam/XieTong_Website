@@ -403,7 +403,7 @@ class Index extends Component {
                                     <Link to="/page/1c4de3536a17485f87fa3fd2e2066172">
                                         <div className="sight">
                                             <img className="sight-image-2" src="image/sight-5.jpg" alt=""/>
-                                            <div className="sight-mask">美丽校园</div>
+                                            <div className="sight-mask">综合实践</div>
                                         </div>
                                     </Link>
                                 </div>
