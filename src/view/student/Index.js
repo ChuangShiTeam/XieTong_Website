@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {Pagination} from 'react-bootstrap';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -18,7 +19,11 @@ class Team extends Component {
         this.state = {
             student_category_id: '',
             page_id: '',
-            page_name: ''
+            page_name: '',
+            page_index: 1,
+            page_size: 9,
+            total: 0,
+            student_list: []
         }
     }
 
@@ -37,6 +42,8 @@ class Team extends Component {
 
         if (this.state.student_category_id !== nextProps.params.student_category_id) {
             this.setState({
+                page_index: 1,
+                page_size: 9,
                 student_category_id: nextProps.params.student_category_id
             }, function () {
                 this.handleLoad();
@@ -68,13 +75,15 @@ class Team extends Component {
         if (this.props.student.list.length === 0) {
             http.request({
                 url: '/desktop/xietong/student/list',
-                data: {},
+                data: {
+                    student_category_id: this.state.student_category_id,
+                    page_index: this.state.page_index,
+                    page_size: this.state.page_size
+                },
                 success: function (data) {
-                    this.props.dispatch({
-                        type: 'student',
-                        data: {
-                            list: data
-                        }
+                    this.setState({
+                        total: data.total,
+                        student_list: data.list
                     });
                 }.bind(this),
                 error: function (data) {
@@ -85,6 +94,14 @@ class Team extends Component {
                 }
             });
         }
+    }
+
+    handlePagination(page_index) {
+        this.setState({
+            page_index: page_index
+        }, function () {
+            this.handleLoad();
+        }.bind(this));
     }
 
     render() {
@@ -105,8 +122,9 @@ class Team extends Component {
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
+                            <div className="col-md-12">
                             {
-                                this.props.student.list.map(function (student) {
+                                this.state.student_list.map(function (student) {
                                     return (
                                         student.student_category_id === this.state.student_category_id ?
                                             <div key={student.student_id} className="col-md-4">
@@ -125,6 +143,22 @@ class Team extends Component {
                                             ''
                                     )
                                 }.bind(this))
+                            }
+                            </div>
+                            {
+                                this.state.student_list.length > 0 ?
+                                    <div style={{paddingLeft: '30px'}}>
+                                        <Pagination
+                                            ellipsis
+                                            boundaryLinks
+                                            items={Math.ceil(this.state.total / this.state.page_size)}
+                                            maxButtons={5}
+                                            activePage={this.state.page_index}
+                                            onSelect={this.handlePagination.bind(this)}
+                                        />
+                                    </div>
+                                    :
+                                    ''
                             }
                         </div>
                     </div>

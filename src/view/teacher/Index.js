@@ -154,7 +154,7 @@ class Index extends Component {
                                     )
                                 }.bind(this))
                                 :
-                                <div>
+                                <div className="col-md-12">
                                     {
                                         this.state.teacher_list.map(function (teacher) {
                                             return (
@@ -171,21 +171,22 @@ class Index extends Component {
                                             )
                                         }.bind(this))
                                     }
-                                    {
-                                        this.state.teacher_list.length > 0 ?
-                                            <Pagination
-                                                ellipsis
-                                                boundaryLinks
-                                                items={Math.ceil(this.state.total / this.state.page_size)}
-                                                maxButtons={5}
-                                                activePage={this.state.page_index}
-                                                onSelect={this.handlePagination.bind(this)}
-                                            />
-                                            :
-                                            ''
-                                    }
                                 </div>
-
+                            }
+                            {
+                                this.state.teacher_category_id !== '70699f5ca3df49bfb4c742827e1a060c' && this.state.teacher_list.length > 0 ?
+                                    <div style={{paddingLeft: '30px'}}>
+                                        <Pagination
+                                            ellipsis
+                                            boundaryLinks
+                                            items={Math.ceil(this.state.total / this.state.page_size)}
+                                            maxButtons={5}
+                                            activePage={this.state.page_index}
+                                            onSelect={this.handlePagination.bind(this)}
+                                        />
+                                    </div>
+                                    :
+                                    ''
                             }
                         </div>
                     </div>
