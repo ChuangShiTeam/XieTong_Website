@@ -30,9 +30,9 @@ class Index extends Component {
                         type: 'international',
                         data: {
                             teacher_list: data.teacher_list,
-                            article_list_2: data.article_list_2,
                             student_list: data.student_list,
-                            article_list: data.article_list
+                            article_list: data.article_list,
+                            article_list_2: data.article_list_2
                         }
                     });
                 }.bind(this),
@@ -60,7 +60,7 @@ class Index extends Component {
             infinite: true,
             arrows: false,
             speed: 500,
-            autoplaySpeed: 4000,
+            autoplaySpeed: 6000,
             slidesToShow: 3,
             slidesToScroll: 1
         };
