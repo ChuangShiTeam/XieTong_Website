@@ -647,6 +647,10 @@ body {
     overflow: hidden;
 }
 
+.student-title {
+    text-align: center;
+}
+
 .slider-item {
     width: 200px;
     text-align: center;

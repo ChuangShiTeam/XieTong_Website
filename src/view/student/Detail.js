@@ -83,7 +83,7 @@ class ArticleDetail extends Component {
                                 <h3>{this.state.student.student_name}</h3>
                                 <div>{this.state.student.clazz_name}</div>
                             </div>
-                            <div className="margin-top-20 col-md-6 col-no-padding">
+                            <div className="margin-top-30 col-md-6 col-no-padding">
                                 {
                                     this.state.student.file_original_path ?
                                         <img src={constant.image_host + this.state.student.file_original_path} alt=""/>
@@ -91,7 +91,7 @@ class ArticleDetail extends Component {
                                         ''
                                 }
                             </div>
-                            <div className="margin-top-20 col-md-6" dangerouslySetInnerHTML={{__html: this.state.student.student_description}}></div>
+                            <div className="margin-top-30 col-md-6" dangerouslySetInnerHTML={{__html: this.state.student.student_description}}></div>
                         </div>
                     </div>
                 </div>
