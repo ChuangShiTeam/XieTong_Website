@@ -28,6 +28,7 @@ import TeacherIndex from './view/teacher/Index';
 import TeacherDetail from './view/teacher/Detail';
 import TeacherLogin from './view/teacher/Login';
 import TeacherRecruitment from './view/teacher/Recruitment';
+import TeacherRecruitmentEntry from './view/teacher/Recruitment/Entry';
 import NotFound from './view/NotFound';
 import PrimaryIndex from './view/primary/Index';
 import PrimarySignup from './view/primary/Signup';
@@ -81,6 +82,7 @@ const Routers = () =>
                 <Route path="/teacher/detail/:teacher_id" component={TeacherDetail}/>
                 <Route path="/teacher/login" component={TeacherLogin}/>
                 <Route path="/teacher/recruitment" component={TeacherRecruitment}/>
+                <Route path="/teacher/recruitment/entry" component={TeacherRecruitmentEntry}/>
                 <Route path="/not/found" component={NotFound}/>
                 <Route path="/primary/index" component={PrimaryIndex}/>
                 <Route path="/primary/signup" component={PrimarySignup}/>
