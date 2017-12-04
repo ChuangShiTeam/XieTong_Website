@@ -4,14 +4,14 @@ import {Link} from 'react-router';
 import {createForm} from 'rc-form';
 import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} from 'react-bootstrap';
 
-import Header from '../../component/Header';
-import Footer from '../../component/Footer';
-import FileUpload from '../../component/FileUpload';
-import PageSubNav from '../../component/PageSubNav';
-import DepartmentSubNav from '../../component/DepartmentSubNav';
+import Header from '../../../component/Header';
+import Footer from '../../../component/Footer';
+import FileUpload from '../../../component/FileUpload';
+import PageSubNav from '../../../component/PageSubNav';
+import DepartmentSubNav from '../../../component/DepartmentSubNav';
 
-import http from '../../common/http';
-import util from '../../common/util';
+import http from '../../../common/http';
+import util from '../../../common/util';
 
 class TeacherRecruitment extends Component {
     constructor(props) {

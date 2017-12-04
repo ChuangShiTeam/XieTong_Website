@@ -64,7 +64,7 @@ class Entry extends Component {
                                 </Link>
                             </div>
                             <div className="col-xs-12 col-md-4">
-                                <Link to="/teacher/recruitment" className="thumbnail">
+                                <Link to="/teacher/recruitment/index" className="thumbnail">
                                     <div className="signup-enter-item">
                                         <div className="signup-enter-item-text">
                                             <img className="signup-enter-item-icon" src="../image/activity.png" alt=""/>
