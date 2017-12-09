@@ -38,6 +38,20 @@ class PageSubNav extends Component {
                             website_menu.children.map(function (children_website_menu, index) {
                                 return (
                                     children_website_menu.website_menu_parent_id === this.props.website_menu_id ?
+                                        children_website_menu.website_menu_url.startsWith('http')?
+                                            <a href={children_website_menu.website_menu_url} target="_blank">
+                                                <div className={"subnav-item" + (children_website_menu.page_id === this.state.page_id ? " active" : "") + (index === 0 ? "" : " margin-top")}>
+                                                    <div className="subnav-item-menu">{children_website_menu.website_menu_name}</div>
+                                                    {
+                                                        children_website_menu.page_id === this.state.page_id ?
+                                                            <img className="subnav-item-arrow" src="../image/right-active.png" alt=""/>
+                                                            :
+                                                            <img className="subnav-item-arrow" src="../image/right.png" alt=""/>
+                                                    }
+                                                </div>
+                                            </a>
+                                            :
+
                                         <Link key={children_website_menu.website_menu_id} to={children_website_menu.website_menu_url === '' ? '/page/' + children_website_menu.page_id : children_website_menu.website_menu_url}>
                                             <div className={"subnav-item" + (children_website_menu.page_id === this.state.page_id ? " active" : "") + (index === 0 ? "" : " margin-top")}>
                                                 <div className="subnav-item-menu">{children_website_menu.website_menu_name}</div>

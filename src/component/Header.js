@@ -75,10 +75,15 @@ class Header extends Component {
     }
 
     handleClickeMenu(url) {
-        this.props.history.push({
-            pathname: url,
-            query: {}
-        });
+        if (url && url.startsWith("http")) {
+            const w = window.open('about:blank');
+            w.location.href=url;
+        } else {
+            this.props.history.push({
+                pathname: url,
+                query: {}
+            });
+        }
     }
 
     render() {

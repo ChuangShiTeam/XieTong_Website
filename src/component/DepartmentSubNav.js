@@ -44,11 +44,9 @@ class DepartmentSubNav extends Component {
                 </div>
                 <div className="department margin-top col-xs-4 col-md-12 col-no-padding">
                     <div className="department">
-                    <Link to="/international/index">
                         <img src="/image/department2.jpg" alt=""/>
                         <div className="department-mask">国际部</div>
-                    </Link>
-                </div>
+                    </div>
                 </div>
             </div>
         );

@@ -77,10 +77,8 @@ class Index extends Component {
                             </div>
                             <div className="col-md-4 col-xs-4 col-padding">
                                 <div className="department">
-                                    <Link to="/international/index">
-                                        <img src="image/department2.jpg" alt=""/>
-                                        <div className="department-mask">国际部</div>
-                                    </Link>
+                                    <img src="image/department2.jpg" alt=""/>
+                                    <div className="department-mask">国际部</div>
                                 </div>
                             </div>
                         </div>

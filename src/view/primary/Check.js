@@ -102,7 +102,7 @@ class Check extends Component {
                                 <div style={{marginBottom: '50px'}}></div>
                                 <Row>
                                     <Col md={12} style={{textAlign: 'center'}}>
-                                        <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校{this.state.signup_pupil.student_category === '插班生'? '插班生':'一年级新生'}报名表</span>
+                                        <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校一年级新生报名表</span>
                                     </Col>
                                 </Row>
                                 <div style={{marginBottom: '50px'}}></div>
@@ -129,7 +129,7 @@ class Check extends Component {
                                             {this.state.signup_pupil.student_birthday}
                                         </td>
                                         <td style={{padding: '15px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                            原就读幼儿园或小学
+                                            原就读幼儿园
                                         </td>
                                         <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                             {this.state.signup_pupil.kindergarten}
