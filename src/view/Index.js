@@ -150,7 +150,7 @@ class Index extends Component {
                                 <div className="title-line"></div>
                             </div>
                             <div className="col-md-6 col-padding">
-                                <Link to="/teacher/recruitment">
+                                <Link to="/teacher/recruitment/entry">
                                     <div className="enter-item margin-top-20">
                                         <div className="enter-item-box">
                                             <img className="enter-item-icon" src="../image/location.png" alt=""/>
