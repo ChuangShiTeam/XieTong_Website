@@ -55,6 +55,16 @@ class TeacherRecruitment extends Component {
 
                 return;
             }
+
+            let teacher_recruitment_mobile = values.teacher_recruitment_mobile;
+            if (teacher_recruitment_mobile.length != 11) {
+                this.setState({
+                    result_type: 'danger',
+                    result_message: '<p>手机号码长度不对</p>'
+                });
+
+                return;
+            }
             values.teacher_recruitment_file = '';
             let teacher_recruitment_file = this.refs.teacher_recruitment_file.handleGetValue();
             if (teacher_recruitment_file.length > 0) {
@@ -432,8 +442,8 @@ class TeacherRecruitment extends Component {
                                     </Col>
                                     <Col md={8}>
                                         <FileUpload ref="teacher_recruitment_file" name="teacher_recruitment_file"
-                                                    type="application/msword, application/pdf" size={50} limit={1}/>
-                                        上传格式限制pdf、word
+                                                    type="application/zip" size={50} limit={1}/>
+                                        上传格式限制zip
                                     </Col>
                                 </FormGroup>
 

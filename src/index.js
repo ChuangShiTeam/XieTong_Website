@@ -14,7 +14,11 @@ if (typeof String.prototype.endsWith != 'function') {
     };
 }
 
-document.getElementById("loading").remove();
+if((!!window.ActiveXObject || "ActiveXObject" in window) || (/Trident\/7\./).test(navigator.userAgent)) {
+    document.getElementById("loading").removeNode(true);
+} else {
+    document.getElementById("loading").remove();
+}
 
 ReactDOM.render(
     <Routers/>,
