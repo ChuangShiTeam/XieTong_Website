@@ -14,13 +14,20 @@ class Index extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            display: ''
+        }
     }
 
     componentDidMount() {
         util.setTitle('首页');
 
         util.scrollToTop(0);
+
+        if (util.isPc()) {
+            window.advertisement = new window.AdMove("advertisement");
+            window.advertisement.Run();
+        }
 
         if (this.props.index.article_list.length === 0) {
             http.request({
@@ -49,12 +56,32 @@ class Index extends Component {
     }
 
     componentWillUnmount() {
+        if (!util.isMobile()) {
+            window.advertisement.Stop();
+        }
+    }
 
+    handleCloseAdvertisement() {
+        this.setState({
+            display: 'none'
+        });
     }
 
     render() {
         return (
             <div className="index">
+                {
+                    util.isPc() ?
+                        <div id="advertisement" style={{display: this.state.display}}>
+                            <div id="advertisement-close" onClick={this.handleCloseAdvertisement.bind(this)}></div>
+                            <div className="advertisement-content">
+                                <a href="bmb.html"><b>公告</b>
+                                    <p>2015年小学一年级招生报名正在进行中！<span>点击进入</span></p></a>
+                            </div>
+                        </div>
+                        :
+                        ''
+                }
                 <Header history={this.props.history} website_menu_id="home"/>
                 <div className="content-background-1">
                     <div className="container">
@@ -280,7 +307,7 @@ class Index extends Component {
                                         article.article_category_id === 'da9b1750e8ea4f959df23cbdcba53f9a' ?
                                             <div key={article.article_id} className={"activity-item margin-top"}>
                                                 {
-                                                    article.article_is_outer_link?
+                                                    article.article_is_outer_link ?
                                                         <a href={article.article_outer_link} target="_blank">
                                                             <div className="activity-item-date">
                                                                 <div
@@ -288,8 +315,10 @@ class Index extends Component {
                                                                 <div
                                                                     className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
                                                             </div>
-                                                            <div className="activity-item-title">{article.article_name}</div>
-                                                            <div className="activity-item-description">{article.article_summary}</div>
+                                                            <div
+                                                                className="activity-item-title">{article.article_name}</div>
+                                                            <div
+                                                                className="activity-item-description">{article.article_summary}</div>
                                                         </a>
                                                         :
                                                         <Link to={"/article/detail/" + article.article_id}>
@@ -299,8 +328,10 @@ class Index extends Component {
                                                                 <div
                                                                     className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
                                                             </div>
-                                                            <div className="activity-item-title">{article.article_name}</div>
-                                                            <div className="activity-item-description">{article.article_summary}</div>
+                                                            <div
+                                                                className="activity-item-title">{article.article_name}</div>
+                                                            <div
+                                                                className="activity-item-description">{article.article_summary}</div>
                                                         </Link>
                                                 }
                                             </div>
@@ -388,7 +419,8 @@ class Index extends Component {
                                 </div>
                                 <div className="col-md-12 hidden-xs margin-top-20"></div>
                                 <div className="col-md-4 col-xs-6 col-padding">
-                                    <Link to="/article/single/5c97043e47c14a2395c97b25c8257a67/7108da1a6abc49d29d6715755fe221d0">
+                                    <Link
+                                        to="/article/single/5c97043e47c14a2395c97b25c8257a67/7108da1a6abc49d29d6715755fe221d0">
                                         <div className="sight">
                                             <img className="sight-image-1" src="image/sight-4.jpg" alt=""/>
                                             <div className="sight-mask">魅力课堂</div>
@@ -398,7 +430,8 @@ class Index extends Component {
                                 <div
                                     className="col-xs-12 visible-xs-inline-block visible-sm-inline-block margin-top"></div>
                                 <div className="col-md-8 col-xs-12 col-padding">
-                                    <Link to="/article/single/210445be7fcc437eb639728c84530823/39ee2aac07b1447d8eaf22f34d0caca2">
+                                    <Link
+                                        to="/article/single/210445be7fcc437eb639728c84530823/39ee2aac07b1447d8eaf22f34d0caca2">
                                         <div className="sight">
                                             <img className="sight-image-2" src="image/sight-5.jpg" alt=""/>
                                             <div className="sight-mask">综合实践</div>

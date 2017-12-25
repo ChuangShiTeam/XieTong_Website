@@ -704,6 +704,49 @@ body {
     font-size: 24px;
 }
 
+#advertisement {
+    width: 270px;
+    height: auto;
+    z-index: 9999;
+    position: absolute;
+    cursor: pointer;
+    top: 440px;
+    left: 460px;
+    background: #663398;
+}
+
+#advertisement-close {
+    width: 20px;
+    height: 20px;
+    float: right;
+    background: url(../image/close.png) no-repeat;
+}
+
+.advertisement-content {
+    padding: 15px 30px 30px;
+    color: #fff;
+}
+
+.advertisement-content a {
+    color: #fff
+}
+
+.advertisement-content b {
+    display: block;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.advertisement-content p {
+    line-height: 170%;
+    font-size: 18px;
+}
+
+.advertisement-content p span {
+    color: #f00;
+}
+
 .navbar-default {
     background-color: #C26B60 !important;
     border-color: #AC5B50 !important;
