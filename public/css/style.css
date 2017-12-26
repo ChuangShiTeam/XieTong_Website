@@ -741,10 +741,11 @@ body {
 .advertisement-content p {
     line-height: 170%;
     font-size: 18px;
+    color: #f00;
 }
 
-.advertisement-content p span {
-    color: #f00;
+.advertisement-content-jump {
+    color: #ffffff;
 }
 
 .navbar-default {

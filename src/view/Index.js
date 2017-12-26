@@ -56,7 +56,7 @@ class Index extends Component {
     }
 
     componentWillUnmount() {
-        if (!util.isMobile()) {
+        if (!util.isPc()) {
             window.advertisement.Stop();
         }
     }
@@ -75,8 +75,10 @@ class Index extends Component {
                         <div id="advertisement" style={{display: this.state.display}}>
                             <div id="advertisement-close" onClick={this.handleCloseAdvertisement.bind(this)}></div>
                             <div className="advertisement-content">
-                                <a href="bmb.html"><b>公告</b>
-                                    <p>2015年小学一年级招生报名正在进行中！<span>点击进入</span></p></a>
+                                <Link to="/primary/entry"><b>公告</b>
+                                    <p>佛山协同国际学校小学一年级新生报名开始啦！</p>
+                                    <span className="advertisement-content-jump">点击进入</span>
+                                </Link>
                             </div>
                         </div>
                         :
@@ -269,17 +271,34 @@ class Index extends Component {
                                     return (
                                         article.article_category_id === '0cc726f2b92f43d1ba5cc5d0065efb09' ?
                                             <div key={article.article_id} className={"activity-item margin-top"}>
-                                                <Link to={"/article/detail/" + article.article_id}>
-                                                    <div className="activity-item-date">
-                                                        <div
-                                                            className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
-                                                        <div
-                                                            className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
-                                                    </div>
-                                                    <div className="activity-item-title">{article.article_name}</div>
-                                                    <div
-                                                        className="activity-item-description">{article.article_summary}</div>
-                                                </Link>
+                                                {
+                                                    article.article_is_outer_link ?
+                                                        <a href={article.article_outer_link} target="_blank">
+                                                            <div className="activity-item-date">
+                                                                <div
+                                                                    className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                                <div
+                                                                    className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                            </div>
+                                                            <div
+                                                                className="activity-item-title">{article.article_name}</div>
+                                                            <div
+                                                                className="activity-item-description">{article.article_summary}</div>
+                                                        </a>
+                                                        :
+                                                        <Link to={"/article/detail/" + article.article_id}>
+                                                            <div className="activity-item-date">
+                                                                <div
+                                                                    className="activity-item-date-day">{article.system_create_time.substring(8, 10)}</div>
+                                                                <div
+                                                                    className="activity-item-date-year-month">{article.system_create_time.substring(0, 7)}</div>
+                                                            </div>
+                                                            <div
+                                                                className="activity-item-title">{article.article_name}</div>
+                                                            <div
+                                                                className="activity-item-description">{article.article_summary}</div>
+                                                        </Link>
+                                                }
                                             </div>
                                             :
                                             ''
