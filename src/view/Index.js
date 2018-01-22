@@ -56,7 +56,7 @@ class Index extends Component {
     }
 
     componentWillUnmount() {
-        if (!util.isPc()) {
+        if (util.isPc()) {
             window.advertisement.Stop();
         }
     }
