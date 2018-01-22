@@ -189,6 +189,7 @@ body {
     text-align: center;
     line-height: 32px;
     background-color: #C26B60;
+    cursor: pointer;
 }
 
 .header .menu {

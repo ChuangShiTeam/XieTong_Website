@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {Navbar, Nav, NavDropdown, MenuItem, Carousel} from 'react-bootstrap';
+import {createForm} from 'rc-form';
+import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert, Navbar, Nav, NavDropdown, MenuItem, Carousel} from 'react-bootstrap';
 import {AutoAffix} from 'react-overlays';
 
 import constant from '../common/constant';
@@ -19,6 +20,11 @@ class Header extends Component {
     componentDidMount() {
         if (this.props.website_menu.list.length === 0) {
             this.handleLoad();
+        }
+        if (this.props.keyword) {
+            this.props.form.setFieldsValue({
+                keyword: this.props.keyword
+            });
         }
     }
 
@@ -43,7 +49,7 @@ class Header extends Component {
                         website_menu_list[i].children[j].website_menu_parent_id = website_menu_list[i].website_menu_id;
                     }
                 }
-
+                
                 this.props.dispatch({
                     type: 'website_menu',
                     data: {
@@ -86,7 +92,31 @@ class Header extends Component {
         }
     }
 
+    handleClickSearch () {
+        this.props.form.validateFields((errors, values) => {
+            if (!!errors) {
+                var message = '';
+                for (var error in errors) {
+                    message += "<p>";
+                    message += errors[error].errors[0].message;
+                    message += "</p>";
+                }
+                this.setState({
+                    result_type: 'danger',
+                    result_message: message
+                });
+
+                return;
+            }
+            this.props.history.push({
+                pathname: '/search/' + values.keyword,
+                query: {}
+            });
+        });
+    }
+
     render() {
+        const {getFieldProps, getFieldError, getFieldValue} = this.props.form;
         return (
             <div className="header">
                 <Navbar className="hidden-sm hidden-md hidden-lg mobile-header" fixedTop={true}>
@@ -135,16 +165,28 @@ class Header extends Component {
                             </Link>
                         </div>
                         <div className="pull-right hidden-xs">
-                            <Link to="/not/found">
                                 <div className="search">
-                                    <div className="search-input">
-
-                                    </div>
-                                    <div className="search-bottom">
-                                        全站搜索
-                                    </div>
+                                        <Form horizontal>
+                                            <FormGroup {...getFieldProps('keyword', {
+                                                rules: [{
+                                                    required: true,
+                                                    message: '搜索内容不能为空'
+                                                }],
+                                                initialValue: ''
+                                            })} validationState={getFieldError('keyword') ? 'error' : getFieldValue('keyword') === '' ? null : 'success'}>
+                                                <Col md={8}>
+                                                    <FormControl value={getFieldValue('keyword')} className="search-input"/>
+                                                    <FormControl.Feedback/>
+                                                    <span className="error-message">{getFieldError('keyword')}</span>
+                                                </Col>
+                                                <Col md={2}>
+                                                    <div className="search-bottom" onClick={this.handleClickSearch.bind(this)}>
+                                                        全站搜索
+                                                    </div>
+                                                </Col>
+                                            </FormGroup>
+                                        </Form>
                                 </div>
-                            </Link>
                         </div>
                     </div>
                 </div>
@@ -181,7 +223,9 @@ class Header extends Component {
                     this.props.is_show_banner ?
                         <Carousel className="banner hidden-xs" interval={5000} keyboard={false}>
                             {
-                                this.props.advertisement.list.map(function (advertisement) {
+                                this.props.advertisement.list.filter(function (advertisement){
+                                    return advertisement.advertisement_category_code === 'index_banner';
+                                }).map(function (advertisement) {
                                     return (
                                         <Carousel.Item key={advertisement.advertisement_id}>
                                             <Link to="">
@@ -203,13 +247,17 @@ class Header extends Component {
 Header.propTypes = {
     history: React.PropTypes.object.isRequired,
     website_menu_id: React.PropTypes.string.isRequired,
-    is_show_banner: React.PropTypes.bool
+    is_show_banner: React.PropTypes.bool,
+    keyword: React.PropTypes.string
 };
 
 Header.defaultProps = {
     website_menu_id: '',
-    is_show_banner: true
+    is_show_banner: true,
+    keyword: ''
 };
+
+Header = createForm({})(Header);
 
 export default connect((state) => {
     return {

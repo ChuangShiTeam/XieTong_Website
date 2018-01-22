@@ -2,7 +2,7 @@ const initialState = {
     list: []
 }
 
-function product(state = initialState, action) {
+function page(state = initialState, action) {
     switch (action.type) {
         case 'page':
             return Object.assign({}, state, action.data);
@@ -11,4 +11,4 @@ function product(state = initialState, action) {
     }
 }
 
-export default product;
+export default page;

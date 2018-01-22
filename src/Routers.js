@@ -43,6 +43,7 @@ import JuniorEntry from './view/junior/Entry';
 import JuniorLogin from './view/junior/Login';
 import JuniorEdit from './view/junior/Edit';
 import InternationalIndex from './view/international/Index';
+import Search from './view/Search';
 
 const store = createStore(
     combineReducers({
@@ -97,6 +98,7 @@ const Routers = () =>
                 <Route path="/junior/login" component={JuniorLogin}/>
                 <Route path="/junior/edit" component={JuniorEdit}/>
                 <Route path="/international/index" component={InternationalIndex}/>
+                <Route path="/search/:keyword" component={Search}/>
             </Route>
         </Router>
     </Provider>

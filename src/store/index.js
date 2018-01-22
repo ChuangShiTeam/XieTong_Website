@@ -1,6 +1,7 @@
 const initialState = {
-    article_list: []
-}
+    article_list: [],
+    float_advertisement_list: []
+};
 
 function product(state = initialState, action) {
     switch (action.type) {

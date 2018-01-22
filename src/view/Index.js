@@ -74,12 +74,20 @@ class Index extends Component {
                     util.isPc() ?
                         <div id="advertisement" style={{display: this.state.display}}>
                             <div id="advertisement-close" onClick={this.handleCloseAdvertisement.bind(this)}></div>
-                            <div className="advertisement-content">
-                                <Link to="/primary/entry"><b>公告</b>
-                                    <p>佛山协同国际学校小学一年级新生报名开始啦！</p>
-                                    <span className="advertisement-content-jump">点击进入</span>
-                                </Link>
-                            </div>
+                                {
+                                    this.props.advertisement.list.filter(function (advertisement){
+                                        return advertisement.advertisement_category_code === 'index_float' && advertisement.advertisement_is_float;
+                                    }).map(function (advertisement, index) {
+                                        return (
+                                                <div className="advertisement-content">
+                                                    <Link to={advertisement.advertisement_link}><b>公告</b>
+                                                        <p>{advertisement.advertisement_title}</p>
+                                                        <span className="advertisement-content-jump">点击进入</span>
+                                                    </Link>
+                                                </div>
+                                    )
+                                    }.bind(this))
+                                }
                         </div>
                         :
                         ''
@@ -469,6 +477,7 @@ class Index extends Component {
 
 export default connect((state) => {
     return {
-        index: state.index
+        index: state.index,
+        advertisement: state.advertisement
     }
 })(Index);

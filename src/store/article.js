@@ -2,7 +2,7 @@ const initialState = {
     list: []
 }
 
-function product(state = initialState, action) {
+function article(state = initialState, action) {
     switch (action.type) {
         case 'article':
             return Object.assign({}, state, action.data);
@@ -11,4 +11,4 @@ function product(state = initialState, action) {
     }
 }
 
-export default product;
+export default article;

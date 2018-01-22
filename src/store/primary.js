@@ -6,7 +6,7 @@ const initialState = {
     article_list_2: []
 };
 
-function product(state = initialState, action) {
+function primary(state = initialState, action) {
     switch (action.type) {
         case 'primary':
             return Object.assign({}, state, action.data);
@@ -16,4 +16,4 @@ function product(state = initialState, action) {
     }
 }
 
-export default product;
+export default primary;
