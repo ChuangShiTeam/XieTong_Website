@@ -3,7 +3,7 @@ const initialState = {
     float_advertisement_list: []
 };
 
-function product(state = initialState, action) {
+function index(state = initialState, action) {
     switch (action.type) {
         case 'index':
             return Object.assign({}, state, action.data);
@@ -13,4 +13,4 @@ function product(state = initialState, action) {
     }
 }
 
-export default product;
+export default index;

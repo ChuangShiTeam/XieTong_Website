@@ -74,20 +74,30 @@ class Index extends Component {
                     util.isPc() ?
                         <div id="advertisement" style={{display: this.state.display}}>
                             <div id="advertisement-close" onClick={this.handleCloseAdvertisement.bind(this)}></div>
-                                {
-                                    this.props.advertisement.list.filter(function (advertisement){
-                                        return advertisement.advertisement_category_code === 'index_float' && advertisement.advertisement_is_float;
-                                    }).map(function (advertisement, index) {
-                                        return (
-                                                <div className="advertisement-content">
-                                                    <Link to={advertisement.advertisement_link}><b>公告</b>
+                            {
+                                this.props.advertisement.list.filter(function (advertisement) {
+                                    return advertisement.advertisement_category_code === 'index_float' && advertisement.advertisement_is_float;
+                                }).map(function (advertisement, index) {
+                                    return (
+                                        <div className="advertisement-content">
+                                            {
+                                                advertisement.advertisement_link.indexOf('http') > -1 ?
+                                                    <a href={advertisement.advertisement_link} target="_blank">
+                                                        <b>公告</b>
+                                                        <p>{advertisement.advertisement_title}</p>
+                                                        <span className="advertisement-content-jump">点击进入</span>
+                                                    </a>
+                                                    :
+                                                    <Link to={advertisement.advertisement_link}>
+                                                        <b>公告</b>
                                                         <p>{advertisement.advertisement_title}</p>
                                                         <span className="advertisement-content-jump">点击进入</span>
                                                     </Link>
-                                                </div>
+                                            }
+                                        </div>
                                     )
-                                    }.bind(this))
-                                }
+                                }.bind(this))
+                            }
                         </div>
                         :
                         ''
