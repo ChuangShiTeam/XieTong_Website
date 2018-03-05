@@ -246,13 +246,17 @@ class Index extends Component {
                                         </div>
                                     </div>
                                 </Link>
-                                <Link to="">
+                                <a href="http://c.lelvw.com/">
                                     <div className="enter-item margin-top-20">
                                         <div className="enter-item-box">
-
+                                            <div className="enter-item-box">
+                                                <img className="enter-item-icon" src="../image/activity.png" alt=""/>
+                                                <div className="enter-item-text">面谈结果查询</div>
+                                                <img className="enter-item-arrow" src="../image/right.png" alt=""/>
+                                            </div>
                                         </div>
                                     </div>
-                                </Link>
+                                </a>
                                 <Link to="">
                                     <div className="enter-item margin-top-20">
                                         <div className="enter-item-box">
