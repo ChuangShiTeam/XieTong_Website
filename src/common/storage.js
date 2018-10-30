@@ -5,6 +5,7 @@ const token_key = 'token_' + constant.version;
 
 const primary_token_key = 'primary_token_' + constant.version;
 const junior_token_key = 'junior_token_' + constant.version;
+const transfer_token_key = 'transfer_token_' + constant.version;
 
 
 
@@ -75,6 +76,22 @@ function setJuniorToken(token) {
     localStorage.setItem(junior_token_key, token);
 }
 
+function getTransferToken() {
+    let token = localStorage.getItem(transfer_token_key);
+
+    if (token === null) {
+        return '';
+    } else {
+        return token;
+    }
+}
+
+function setTransferToken(token) {
+    localStorage.clear();
+
+    localStorage.setItem(transfer_token_key, token);
+}
+
 export default {
     getOpenId: getOpenId,
     setOpenId: setOpenId,
@@ -83,5 +100,7 @@ export default {
     getPrimaryToken: getPrimaryToken,
     setPrimaryToken: setPrimaryToken,
     getJuniorToken: getJuniorToken,
-    setJuniorToken: setJuniorToken
+    setJuniorToken: setJuniorToken,
+    getTransferToken: getTransferToken,
+    setTransferToken: setTransferToken
 };
