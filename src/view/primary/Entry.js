@@ -22,7 +22,7 @@ class Entry extends Component {
     }
 
     componentDidMount() {
-        util.setTitle('佛山协同(国际)学校2019年一年级新生报名');
+        util.setTitle('佛山协同(国际)学校2018年一年级新生报名');
 
         util.scrollToTop(0);
     }

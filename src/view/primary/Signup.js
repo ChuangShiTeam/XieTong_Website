@@ -26,7 +26,7 @@ class Signup extends Component {
     }
 
     componentDidMount() {
-        util.setTitle('佛山协同(国际)学校2019年一年级新生报名');
+        util.setTitle('佛山协同(国际)学校2018年一年级新生报名');
 
         util.scrollToTop(0);
     }
@@ -115,7 +115,7 @@ class Signup extends Component {
                                     <Col componentClass={ControlLabel} md={1}>
                                     </Col>
                                     <Col md={9} style={{textAlign: 'center'}}>
-                                        <span style={{fontSize: '24px', fontWeight: '1000'}}>佛山协同（国际）学校2019年小学一年级新生报名</span>
+                                        <span style={{fontSize: '24px', fontWeight: '1000'}}>佛山协同（国际）学校2018年小学一年级新生报名</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('student_name', {
