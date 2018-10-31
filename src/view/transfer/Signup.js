@@ -102,12 +102,12 @@ class Signup extends Component {
                     <div className="title margin-top-20">
                         <div className="title-icon"></div>
                         <div className="title-breadcrumb">
-                            <Link to="/index">首页</Link> > <Link to="/page/e8417cd60aeb474aad40d4ecc8d52b22">招生招聘</Link> >  <Link to="/transfer/entry">初中报名</Link> > 初中报名信息填写
+                            <Link to="/index">首页</Link> > <Link to="/page/e8417cd60aeb474aad40d4ecc8d52b22">招生招聘</Link> >  <Link to="/transfer/entry">插班生报名</Link> > 插班生报名信息填写
                         </div>
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
-                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="7d32e0491eed4fa58a2e05cf2079303c"/>
+                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="92913aee2a8f4da0b36c0ae33d58677f"/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
@@ -149,19 +149,16 @@ class Signup extends Component {
                                             <Radio name="read_grade" value="五年级" checked={getFieldValue('read_grade') === '五年级'}>
                                                 五年级
                                             </Radio>
-                                            <FormControl.Feedback/>
                                         </Col>
                                         <Col md={3}>
                                             <Radio name="read_grade" value="六年级" checked={getFieldValue('read_grade') === '六年级'}>
                                                 六年级
                                             </Radio>
-                                            <FormControl.Feedback/>
                                         </Col>
                                         <Col md={3}>
                                             <Radio name="read_grade" value="八年级" checked={getFieldValue('read_grade') === '八年级'}>
                                                 八年级
                                             </Radio>
-                                            <FormControl.Feedback/>
                                         </Col>
                                         <Col md={3}>
                                             <Radio name="read_grade" value="九年级" checked={getFieldValue('read_grade') === '九年级'}>

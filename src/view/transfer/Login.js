@@ -27,6 +27,7 @@ class Login extends Component {
 
 	componentDidMount() {
 		util.scrollToTop(0);
+		console.log('111', storage.getTransferToken());
 		if (storage.getTransferToken()) {
 			this.props.history.push({
 				pathname: "/transfer/check",
@@ -111,7 +112,7 @@ class Login extends Component {
 					</div>
 					<div className="row margin-top-20">
 						<div className="subnav col-md-3 hidden-xs">
-							<PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="7d32e0491eed4fa58a2e05cf2079303c"/>
+							<PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="92913aee2a8f4da0b36c0ae33d58677f"/>
 							<DepartmentSubNav/>
 						</div>
 						<div className="col-md-9">

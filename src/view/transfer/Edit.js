@@ -162,7 +162,7 @@ class Edit extends Component {
 					</div>
 					<div className="row margin-top-20">
 						<div className="subnav col-md-3 hidden-xs">
-							<PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="7d32e0491eed4fa58a2e05cf2079303c"/>
+							<PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="92913aee2a8f4da0b36c0ae33d58677f"/>
 							<DepartmentSubNav/>
 						</div>
 						<div className="col-md-9">
@@ -204,19 +204,16 @@ class Edit extends Component {
                                             <Radio name="read_grade" value="五年级" checked={getFieldValue('read_grade') === '五年级'}>
                                                 五年级
                                             </Radio>
-                                            <FormControl.Feedback/>
                                         </Col>
                                         <Col md={3}>
                                             <Radio name="read_grade" value="六年级" checked={getFieldValue('read_grade') === '六年级'}>
                                                 六年级
                                             </Radio>
-                                            <FormControl.Feedback/>
                                         </Col>
                                         <Col md={3}>
                                             <Radio name="read_grade" value="八年级" checked={getFieldValue('read_grade') === '八年级'}>
                                                 八年级
                                             </Radio>
-                                            <FormControl.Feedback/>
                                         </Col>
                                         <Col md={3}>
                                             <Radio name="read_grade" value="九年级" checked={getFieldValue('read_grade') === '九年级'}>

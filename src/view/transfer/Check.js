@@ -29,7 +29,7 @@ class Check extends Component {
 
     componentDidMount() {
         util.scrollToTop(0);
-        if (storage.getJuniorToken()) {
+        if (storage.getTransferToken()) {
             this.handleFind();
         }
     }
@@ -58,7 +58,7 @@ class Check extends Component {
         http.request({
             url: '/desktop/xietong/signup/transfer/find',
             data: {},
-            token: storage.getJuniorToken(),
+            token: storage.getTransferToken(),
             success: function (data) {
                 this.setState({
                     tip: data.tip,
@@ -93,7 +93,7 @@ class Check extends Component {
                     </div>
                     <div className="row margin-top-20">
                         <div className="subnav col-md-3 hidden-xs">
-                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="7d32e0491eed4fa58a2e05cf2079303c"/>
+                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="92913aee2a8f4da0b36c0ae33d58677f"/>
                             <DepartmentSubNav/>
                         </div>
                         <div className="col-md-9">
@@ -112,54 +112,40 @@ class Check extends Component {
                                             <table width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
                                                 <tr>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                                        报名年级
+                                                    </td>
+                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                                        {this.state.signup_transfer.read_grade}
+                                                    </td>
+                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                         姓名
                                                     </td>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                         {this.state.signup_transfer.student_name}
                                                     </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        性别
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_transfer.student_sex}
-                                                    </td>
                                                     <td style={{width: '20%', padding: '10px', textAlign: 'center'}}>
 
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                                        性别
+                                                    </td>
+                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+                                                        {this.state.signup_transfer.student_sex}
+                                                    </td>
+                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                         出生年月日
                                                     </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_transfer.student_birthday}
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        原就读小学
-                                                    </td>
                                                     <td style={{padding: '10px', borderRight: 'solid 1px black',borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_transfer.primary_school}
+                                                        {this.state.signup_transfer.student_birthday}
                                                     </td>
                                                     <td style={{width: '20%', padding: '10px', textAlign: 'center'}}>
                                                         粘贴照片
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        小学班级
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_transfer.primary_school_class}
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        担任职务
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_transfer.job}
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', textAlign: 'center'}}>
+                                                <tr dangerouslySetInnerHTML={{__html: `<td style="padding: 10px; border-right: solid 1px black; text-align: center">原就读小学</td><td colspan="3" style="padding: 10px; border-right: solid 1px black; text-align: center">${this.state.signup_transfer.primary_school}</td><td style="width: 20%; padding: 10px; text-align: center"></td>`}}>
 
-                                                    </td>
                                                 </tr>
                                             </table>
                                             <table width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>

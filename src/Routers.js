@@ -42,6 +42,12 @@ import JuniorCheck from './view/junior/Check';
 import JuniorEntry from './view/junior/Entry';
 import JuniorLogin from './view/junior/Login';
 import JuniorEdit from './view/junior/Edit';
+
+import TransferSignup from './view/transfer/Signup';
+import TransferCheck from './view/transfer/Check';
+import TransferEntry from './view/transfer/Entry';
+import TransferLogin from './view/transfer/Login';
+import TransferEdit from './view/transfer/Edit';
 import InternationalIndex from './view/international/Index';
 import Search from './view/Search';
 
@@ -97,6 +103,11 @@ const Routers = () =>
                 <Route path="/junior/entry" component={JuniorEntry}/>
                 <Route path="/junior/login" component={JuniorLogin}/>
                 <Route path="/junior/edit" component={JuniorEdit}/>
+                <Route path="/transfer/signup" component={TransferSignup}/>
+                <Route path="/transfer/check" component={TransferCheck}/>
+                <Route path="/transfer/entry" component={TransferEntry}/>
+                <Route path="/transfer/login" component={TransferLogin}/>
+                <Route path="/transfer/edit" component={TransferEdit}/>
                 <Route path="/international/index" component={InternationalIndex}/>
                 <Route path="/search/:keyword" component={Search}/>
             </Route>
