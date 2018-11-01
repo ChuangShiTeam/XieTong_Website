@@ -242,15 +242,6 @@ class Check extends Component {
                                             </table>
                                         </Col>
                                     </Row>
-                                    <div style={{marginBottom: '25px'}}></div>
-                                    <Row>
-                                        <Col md={24}>
-                                            <span>温馨提示：</span><br/>
-                                            1.面谈时间：2018年6月29日至6月30日，按规定的时间（短信通知）到校参加面谈，请提前20分钟领取面谈证。<br/>
-                                            2.面谈内容：人文素养，数理思维，英语交流，共50分钟。<br/>
-                                            3.面谈资料：报名表、学生户口本复印件、3张一寸近照（其中1张贴报名表右上角）。<br/>
-                                        </Col>
-                                    </Row>
                                 </div>
                             </Print>
                             <div style={{marginBottom: '50px'}}></div>
