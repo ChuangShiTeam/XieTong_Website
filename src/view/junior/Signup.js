@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createForm} from 'rc-form';
 import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} from 'react-bootstrap';
+import moment from 'moment';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -26,7 +27,7 @@ class Signup extends Component {
     }
 
     componentDidMount() {
-        util.setTitle('佛山协同(国际)学校2018年小升初自荐报名');
+        util.setTitle(`佛山协同(国际)学校${moment().format('YYYY')}年小升初自荐报名`);
 
         util.scrollToTop(0);
     }
@@ -117,7 +118,7 @@ class Signup extends Component {
                                     <Col componentClass={ControlLabel} md={1}>
                                     </Col>
                                     <Col md={9} style={{textAlign: 'center'}}>
-                                        <span style={{fontSize: '24px', fontWeight: '1000'}}>佛山协同（国际）学校2018年初一新生自荐报名</span>
+                                        <span style={{fontSize: '24px', fontWeight: '1000'}}>佛山协同（国际）学校{moment().format('YYYY')}年初一新生自荐报名</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('student_name', {
@@ -182,7 +183,7 @@ class Signup extends Component {
                                 <FormGroup {...getFieldProps('primary_school', {
                                     rules: [{
                                         required: true,
-                                        message: '原就读小学或中学不能为空'
+                                        message: '原就读小学不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('primary_school') ? 'error' : getFieldValue('primary_school') === '' ? null : 'success'}>
@@ -198,7 +199,7 @@ class Signup extends Component {
                                 <FormGroup {...getFieldProps('primary_school_class', {
                                     rules: [{
                                         required: true,
-                                        message: '班级'
+                                        message: '班级不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('primary_school_class') ? 'error' : getFieldValue('primary_school_class') === '' ? null : 'success'}>
@@ -214,7 +215,7 @@ class Signup extends Component {
                                 <FormGroup {...getFieldProps('job', {
                                     rules: [{
                                         required: true,
-                                        message: '担任职务'
+                                        message: '担任职务不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('job') ? 'error' : getFieldValue('job') === '' ? null : 'success'}>
@@ -222,7 +223,7 @@ class Signup extends Component {
                                         担任职务
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输担任职务" value={getFieldValue('job')}/>
+                                        <FormControl placeholder="请输入担任职务" value={getFieldValue('job')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('job')}</span>
                                     </Col>
@@ -231,12 +232,12 @@ class Signup extends Component {
                                 <FormGroup {...getFieldProps('id_type', {
                                     rules: [{
                                         required: true,
-                                        message: '证件类型'
+                                        message: '学生证件类型不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('id_type') ? 'error' : getFieldValue('id_type') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
-                                        证件类型
+                                        学生证件类型
                                     </Col>
                                     <Col md={8} className="col-no-padding">
                                         <Col md={3}>
@@ -269,15 +270,15 @@ class Signup extends Component {
                                 <FormGroup {...getFieldProps('id_no', {
                                     rules: [{
                                         required: true,
-                                        message: '证件号码'
+                                        message: '学生证件号码不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('id_no') ? 'error' : getFieldValue('id_no') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
-                                        证件号码
+                                        学生证件号码
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输证件号码" value={getFieldValue('id_no')}/>
+                                        <FormControl placeholder="请输入学生证件号码" value={getFieldValue('id_no')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('id_no')}</span>
                                     </Col>
@@ -285,7 +286,7 @@ class Signup extends Component {
                                 <FormGroup {...getFieldProps('permanent_address', {
                                     rules: [{
                                         required: true,
-                                        message: '户籍地址'
+                                        message: '户籍地址不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('permanent_address') ? 'error' : getFieldValue('permanent_address') === '' ? null : 'success'}>
@@ -293,7 +294,7 @@ class Signup extends Component {
                                         户籍地址
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输户籍地址" value={getFieldValue('permanent_address')}/>
+                                        <FormControl placeholder="请输入户籍地址" value={getFieldValue('permanent_address')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('permanent_address')}</span>
                                     </Col>
@@ -301,7 +302,7 @@ class Signup extends Component {
                                 <FormGroup {...getFieldProps('live_addresss', {
                                     rules: [{
                                         required: true,
-                                        message: '居住地址'
+                                        message: '居住地址不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('live_addresss') ? 'error' : getFieldValue('live_addresss') === '' ? null : 'success'}>
@@ -309,7 +310,7 @@ class Signup extends Component {
                                         居住地址
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输居住地址" value={getFieldValue('live_addresss')}/>
+                                        <FormControl placeholder="请输入居住地址" value={getFieldValue('live_addresss')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('live_addresss')}</span>
                                     </Col>
@@ -321,7 +322,7 @@ class Signup extends Component {
                                         父亲姓名
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输父亲姓名" value={getFieldValue('father_name')}/>
+                                        <FormControl placeholder="请输入父亲姓名" value={getFieldValue('father_name')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_name')}</span>
                                     </Col>
@@ -333,7 +334,7 @@ class Signup extends Component {
                                         父亲工作单位
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输父亲工作单位" value={getFieldValue('father_work')}/>
+                                        <FormControl placeholder="请输入父亲工作单位" value={getFieldValue('father_work')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('father_work')}</span>
                                     </Col>
@@ -357,7 +358,7 @@ class Signup extends Component {
                                         母亲姓名
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输母亲姓名" value={getFieldValue('mother_name')}/>
+                                        <FormControl placeholder="请输入母亲姓名" value={getFieldValue('mother_name')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_name')}</span>
                                     </Col>
@@ -369,7 +370,7 @@ class Signup extends Component {
                                         母亲工作单位
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输母亲工作单位" value={getFieldValue('mother_work')}/>
+                                        <FormControl placeholder="请输入母亲工作单位" value={getFieldValue('mother_work')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('mother_work')}</span>
                                     </Col>

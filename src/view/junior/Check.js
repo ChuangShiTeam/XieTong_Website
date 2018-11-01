@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {Row, Col, Button, Alert} from 'react-bootstrap';
 import Print from 'rc-print';
+import moment from 'moment';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -99,16 +100,32 @@ class Check extends Component {
                         <div className="col-md-9">
                             <Print ref="print" insertHead={false}>
                                 <div>
-                                    <div style={{marginBottom: '10px'}}></div>
+                                    <div style={{marginBottom: '30px'}}></div>
                                     <Row>
                                         <Col md={24} style={{textAlign: 'center'}}>
-                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校初一新生自荐报名表</span>
+                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校{moment().format('YYYY')}年初一新生自荐报名表</span>
                                         </Col>
                                     </Row>
                                     <div style={{marginBottom: '25px'}}></div>
                                     <Row>
                                         <Col md={24}>
-                                            报名序号：{this.state.signup_junior.signup_number}
+                                            <table width="100%" style={{width: '100%'}}>
+                                                <tr>
+                                                    <td style={{width: '20%', textAlign: 'left'}}>
+                                                        报名序号: {this.state.signup_pupil.signup_number}
+                                                    </td>
+                                                    <td style={{width: '20%'}}>
+
+                                                    </td>
+                                                    <td style={{width: '20%'}}>
+                                                    </td>
+                                                    <td style={{width: '20%'}}>
+                                                    </td>
+                                                    <td style={{width: '20%', textAlign: 'left'}}>
+                                                        填报日期：{moment(this.state.signup_pupil.system_create_time).format('YYYY-MM-DD')}
+                                                    </td>
+                                                </tr>
+                                            </table>
                                             <table width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
                                                 <tr>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
@@ -171,7 +188,7 @@ class Check extends Component {
                                                         {this.state.signup_junior.id_type}
                                                     </td>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        证件号码
+                                                        学生证件号码
                                                     </td>
                                                     <td style={{width: '40%', padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                         {this.state.signup_junior.id_no}
