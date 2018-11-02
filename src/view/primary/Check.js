@@ -111,17 +111,10 @@ class Check extends Component {
                                         <Col md={24}>
                                             <table width="100%" style={{width: '100%'}}>
                                                 <tr>
-                                                    <td style={{width: '20%', textAlign: 'left'}}>
+                                                    <td style={{width: '65%', textAlign: 'left'}}>
                                                         报名序号: {this.state.signup_pupil.signup_number}
                                                     </td>
-                                                    <td style={{width: '20%'}}>
-
-                                                    </td>
-                                                    <td style={{width: '20%'}}>
-                                                    </td>
-                                                    <td style={{width: '20%'}}>
-                                                    </td>
-                                                    <td style={{width: '20%', textAlign: 'left'}}>
+                                                    <td style={{width: '35%', textAlign: 'left'}}>
                                                         填报日期：{moment(this.state.signup_pupil.system_create_time).format('YYYY-MM-DD')}
                                                     </td>
                                                 </tr>

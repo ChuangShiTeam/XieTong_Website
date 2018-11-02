@@ -100,28 +100,20 @@ class Check extends Component {
                         <div className="col-md-9">
                             <Print ref="print" insertHead={false}>
                                 <div>
-                                    <div style={{marginBottom: '30px'}}></div>
+                                    <div style={{marginBottom: '80px'}}></div>
                                     <Row>
                                         <Col md={24} style={{textAlign: 'center'}}>
                                             <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校{moment().format('YYYY')}年插班生报名表</span>
                                         </Col>
                                     </Row>
-                                    <div style={{marginBottom: '25px'}}></div>
-                                    <Row>
+                                    <Row style={{paddingTop: '25px', paddingLeft: '50px', paddingRight: '50px'}}>
                                         <Col md={24}>
                                             <table width="100%" style={{width: '100%'}}>
                                                 <tr>
-                                                    <td style={{width: '20%', textAlign: 'left'}}>
+                                                    <td style={{width: '65%', textAlign: 'left'}}>
                                                         报名序号: {this.state.signup_transfer.signup_number}
                                                     </td>
-                                                    <td style={{width: '20%'}}>
-
-                                                    </td>
-                                                    <td style={{width: '20%'}}>
-                                                    </td>
-                                                    <td style={{width: '20%'}}>
-                                                    </td>
-                                                    <td style={{width: '20%', textAlign: 'left'}}>
+                                                    <td style={{width: '35%', textAlign: 'left'}}>
                                                         填报日期：{moment(this.state.signup_transfer.system_create_time).format('YYYY-MM-DD')}
                                                     </td>
                                                 </tr>
