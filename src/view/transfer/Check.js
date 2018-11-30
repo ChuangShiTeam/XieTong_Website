@@ -103,7 +103,7 @@ class Check extends Component {
                                     <div style={{marginBottom: '80px'}}></div>
                                     <Row>
                                         <Col md={24} style={{textAlign: 'center'}}>
-                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校{moment().format('YYYY')}年插班生报名表</span>
+                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校插班生报名表</span>
                                         </Col>
                                     </Row>
                                     <Row style={{paddingTop: '25px', paddingLeft: '50px', paddingRight: '50px'}}>
