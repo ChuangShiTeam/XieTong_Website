@@ -185,12 +185,12 @@ class Signup extends Component {
                                 <FormGroup {...getFieldProps('student_name', {
                                     rules: [{
                                         required: true,
-                                        message: '姓名不能为空'
+                                        message: '学生姓名不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('student_name') ? 'error' : getFieldValue('student_name') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
-                                        姓名
+										学生姓名
                                     </Col>
                                     <Col md={8}>
                                         <FormControl placeholder="请输入姓名" value={getFieldValue('student_name')}/>
