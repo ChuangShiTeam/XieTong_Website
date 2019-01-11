@@ -119,7 +119,7 @@ class Check extends Component {
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <table width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
+                                            <table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
                                                 <tr>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                         姓名
@@ -172,7 +172,7 @@ class Check extends Component {
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <table width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
+                                            <table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
                                                 <tr>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                         证件类型
@@ -202,7 +202,7 @@ class Check extends Component {
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <table width="100%" style={{width: '100%', border: 'solid 1px black'}}>
+                                            <table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{width: '100%', border: 'solid 1px black'}}>
                                                 <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: center">家庭主要成员</td>`}}></tr>
                                                 <tr>
                                                     <td style={{width: '25%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>

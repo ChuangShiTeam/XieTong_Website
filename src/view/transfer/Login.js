@@ -75,7 +75,7 @@ class Login extends Component {
 						result_type: 'success',
 						result_message: '登录成功'
 					});
-					storage.setJuniorToken(data.token);
+					storage.setTransferToken(data.token);
 					this.props.history.push({
 						pathname: "/transfer/check",
 						query: {}
