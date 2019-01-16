@@ -252,8 +252,7 @@ class Check extends Component {
                                             </table>
                                         </Col>
                                     </Row>
-                                    <div style={{marginBottom: '25px'}}></div>
-                                    <Row>
+									<Row style={{fontSize: '12px'}}>
                                         <Col md={24}>
 											温馨提示：<br/>
 											1.面谈时间：按规定的时间到校参加面谈。<br/>

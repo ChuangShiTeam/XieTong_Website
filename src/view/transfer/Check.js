@@ -252,7 +252,7 @@ class Check extends Component {
                                             </table>
                                         </Col>
                                     </Row>
-									<Row style={{paddingTop: '0px', paddingLeft: '50px', paddingRight: '50px'}}>
+									<Row style={{paddingTop: '0px', paddingLeft: '50px', paddingRight: '50px', fontSize: '12px'}}>
 										温馨提示：<br/>
 										1.面谈测试时间：2019年1月19日周六上午8:30开始，提前20分钟签到，自备文具。<br/>
 										2.测试内容：<br/>
