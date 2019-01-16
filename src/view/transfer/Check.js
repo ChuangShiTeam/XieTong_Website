@@ -101,13 +101,13 @@ class Check extends Component {
                         <div className="col-md-9">
                             <Print ref="print" insertHead={false}>
                                 <div>
-                                    <div style={{marginBottom: '80px'}}></div>
+                                    <div style={{marginBottom: '0px'}}></div>
                                     <Row>
                                         <Col md={24} style={{textAlign: 'center'}}>
                                             <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校插班生报名表</span>
                                         </Col>
                                     </Row>
-                                    <Row style={{paddingTop: '25px', paddingLeft: '50px', paddingRight: '50px'}}>
+                                    <Row style={{paddingTop: '5px', paddingLeft: '50px', paddingRight: '50px'}}>
                                         <Col md={24}>
                                             <table width="100%" style={{width: '100%'}}>
                                                 <tr>
@@ -251,6 +251,20 @@ class Check extends Component {
                                                 <tr dangerouslySetInnerHTML={{__html: `<td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center">报名日期</td><td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center"></td><td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center">报名状态</td><td colspan='1' style="padding: 10px; text-align: left">已报名</td>`}}></tr>
                                             </table>
                                         </Col>
+                                    </Row>
+									<Row style={{paddingTop: '0px', paddingLeft: '50px', paddingRight: '50px'}}>
+										温馨提示：<br/>
+										1.面谈测试时间：2019年1月19日周六上午8:30开始，提前20分钟签到，自备文具。<br/>
+										2.测试内容：<br/>
+										1）报读小学插班生：语文，数学，三至六年级增加英语；<br/>
+										2）报读初中插班生：数学，英语，初二和初三增加物理。<br/>
+										3.携带资料：<br/>
+										1）报名表，请自行网上打印，贴照片；<br/>
+										2）户口本学生页复印件1张（港澳台籍身份证复印件，外籍护照复印件）；<br/>
+										3）3张一寸证件照（不限底色）。<br/>
+										4.请家长车辆在东鄱南路和轻工三路右侧车道斜停放。<br/>
+										5.联系我们：0757-82596128、18188719581。<br/>
+										6.打印报名表说明：请使用电脑端的浏览器进行打印。打印路径：登录我校官方网站www.fcis.net.cn点击“招生招聘”-“插班生报名”-报名查询-输入证件号码（身份证）、密码-打印报名表
                                     </Row>
                                 </div>
                             </Print>
