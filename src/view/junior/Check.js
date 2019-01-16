@@ -122,7 +122,7 @@ class Check extends Component {
                                             <table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
                                                 <tr>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        姓名
+														学生姓名
                                                     </td>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                         {this.state.signup_junior.student_name}

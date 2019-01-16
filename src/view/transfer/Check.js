@@ -104,10 +104,10 @@ class Check extends Component {
                                     <div style={{marginBottom: '0px'}}></div>
                                     <Row>
                                         <Col md={24} style={{textAlign: 'center'}}>
-                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校插班生报名表</span>
+                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校2019年春季插班生报名表</span>
                                         </Col>
                                     </Row>
-                                    <Row style={{paddingTop: '5px', paddingLeft: '50px', paddingRight: '50px'}}>
+                                    <Row style={{paddingTop: '0px', paddingLeft: '50px', paddingRight: '50px'}}>
                                         <Col md={24}>
                                             <table width="100%" style={{width: '100%'}}>
                                                 <tr>
@@ -122,7 +122,7 @@ class Check extends Component {
                                             <table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
                                                 <tr>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        姓名
+														学生姓名
                                                     </td>
                                                     <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                         {this.state.signup_transfer.student_name}
