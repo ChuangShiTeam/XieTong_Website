@@ -145,7 +145,7 @@ class Check extends Component {
                                                         {this.state.signup_pupil.student_birthday}
                                                     </td>
                                                     <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        原就读小学
+														原就读幼儿园
                                                     </td>
                                                     <td style={{padding: '10px', borderRight: 'solid 1px black',borderBottom: 'solid 1px black', textAlign: 'center'}}>
                                                         {this.state.signup_pupil.kindergarten}
