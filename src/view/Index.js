@@ -106,7 +106,7 @@ class Index extends Component {
                 <div className="content-background-1">
                     <div className="container">
                         <div className="row margin-top-20 margin-bottom-20">
-                            <div className="col-md-4 col-xs-4 col-padding">
+                            <div className="col-md-6 col-xs-6 col-padding">
                                 <div className="department">
                                     <Link to="/primary/index">
                                         <img src="image/department0.jpg" alt=""/>
@@ -114,7 +114,7 @@ class Index extends Component {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="col-md-4 col-xs-4 col-padding">
+                            <div className="col-md-6 col-xs-6 col-padding">
                                 <div className="department">
                                     <Link to="/junior/index">
                                         <img src="image/department1.jpg" alt=""/>
@@ -122,12 +122,12 @@ class Index extends Component {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="col-md-4 col-xs-4 col-padding">
-                                <div className="department">
-                                    <img src="image/department2.jpg" alt=""/>
-                                    <div className="department-mask">国际部</div>
-                                </div>
-                            </div>
+                            {/*<div className="col-md-4 col-xs-4 col-padding">*/}
+                                {/*<div className="department">*/}
+                                    {/*<img src="image/department2.jpg" alt=""/>*/}
+                                    {/*<div className="department-mask">国际部</div>*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                 </div>

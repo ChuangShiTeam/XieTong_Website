@@ -42,12 +42,12 @@ class DepartmentSubNav extends Component {
                     </Link>
                 </div>
                 </div>
-                <div className="department margin-top col-xs-4 col-md-12 col-no-padding">
-                    <div className="department">
-                        <img src="/image/department2.jpg" alt=""/>
-                        <div className="department-mask">国际部</div>
-                    </div>
-                </div>
+                {/*<div className="department margin-top col-xs-4 col-md-12 col-no-padding">*/}
+                    {/*<div className="department">*/}
+                        {/*<img src="/image/department2.jpg" alt=""/>*/}
+                        {/*<div className="department-mask">国际部</div>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
             </div>
         );
     }
