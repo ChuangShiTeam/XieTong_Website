@@ -15,245 +15,511 @@ import util from '../../common/util';
 import storage from '../../common/storage';
 
 class Check extends Component {
-    constructor(props) {
-        super(props);
+	constructor (props) {
+		super(props);
 
-        this.state = {
-            is_load: false,
-            result_type: '',
-            result_message: '',
-            menu_index: 1,
-            signup_pupil: {},
-            tip: ''
-        }
-    }
+		this.state = {
+			is_load: false,
+			result_type: '',
+			result_message: '',
+			menu_index: 1,
+			signup_pupil: {},
+			tip: '',
+			schedule_date: '',
+			schedule_assigned_scene: -1
+		}
+	}
 
-    componentDidMount() {
-        util.scrollToTop(0);
-        if (storage.getPrimaryToken()) {
-            this.handleFind();
-        }
-    }
+	componentDidMount () {
+		util.scrollToTop(0);
+		if (storage.getPrimaryToken()) {
+			this.handleFind();
+		}
+	}
 
-    componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps (nextProps) {
 
-    }
+	}
 
-    componentWillUnmount() {
+	componentWillUnmount () {
 
-    }
+	}
 
-    handleEdit() {
-        this.props.history.push({
-            pathname: "/primary/edit",
-            query: {}
-        });
-    }
+	handleEdit () {
+		this.props.history.push({
+			pathname: "/primary/edit",
+			query: {}
+		});
+	}
 
-    handleFind() {
-        this.setState({
-            is_load: true,
-            result_type: ""
-        });
+	handleLoad (signup_id) {
+		http.request({
+			url: '/desktop/xietong/schedule/assigned/find',
+			data: {
+				schedule_assigned_type: 'pupil',
+				signup_id: signup_id
+			},
+			token: storage.getPrimaryToken(),
+			success: function (data) {
+				if (data != null) {
+					this.setState({
+						schedule_date: data.schedule_date,
+						schedule_assigned_scene: data.schedule_assigned_scene
+					});
+				}
+			}.bind(this),
+			error: function (data) {
 
-        http.request({
-            url: '/desktop/xietong/signup/pupil/find',
-            data: {},
-            token: storage.getPrimaryToken(),
-            success: function (data) {
-                this.setState({
-                    tip: data.tip,
-                    signup_pupil: data.signup_pupil
-                });
-            }.bind(this),
-            error: function (data) {
-                this.setState({
-                    result_type: 'danger',
-                    result_message: data.message,
-                    is_update: false
-                });
-            }.bind(this),
-            complete: function () {
-                this.setState({
-                    is_load: false
-                })
-            }.bind(this)
-        })
-    }
+			}.bind(this),
+			complete: function () {
 
-    render() {
-        return (
-            <div>
-                <Header history={this.props.history} website_menu_id=""/>
-                <div className="content container">
-                    <div className="title margin-top-20">
-                        <div className="title-icon"></div>
-                        <div className="title-breadcrumb">
-                            <Link to="/index">首页</Link>  > <Link to="/page/e8417cd60aeb474aad40d4ecc8d52b22">招生招聘</Link> > <Link to="/primary/entry">小学报名</Link> > 小学报名结果查询
-                        </div>
-                    </div>
-                    <div className="row margin-top-20">
-                        <div className="subnav col-md-3 hidden-xs">
-                            <PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d" page_id="5b68b36ca31c49839f38aacf6ac65450"/>
-                            <DepartmentSubNav/>
-                        </div>
-                        <div className="col-md-9">
-                            <Print ref="print" insertHead={false}>
-                                <div>
-                                    <div style={{marginBottom: '30px'}}></div>
-                                    <Row>
-                                        <Col md={24} style={{textAlign: 'center'}}>
-                                            <span style={{fontSize: '30px', fontWeight: '1000'}}>佛山协同（国际）学校2019年秋季小学一年级新生报名表</span>
-                                        </Col>
-                                    </Row>
-                                    <div style={{marginBottom: '25px'}}></div>
-                                    <Row>
-                                        <Col md={24}>
-                                            <table width="100%" style={{width: '100%'}}>
-                                                <tr>
-                                                    <td style={{width: '65%', textAlign: 'left'}}>
-                                                        报名序号: {this.state.signup_pupil.signup_number}
-                                                    </td>
-                                                    <td style={{width: '35%', textAlign: 'left'}}>
-                                                        填报日期：{moment(this.state.signup_pupil.system_create_time).format('YYYY-MM-DD')}
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
-                                                <tr>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        学生姓名
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.student_name}
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        性别
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.student_sex}
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', textAlign: 'center'}}>
+			}.bind(this)
+		})
+	}
 
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        出生年月日
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.student_birthday}
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+	handleFind () {
+		this.setState({
+			is_load: true,
+			result_type: ""
+		});
+
+		http.request({
+			url: '/desktop/xietong/signup/pupil/find',
+			data: {},
+			token: storage.getPrimaryToken(),
+			success: function (data) {
+				this.setState({
+					tip: data.tip,
+					signup_pupil: data.signup_pupil
+				});
+
+				this.handleLoad(data.signup_pupil.signup_id);
+			}.bind(this),
+			error: function (data) {
+				this.setState({
+					result_type: 'danger',
+					result_message: data.message,
+					is_update: false
+				});
+			}.bind(this),
+			complete: function () {
+				this.setState({
+					is_load: false
+				})
+			}.bind(this)
+		})
+	}
+
+	render () {
+		return (
+			<div>
+				<Header history={this.props.history} website_menu_id=""/>
+				<div className="content container">
+					<div className="title margin-top-20">
+						<div className="title-icon"></div>
+						<div className="title-breadcrumb">
+							<Link to="/index">首页</Link> > <Link
+							to="/page/e8417cd60aeb474aad40d4ecc8d52b22">招生招聘</Link> > <Link
+							to="/primary/entry">小学报名</Link> > 小学报名结果查询
+						</div>
+					</div>
+					<div className="row margin-top-20">
+						<div className="subnav col-md-3 hidden-xs">
+							<PageSubNav website_menu_id="a8398373a697416eba6847c2e42c781d"
+										page_id="5b68b36ca31c49839f38aacf6ac65450"/>
+							<DepartmentSubNav/>
+						</div>
+						<div className="col-md-9">
+							{
+								this.state.schedule_assigned_scene > -1 ?
+									<div>
+										<div style={{
+											fontSize: '30px',
+											fontWeight: '1000',
+											textAlign: 'center',
+											marginBottom: '30px'
+										}}>
+											面试信息
+										</div>
+										<table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{
+											width: '100%',
+											borderLeft: 'solid 1px black',
+											borderTop: 'solid 1px black',
+											borderRight: 'solid 1px black'
+										}}>
+											<tbody>
+											<tr>
+												<td style={{
+													width: '20%',
+													padding: '10px',
+													borderRight: 'solid 1px black',
+													borderBottom: 'solid 1px black',
+													textAlign: 'center'
+												}}>
+													面试时间
+												</td>
+												<td style={{
+													width: '20%',
+													padding: '10px',
+													borderRight: 'solid 1px black',
+													borderBottom: 'solid 1px black',
+													textAlign: 'center'
+												}}>
+													<span
+														style={{marginRight: '10px'}}>{this.state.schedule_date}</span>
+													{
+														this.state.schedule_assigned_scene == 0 ? '上午第一场' : ''
+													}
+													{
+														this.state.schedule_assigned_scene == 1 ? '上午第二场' : ''
+													}
+													{
+														this.state.schedule_assigned_scene == 2 ? '下午第一场' : ''
+													}
+													{
+														this.state.schedule_assigned_scene == 3 ? '下午第二场' : ''
+													}
+												</td>
+											</tr>
+											</tbody>
+										</table>
+										<div style={{
+											borderBottom: '1px solid #C8C8C8',
+											marginTop: '100px',
+											marginBottom: '100px'
+										}}></div>
+									</div>
+									:
+									''
+							}
+							<Print ref="print" insertHead={false}>
+								<div>
+									<div style={{marginBottom: '30px'}}></div>
+									<Row>
+										<Col md={24} style={{textAlign: 'center'}}>
+											<span style={{
+												fontSize: '30px',
+												fontWeight: '1000'
+											}}>佛山协同（国际）学校2019年秋季小学一年级新生报名表</span>
+										</Col>
+									</Row>
+									<div style={{marginBottom: '25px'}}></div>
+									<Row>
+										<Col md={24}>
+											<table width="100%" style={{width: '100%'}}>
+												<tr>
+													<td style={{width: '65%', textAlign: 'left'}}>
+														报名序号: {this.state.signup_pupil.signup_number}
+													</td>
+													<td style={{width: '35%', textAlign: 'left'}}>
+														填报日期：{moment(this.state.signup_pupil.system_create_time).format('YYYY-MM-DD')}
+													</td>
+												</tr>
+											</table>
+											<table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{
+												width: '100%',
+												borderLeft: 'solid 1px black',
+												borderTop: 'solid 1px black',
+												borderRight: 'solid 1px black'
+											}}>
+												<tr>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														学生姓名
+													</td>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.student_name}
+													</td>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														性别
+													</td>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.student_sex}
+													</td>
+													<td style={{width: '20%', padding: '10px', textAlign: 'center'}}>
+
+													</td>
+												</tr>
+												<tr>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														出生年月日
+													</td>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.student_birthday}
+													</td>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
 														原就读幼儿园
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black',borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.kindergarten}
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', textAlign: 'center'}}>
-                                                        粘贴照片
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        证件类型
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.id_type}
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        学生证件号码
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.id_no}
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', textAlign: 'center'}}>
+													</td>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.kindergarten}
+													</td>
+													<td style={{width: '20%', padding: '10px', textAlign: 'center'}}>
+														粘贴照片
+													</td>
+												</tr>
+												<tr>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														证件类型
+													</td>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.id_type}
+													</td>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														学生证件号码
+													</td>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.id_no}
+													</td>
+													<td style={{width: '20%', padding: '10px', textAlign: 'center'}}>
 
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{width: '100%', borderLeft: 'solid 1px black', borderTop: 'solid 1px black', borderRight: 'solid 1px black'}}>
-                                                <tr>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        户籍地址
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.permanent_address}
-                                                    </td>
-                                                    <td style={{width: '20%', padding: '10px', borderRight: 'solid 1px black', textAlign: 'center'}}>
-                                                        居住地址
-                                                    </td>
-                                                    <td style={{width: '40%', padding: '10px', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.live_addresss}
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <table width="100%" style={{width: '100%', border: 'solid 1px black'}}>
-                                                <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: center">家庭主要成员</td>`}}></tr>
-                                                <tr>
-                                                    <td style={{width: '25%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        姓名
-                                                    </td>
-                                                    <td style={{width: '25%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        称谓
-                                                    </td>
-                                                    <td style={{width: '25%', padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        联系电话
-                                                    </td>
-                                                    <td style={{width: '25%', padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        工作单位
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.father_name}
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        父亲
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.father_phone}
-                                                    </td>
-                                                    <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.father_work}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.mother_name}
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        母亲
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.mother_phone}
-                                                    </td>
-                                                    <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        {this.state.signup_pupil.mother_work}
-                                                    </td>
-                                                </tr>
-                                                <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: center">需要说明事项</td>`}}></tr>
-                                                <tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: left">${this.state.signup_pupil.remark}</td>`}}></tr>
-                                                <tr>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        家长签名
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+													</td>
+												</tr>
+											</table>
+											<table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{
+												width: '100%',
+												borderLeft: 'solid 1px black',
+												borderTop: 'solid 1px black',
+												borderRight: 'solid 1px black'
+											}}>
+												<tr>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														户籍地址
+													</td>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.permanent_address}
+													</td>
+													<td style={{
+														width: '20%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														居住地址
+													</td>
+													<td style={{width: '40%', padding: '10px', textAlign: 'center'}}>
+														{this.state.signup_pupil.live_addresss}
+													</td>
+												</tr>
+											</table>
+											<table width="100%" style={{width: '100%', border: 'solid 1px black'}}>
+												<tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: center">家庭主要成员</td>`}}></tr>
+												<tr>
+													<td style={{
+														width: '25%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														姓名
+													</td>
+													<td style={{
+														width: '25%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														称谓
+													</td>
+													<td style={{
+														width: '25%',
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														联系电话
+													</td>
+													<td style={{
+														width: '25%',
+														padding: '10px',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														工作单位
+													</td>
+												</tr>
+												<tr>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.father_name}
+													</td>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														父亲
+													</td>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.father_phone}
+													</td>
+													<td style={{
+														padding: '10px',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.father_work}
+													</td>
+												</tr>
+												<tr>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.mother_name}
+													</td>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														母亲
+													</td>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.mother_phone}
+													</td>
+													<td style={{
+														padding: '10px',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														{this.state.signup_pupil.mother_work}
+													</td>
+												</tr>
+												<tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: center">需要说明事项</td>`}}></tr>
+												<tr dangerouslySetInnerHTML={{__html: `<td colspan='4' style="padding: 10px; border-bottom: solid 1px black; text-align: left">${this.state.signup_pupil.remark}</td>`}}></tr>
+												<tr>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														家长签名
+													</td>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
 
-                                                    </td>
-                                                    <td style={{padding: '10px', borderRight: 'solid 1px black', borderBottom: 'solid 1px black', textAlign: 'center'}}>
-                                                        学校受理人签名
-                                                    </td>
-                                                    <td style={{padding: '10px', borderBottom: 'solid 1px black', textAlign: 'center'}}>
+													</td>
+													<td style={{
+														padding: '10px',
+														borderRight: 'solid 1px black',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
+														学校受理人签名
+													</td>
+													<td style={{
+														padding: '10px',
+														borderBottom: 'solid 1px black',
+														textAlign: 'center'
+													}}>
 
-                                                    </td>
-                                                </tr>
-                                                <tr dangerouslySetInnerHTML={{__html: `<td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center">填报日期</td><td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center"></td><td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center">报名状态</td><td colspan='1' style="padding: 10px; text-align: left">已报名</td>`}}></tr>
-                                            </table>
-                                        </Col>
-                                    </Row>
+													</td>
+												</tr>
+												<tr dangerouslySetInnerHTML={{__html: `<td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center">填报日期</td><td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center"></td><td colspan='1' style="padding: 10px; border-right: solid 1px black; text-align: center">报名状态</td><td colspan='1' style="padding: 10px; text-align: left">已报名</td>`}}></tr>
+											</table>
+										</Col>
+									</Row>
 									<Row style={{fontSize: '12px'}}>
-                                        <Col md={24}>
+										<Col md={24}>
 											温馨提示：<br/>
 											1.面谈时间：按规定的时间到校参加面谈。<br/>
 											2.测试内容：破冰游戏，闯关游戏，情境故事，分享交流。<br/>
@@ -264,44 +530,75 @@ class Check extends Component {
 											4.请家长车辆在东鄱南路和轻工三路右侧车道斜停放。<br/>
 											5.联系我们：0757-82596128、82596001、18188719581。<br/>
 											6.打印报名表说明：请使用电脑端的浏览器进行打印。打印路径：登录我校官方网站www.fcis.net.cn点击招生招聘-小一新生报名-报名查询-输入证件号码（身份证）、密码-打印报名表
-                                        </Col>
-                                    </Row>
-                                </div>
-                            </Print>
-                            <div style={{marginBottom: '50px'}}></div>
-                            <Row>
-                                <Col smOffset={4} md={7}>
-                                    <Button disabled={this.state.is_load} style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large" onClick={() => {this.refs.print.onPrint();}}>
-                                        {this.state.is_load ? "加载中.." : "打印报名表"}
-                                    </Button>
-                                    <Button disabled={this.state.is_load} style={{backgroundColor: '#C26B60', color: 'white', marginLeft: '30px'}} bsSize="large" onClick={this.handleEdit.bind(this)}>
-                                        {this.state.is_load ? "加载中.." : "修改报名信息"}
-                                    </Button>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col md={11}>
-                                    {
-                                        this.state.result_type === "" ?
-                                            ""
-                                            :
-                                            <Alert bsStyle={this.state.result_type}>
-                                                <h4>系统提示</h4>
-                                                <div className="margin-top-15"
-                                                     dangerouslySetInnerHTML={{__html: this.state.result_message}}></div>
-                                            </Alert>
-                                    }
-                                </Col>
-                            </Row>
-                        </div>
-                    </div>
-                </div>
-                <Footer/>
-            </div>
-        );
-    }
+										</Col>
+									</Row>
+								</div>
+							</Print>
+							<div style={{marginBottom: '50px'}}></div>
+							<Row>
+								<Col smOffset={4} md={7}>
+									<Button disabled={this.state.is_load}
+											style={{backgroundColor: '#C26B60', color: 'white'}} bsSize="large"
+											onClick={() => {
+												this.refs.print.onPrint();
+											}}>
+										{this.state.is_load ? "加载中.." : "打印报名表"}
+									</Button>
+									{
+										this.state.schedule_assigned_scene > -1 ?
+											''
+											:
+											<Button disabled={this.state.is_load}
+													style={{
+														backgroundColor: '#C26B60',
+														color: 'white',
+														marginLeft: '30px'
+													}}
+													bsSize="large" onClick={this.handleEdit.bind(this)}>
+												{this.state.is_load ? "加载中.." : "修改报名信息"}
+											</Button>
+									}
+									<Button disabled={this.state.is_load}
+											style={{
+												backgroundColor: '#C26B60',
+												color: 'white',
+												marginLeft: '30px'
+											}} bsSize="large"
+											onClick={() => {
+												localStorage.clear();
+
+												this.props.history.push({
+													pathname: "/primary/entry",
+													query: {}
+												});
+											}}>
+										退出登录
+									</Button>
+								</Col>
+							</Row>
+							<Row>
+								<Col md={11}>
+									{
+										this.state.result_type === "" ?
+											""
+											:
+											<Alert bsStyle={this.state.result_type}>
+												<h4>系统提示</h4>
+												<div className="margin-top-15"
+													 dangerouslySetInnerHTML={{__html: this.state.result_message}}></div>
+											</Alert>
+									}
+								</Col>
+							</Row>
+						</div>
+					</div>
+				</div>
+				<Footer/>
+			</div>
+		);
+	}
 }
 
 export default connect((state) => {
-    return {}
+	return {}
 })(Check);

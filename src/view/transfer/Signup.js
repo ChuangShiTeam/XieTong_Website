@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createForm} from 'rc-form';
 import {Form, FormGroup, Col, ControlLabel, FormControl, Radio, Button, Alert} from 'react-bootstrap';
-import moment from 'moment';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -117,7 +116,7 @@ class Signup extends Component {
                                     <Col componentClass={ControlLabel} md={1}>
                                     </Col>
                                     <Col md={9} style={{textAlign: 'center'}}>
-                                        <span style={{fontSize: '24px', fontWeight: '1000'}}>佛山协同（国际）学校2019年春季插班生报名表</span>
+                                        <span style={{fontSize: '24px', fontWeight: '1000'}}>佛山协同（国际）学校2019年插班生报名表</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup {...getFieldProps('read_grade', {
@@ -131,11 +130,11 @@ class Signup extends Component {
                                         报读年级
                                     </Col>
                                     <Col md={8} className="col-no-padding">
-                                        <Col md={3}>
-                                            <Radio name="read_grade" value="一年级" checked={getFieldValue('read_grade') === '一年级'}>
-                                                一年级
-                                            </Radio>
-                                        </Col>
+                                        {/*<Col md={3}>*/}
+                                            {/*<Radio name="read_grade" value="一年级" checked={getFieldValue('read_grade') === '一年级'}>*/}
+                                                {/*一年级*/}
+                                            {/*</Radio>*/}
+                                        {/*</Col>*/}
                                         <Col md={3}>
                                             <Radio name="read_grade" value="二年级" checked={getFieldValue('read_grade') === '二年级'}>
                                                 二年级
@@ -161,11 +160,11 @@ class Signup extends Component {
                                                 六年级
                                             </Radio>
                                         </Col>
-                                        <Col md={3}>
-                                            <Radio name="read_grade" value="七年级" checked={getFieldValue('read_grade') === '七年级'}>
-                                                七年级
-                                            </Radio>
-                                        </Col>
+                                        {/*<Col md={3}>*/}
+                                            {/*<Radio name="read_grade" value="七年级" checked={getFieldValue('read_grade') === '七年级'}>*/}
+                                                {/*七年级*/}
+                                            {/*</Radio>*/}
+                                        {/*</Col>*/}
                                         <Col md={3}>
                                             <Radio name="read_grade" value="八年级" checked={getFieldValue('read_grade') === '八年级'}>
                                                 八年级
