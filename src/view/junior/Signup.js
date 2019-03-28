@@ -251,8 +251,8 @@ class Signup extends Component {
                                             </Radio>
                                         </Col>
                                         <Col md={3}>
-                                            <Radio name="id_type" value="签证" checked={getFieldValue('id_type') === '签证'}>
-                                                签证
+                                            <Radio name="id_type" value="港澳台身份证" checked={getFieldValue('id_type') === '港澳台身份证'}>
+                                                港澳台身份证
                                             </Radio>
                                         </Col>
                                         <Col md={3}>
@@ -270,15 +270,15 @@ class Signup extends Component {
                                 <FormGroup {...getFieldProps('id_no', {
                                     rules: [{
                                         required: true,
-                                        message: '学生证件号码不能为空'
+                                        message: '学生的证件号码不能为空'
                                     }],
                                     initialValue: ''
                                 })} validationState={getFieldError('id_no') ? 'error' : getFieldValue('id_no') === '' ? null : 'success'}>
                                     <Col componentClass={ControlLabel} md={2}>
-                                        学生证件号码
+										学生的证件号码
                                     </Col>
                                     <Col md={8}>
-                                        <FormControl placeholder="请输入学生证件号码" value={getFieldValue('id_no')}/>
+                                        <FormControl placeholder="请输入学生的证件号码" value={getFieldValue('id_no')}/>
                                         <FormControl.Feedback/>
                                         <span className="error-message">{getFieldError('id_no')}</span>
                                     </Col>

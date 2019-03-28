@@ -324,8 +324,8 @@ class Edit extends Component {
 											</Radio>
 										</Col>
 										<Col md={3}>
-											<Radio name="id_type" value="签证" checked={getFieldValue('id_type') === '签证'}>
-												签证
+											<Radio name="id_type" value="港澳台身份证" checked={getFieldValue('id_type') === '港澳台身份证'}>
+												港澳台身份证
 											</Radio>
 										</Col>
 										<Col md={3}>
