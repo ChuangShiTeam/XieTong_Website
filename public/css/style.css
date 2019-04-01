@@ -820,3 +820,7 @@ body {
     }
 }
 
+.error-message {
+    color: #a94442;
+}
+

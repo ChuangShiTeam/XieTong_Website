@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {Row, Col, Button, Alert} from 'react-bootstrap';
+import {Form, FormGroup, FormControl, Row, Col, Button, Alert, ControlLabel, Radio} from 'react-bootstrap';
 import Print from 'rc-print';
 import moment from 'moment';
 
@@ -13,6 +13,7 @@ import DepartmentSubNav from '../../component/DepartmentSubNav';
 import http from '../../common/http';
 import util from '../../common/util';
 import storage from '../../common/storage';
+import {createForm} from "rc-form";
 
 class Check extends Component {
 	constructor (props) {
@@ -26,7 +27,12 @@ class Check extends Component {
 			signup_pupil: {},
 			tip: '',
 			schedule_date: '',
-			schedule_assigned_scene: -1
+			schedule_assigned_id: '',
+			schedule_assigned_scene: -1,
+			schedule_assigned_change: -1,
+			schedule_assigned_score: {},
+			schedule_assigned_status: false,
+			is_edit: false
 		}
 	}
 
@@ -64,7 +70,16 @@ class Check extends Component {
 				if (data != null) {
 					this.setState({
 						schedule_date: data.schedule_date,
-						schedule_assigned_scene: data.schedule_assigned_scene
+						schedule_assigned_id: data.schedule_assigned_id,
+						schedule_assigned_scene: data.schedule_assigned_scene,
+						schedule_assigned_change: data.schedule_assigned_change,
+						schedule_assigned_score: data.schedule_assigned_score,
+						schedule_assigned_status: data.schedule_assigned_status
+					});
+
+					this.props.form.setFieldsValue({
+						schedule_date: data.schedule_date,
+						schedule_assigned_scene: data.schedule_assigned_scene,
 					});
 				}
 			}.bind(this),
@@ -110,7 +125,69 @@ class Check extends Component {
 		})
 	}
 
+	handleChange () {
+		this.props.form.validateFields((errors, values) => {
+			if (!!errors) {
+				var message = '';
+				for (var error in errors) {
+					message += "<p>";
+					message += errors[error].errors[0].message;
+					message += "</p>";
+				}
+				this.setState({
+					result_type: 'danger',
+					result_message: message
+				});
+
+				return;
+			}
+
+			if (this.state.schedule_date == values.schedule_date && this.state.schedule_assigned_scene == values.schedule_assigned_scene) {
+				this.setState({
+					result_type: 'danger',
+					result_message: '不能选同一天的同一个场次'
+				});
+
+				return false;
+			}
+
+			this.setState({
+				is_load: true,
+				result_type: ""
+			});
+
+			http.request({
+				url: '/desktop/xietong/schedule/assigned/change',
+				data: {
+					schedule_assigned_id: this.state.schedule_assigned_id,
+					schedule_date: values.schedule_date,
+					schedule_assigned_scene: parseInt(values.schedule_assigned_scene)
+				},
+				token: storage.getJuniorToken(),
+				success: function (data) {
+					this.setState({
+						schedule_assigned_change: 1,
+						is_edit: false
+					});
+				}.bind(this),
+				error: function (data) {
+					this.setState({
+						result_type: 'danger',
+						result_message: data.message
+					});
+				}.bind(this),
+				complete: function () {
+					this.setState({
+						is_load: false
+					})
+				}.bind(this)
+			});
+		});
+	}
+
 	render () {
+		const {getFieldProps, getFieldError, getFieldValue} = this.props.form;
+
 		return (
 			<div>
 				<Header history={this.props.history} website_menu_id=""/>
@@ -141,7 +218,73 @@ class Check extends Component {
 										}}>
 											面试信息
 										</div>
+										<Form horizontal className="margin-top-20"
+											  style={{
+												  display: this.state.is_edit ? 'inline' : 'none'
+											  }}>
+											<FormGroup {...getFieldProps('schedule_date', {
+												rules: [{
+													required: true,
+													message: '面试日期不能为空'
+												}],
+												initialValue: ''
+											})} validationState={getFieldError('schedule_date') ? 'error' : getFieldValue('schedule_date') === '' ? null : 'success'}>
+												<Col componentClass={ControlLabel} md={2}>
+													面试日期
+												</Col>
+												<Col md={8}>
+													<FormControl type="date" placeholder="请输入面试日期"
+																 value={getFieldValue('schedule_date')}/>
+													<FormControl.Feedback/>
+													<span
+														className="error-message">{getFieldError('schedule_date')}</span>
+												</Col>
+											</FormGroup>
+											<FormGroup {...getFieldProps('schedule_assigned_scene', {
+												rules: [{
+													required: true,
+													message: '面试场次不能为空'
+												}],
+												initialValue: ''
+											})} validationState={getFieldError('schedule_assigned_scene') ? 'error' : getFieldValue('schedule_assigned_scene') === '' ? null : 'success'}>
+												<Col componentClass={ControlLabel} md={2}>
+													面试场次
+												</Col>
+												<Col md={8} className="col-no-padding">
+													<Col md={3}>
+														<Radio name="student_sex" value="0"
+															   checked={getFieldValue('schedule_assigned_scene') == '0'}>
+															上午第一场
+														</Radio>
+													</Col>
+													<Col md={3}>
+														<Radio name="student_sex" value="1"
+															   checked={getFieldValue('schedule_assigned_scene') == '1'}>
+															上午第二场
+														</Radio>
+													</Col>
+													<Col md={3}>
+														<Radio name="student_sex" value="2"
+															   checked={getFieldValue('schedule_assigned_scene') == '2'}>
+															下午第一场
+														</Radio>
+													</Col>
+													<Col md={3}>
+														<Radio name="student_sex" value="3"
+															   checked={getFieldValue('schedule_assigned_scene') == '3'}>
+															下午第二场
+														</Radio>
+														<FormControl.Feedback/>
+													</Col>
+													<Col md={12}>
+																<span
+																	className="error-message">{getFieldError('schedule_assigned_scene')}</span>
+													</Col>
+												</Col>
+											</FormGroup>
+										</Form>
 										<table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{
+											display: this.state.is_edit ? 'none' : 'table',
 											width: '100%',
 											borderLeft: 'solid 1px black',
 											borderTop: 'solid 1px black',
@@ -154,16 +297,16 @@ class Check extends Component {
 													padding: '10px',
 													borderRight: 'solid 1px black',
 													borderBottom: 'solid 1px black',
-													textAlign: 'center'
+													textAlign: 'right'
 												}}>
 													面试时间
 												</td>
 												<td style={{
-													width: '20%',
+													width: '80%',
 													padding: '10px',
 													borderRight: 'solid 1px black',
 													borderBottom: 'solid 1px black',
-													textAlign: 'center'
+													textAlign: 'left'
 												}}>
 													<span
 														style={{marginRight: '10px'}}>{this.state.schedule_date}</span>
@@ -181,13 +324,115 @@ class Check extends Component {
 													}
 												</td>
 											</tr>
+											{
+												this.state.schedule_assigned_status ?
+													<tr>
+														<td style={{
+															width: '20%',
+															padding: '10px',
+															borderRight: 'solid 1px black',
+															borderBottom: 'solid 1px black',
+															textAlign: 'right'
+														}}>
+															面试成绩
+														</td>
+														<td style={{
+															width: '80%',
+															padding: '10px',
+															borderRight: 'solid 1px black',
+															borderBottom: 'solid 1px black',
+															textAlign: 'left'
+														}}>
+															<span style={{marginRight: '10px'}}>{this.state.schedule_assigned_score.score0Title}</span>{this.state.schedule_assigned_score.score0}<br/>
+															<span style={{marginRight: '10px'}}>{this.state.schedule_assigned_score.score1Title}</span>{this.state.schedule_assigned_score.score1}<br/>
+															<span style={{marginRight: '10px'}}>{this.state.schedule_assigned_score.score2Title}</span>{this.state.schedule_assigned_score.score2}<br/>
+															<span style={{marginRight: '10px'}}>总分</span>{this.state.schedule_assigned_score.scoreTotal}<br/>
+														</td>
+													</tr>
+													:
+													''
+											}
+											{
+												this.state.schedule_assigned_status ?
+													<tr>
+														<td style={{
+															width: '20%',
+															padding: '10px',
+															borderRight: 'solid 1px black',
+															borderBottom: 'solid 1px black',
+															textAlign: 'right'
+														}}>
+															温馨提示
+														</td>
+														<td style={{
+															width: '80%',
+															padding: '10px',
+															borderRight: 'solid 1px black',
+															borderBottom: 'solid 1px black',
+															textAlign: 'left'
+														}}>
+															{this.state.schedule_assigned_score.remind}
+														</td>
+													</tr>
+													:
+													''
+											}
 											</tbody>
 										</table>
+										<Row>
+											<Col md={11}>
+												{
+													this.state.result_type === "" ?
+														""
+														:
+														<Alert bsStyle={this.state.result_type}>
+															<h4>系统提示</h4>
+															<div className="margin-top-15"
+																 dangerouslySetInnerHTML={{__html: this.state.result_message}}></div>
+														</Alert>
+												}
+											</Col>
+										</Row>
+										<div style={{
+											marginTop: '50px',
+											textAlign: 'center'
+										}}>
+											{
+												this.state.is_edit ?
+													<Button disabled={this.state.is_load}
+															style={{
+																backgroundColor: '#C26B60',
+																color: 'white',
+															}} bsSize="large"
+															onClick={() => {
+																this.handleChange();
+															}}>
+														提交修改信息（只有一次修改机会）
+													</Button>
+													:
+													this.state.schedule_assigned_change > 0 || this.state.schedule_assigned_status ?
+														''
+														:
+														<Button disabled={this.state.is_load}
+																style={{
+																	backgroundColor: '#C26B60',
+																	color: 'white',
+																}} bsSize="large"
+																onClick={() => {
+																	this.setState({
+																		is_edit: true
+																	});
+																}}>
+															修改面试时间（只有一次修改机会）
+														</Button>
+											}
+										</div>
 										<div style={{
 											borderBottom: '1px solid #C8C8C8',
-											marginTop: '100px',
+											marginTop: '50px',
 											marginBottom: '100px'
-										}}></div>
+										}}>
+										</div>
 									</div>
 									:
 									''
@@ -598,6 +843,8 @@ class Check extends Component {
 		);
 	}
 }
+
+Check = createForm({})(Check);
 
 export default connect((state) => {
 	return {}
