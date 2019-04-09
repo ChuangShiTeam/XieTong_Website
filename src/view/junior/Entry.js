@@ -8,6 +8,7 @@ import PageSubNav from '../../component/PageSubNav';
 import DepartmentSubNav from '../../component/DepartmentSubNav';
 
 import util from '../../common/util';
+import storage from "../../common/storage";
 
 class Entry extends Component {
     constructor(props) {
@@ -85,7 +86,7 @@ class Entry extends Component {
                                 </Link>
                             </div>
                             <div className="col-xs-12 col-md-4">
-                                <Link to="/junior/signup" className="thumbnail">
+                                <Link to={storage.getJuniorToken() ? "/junior/check" : "/junior/signup"} className="thumbnail">
                                     <div className="signup-enter-item">
                                         <div className="signup-enter-item-text">
                                             <img className="signup-enter-item-icon" src="../image/activity.png" alt=""/>

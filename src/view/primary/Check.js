@@ -108,7 +108,7 @@ class Check extends Component {
 					signup_pupil: data.signup_pupil
 				});
 
-				this.handleLoad(data.signup_pupil.signup_id);
+				// this.handleLoad(data.signup_pupil.signup_id);
 			}.bind(this),
 			error: function (data) {
 				this.setState({
@@ -216,7 +216,7 @@ class Check extends Component {
 											textAlign: 'center',
 											marginBottom: '30px'
 										}}>
-											面试信息
+											面谈信息
 										</div>
 										<Form horizontal className="margin-top-20"
 											  style={{
@@ -225,15 +225,15 @@ class Check extends Component {
 											<FormGroup {...getFieldProps('schedule_date', {
 												rules: [{
 													required: true,
-													message: '面试日期不能为空'
+													message: '面谈日期不能为空'
 												}],
 												initialValue: ''
 											})} validationState={getFieldError('schedule_date') ? 'error' : getFieldValue('schedule_date') === '' ? null : 'success'}>
 												<Col componentClass={ControlLabel} md={2}>
-													面试日期
+													面谈日期
 												</Col>
 												<Col md={8}>
-													<FormControl type="date" placeholder="请输入面试日期"
+													<FormControl type="date" placeholder="请输入面谈日期"
 																 value={getFieldValue('schedule_date')}/>
 													<FormControl.Feedback/>
 													<span
@@ -243,12 +243,12 @@ class Check extends Component {
 											<FormGroup {...getFieldProps('schedule_assigned_scene', {
 												rules: [{
 													required: true,
-													message: '面试场次不能为空'
+													message: '面谈场次不能为空'
 												}],
 												initialValue: ''
 											})} validationState={getFieldError('schedule_assigned_scene') ? 'error' : getFieldValue('schedule_assigned_scene') === '' ? null : 'success'}>
 												<Col componentClass={ControlLabel} md={2}>
-													面试场次
+													面谈场次
 												</Col>
 												<Col md={8} className="col-no-padding">
 													<Col md={3}>
@@ -299,7 +299,7 @@ class Check extends Component {
 													borderBottom: 'solid 1px black',
 													textAlign: 'right'
 												}}>
-													面试时间
+													面谈时间
 												</td>
 												<td style={{
 													width: '80%',
@@ -334,7 +334,7 @@ class Check extends Component {
 															borderBottom: 'solid 1px black',
 															textAlign: 'right'
 														}}>
-															面试成绩
+															面谈成绩
 														</td>
 														<td style={{
 															width: '80%',
@@ -423,7 +423,7 @@ class Check extends Component {
 																		is_edit: true
 																	});
 																}}>
-															修改面试时间（只有一次修改机会）
+															修改面谈时间（只有一次修改机会）
 														</Button>
 											}
 										</div>
@@ -774,7 +774,7 @@ class Check extends Component {
 											3）3张一寸证件照（不限底色）。<br/>
 											4.请家长车辆在东鄱南路和轻工三路右侧车道斜停放。<br/>
 											5.联系我们：0757-82596128、82596001、18188719581。<br/>
-											6.打印报名表说明：请使用电脑端的浏览器进行打印。打印路径：登录我校官方网站www.fcis.net.cn点击招生招聘-小一新生报名-报名查询-输入证件号码（身份证）、密码-打印报名表
+											6.打印报名表说明：请使用电脑端的浏览器进行打印。打印路径：登录我校官方网站www.fcis.net.cn点击招生招聘-小一新生报名-报名查询-输入学生的身份证件号码（身份证）、密码-打印报名表
 										</Col>
 									</Row>
 								</div>

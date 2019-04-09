@@ -26,13 +26,16 @@ class Check extends Component {
 			menu_index: 1,
 			signup_junior: {},
 			tip: '',
+			schedule_id: '',
 			schedule_date: '',
 			schedule_assigned_id: '',
-			schedule_assigned_scene: -1,
+			schedule_scene_id: '',
+			schedule_scene_time: '',
 			schedule_assigned_change: -1,
 			schedule_assigned_score: {},
 			schedule_assigned_status: false,
-			is_edit: false
+			is_edit: false,
+			schedule_scene_list: []
 		}
 	}
 
@@ -70,9 +73,11 @@ class Check extends Component {
 			success: function (data) {
 				if (data != null) {
 					this.setState({
+						schedule_id: data.schedule_id,
 						schedule_date: data.schedule_date,
 						schedule_assigned_id: data.schedule_assigned_id,
-						schedule_assigned_scene: data.schedule_assigned_scene,
+						schedule_scene_id: data.schedule_scene_id,
+						schedule_scene_time: data.schedule_scene_time,
 						schedule_assigned_change: data.schedule_assigned_change,
 						schedule_assigned_score: data.schedule_assigned_score,
 						schedule_assigned_status: data.schedule_assigned_status
@@ -80,7 +85,7 @@ class Check extends Component {
 
 					this.props.form.setFieldsValue({
 						schedule_date: data.schedule_date,
-						schedule_assigned_scene: data.schedule_assigned_scene,
+						schedule_scene_id: data.schedule_scene_id,
 					});
 				}
 			}.bind(this),
@@ -126,6 +131,33 @@ class Check extends Component {
 		})
 	}
 
+	handleSceneEdit () {
+		this.setState({
+			is_load: true
+		});
+
+		http.request({
+			url: '/desktop/xietong/schedule/scene/list',
+			data: {
+				schedule_id: this.state.schedule_id
+			},
+			token: storage.getJuniorToken(),
+			success: function (data) {
+				this.setState({
+					schedule_scene_list: data,
+					is_load: false,
+					is_edit: true
+				});
+			}.bind(this),
+			error: function (data) {
+
+			}.bind(this),
+			complete: function () {
+
+			}.bind(this)
+		});
+	}
+
 	handleChange () {
 		this.props.form.validateFields((errors, values) => {
 			if (!!errors) {
@@ -143,7 +175,7 @@ class Check extends Component {
 				return;
 			}
 
-			if (this.state.schedule_date == values.schedule_date && this.state.schedule_assigned_scene == values.schedule_assigned_scene) {
+			if (this.state.schedule_date == values.schedule_date && this.state.schedule_scene_id == values.schedule_scene_id) {
 				this.setState({
 					result_type: 'danger',
 					result_message: '不能选同一天的同一个场次'
@@ -162,10 +194,12 @@ class Check extends Component {
 				data: {
 					schedule_assigned_id: this.state.schedule_assigned_id,
 					schedule_date: values.schedule_date,
-					schedule_assigned_scene: parseInt(values.schedule_assigned_scene)
+					schedule_scene_id: values.schedule_scene_id
 				},
 				token: storage.getJuniorToken(),
 				success: function (data) {
+					this.handleFind();
+
 					this.setState({
 						schedule_assigned_change: 1,
 						is_edit: false
@@ -209,7 +243,7 @@ class Check extends Component {
 						</div>
 						<div className="col-md-9">
 							{
-								this.state.schedule_assigned_scene > -1 ?
+								this.state.schedule_scene_id != '' ?
 									<div>
 										<div style={{
 											fontSize: '30px',
@@ -217,7 +251,7 @@ class Check extends Component {
 											textAlign: 'center',
 											marginBottom: '30px'
 										}}>
-											面试信息
+											面谈信息
 										</div>
 										<Form horizontal className="margin-top-20"
 											  style={{
@@ -226,60 +260,46 @@ class Check extends Component {
 											<FormGroup {...getFieldProps('schedule_date', {
 												rules: [{
 													required: true,
-													message: '面试日期不能为空'
+													message: '面谈日期不能为空'
 												}],
 												initialValue: ''
 											})} validationState={getFieldError('schedule_date') ? 'error' : getFieldValue('schedule_date') === '' ? null : 'success'}>
 												<Col componentClass={ControlLabel} md={2}>
-													面试日期
+													面谈日期
 												</Col>
 												<Col md={8}>
-													<FormControl type="date" placeholder="请输入面试日期"
+													<FormControl type="date" placeholder="请输入面谈日期"
 																 value={getFieldValue('schedule_date')}/>
 													<FormControl.Feedback/>
 													<span
 														className="error-message">{getFieldError('schedule_date')}</span>
 												</Col>
 											</FormGroup>
-											<FormGroup {...getFieldProps('schedule_assigned_scene', {
+											<FormGroup {...getFieldProps('schedule_scene_id', {
 												rules: [{
 													required: true,
-													message: '面试场次不能为空'
+													message: '面谈场次不能为空'
 												}],
 												initialValue: ''
-											})} validationState={getFieldError('schedule_assigned_scene') ? 'error' : getFieldValue('schedule_assigned_scene') === '' ? null : 'success'}>
+											})} validationState={getFieldError('schedule_scene_id') ? 'error' : getFieldValue('schedule_scene_id') === '' ? null : 'success'}>
 												<Col componentClass={ControlLabel} md={2}>
-													面试场次
+													面谈场次
 												</Col>
 												<Col md={8} className="col-no-padding">
-													<Col md={3}>
-														<Radio name="student_sex" value="0"
-															   checked={getFieldValue('schedule_assigned_scene') == '0'}>
-															上午第一场
-														</Radio>
-													</Col>
-													<Col md={3}>
-														<Radio name="student_sex" value="1"
-															   checked={getFieldValue('schedule_assigned_scene') == '1'}>
-															上午第二场
-														</Radio>
-													</Col>
-													<Col md={3}>
-														<Radio name="student_sex" value="2"
-															   checked={getFieldValue('schedule_assigned_scene') == '2'}>
-															下午第一场
-														</Radio>
-													</Col>
-													<Col md={3}>
-														<Radio name="student_sex" value="3"
-															   checked={getFieldValue('schedule_assigned_scene') == '3'}>
-															下午第二场
-														</Radio>
-														<FormControl.Feedback/>
-													</Col>
+													{
+														this.state.schedule_scene_list.map(function (scene) {
+															return (
+																<Col md={3} key={scene.schedule_scene_id}>
+																	<Radio name="schedule_scene_id" value={scene.schedule_scene_id}
+																		   checked={getFieldValue('schedule_scene_id') == scene.schedule_scene_id}>
+																		{scene.schedule_scene_time}
+																	</Radio>
+																</Col>
+															)
+														}.bind(this))
+													}
 													<Col md={12}>
-																<span
-																	className="error-message">{getFieldError('schedule_assigned_scene')}</span>
+														<span className="error-message">{getFieldError('schedule_scene_id')}</span>
 													</Col>
 												</Col>
 											</FormGroup>
@@ -300,7 +320,7 @@ class Check extends Component {
 													borderBottom: 'solid 1px black',
 													textAlign: 'right'
 												}}>
-													面试时间
+													面谈时间
 												</td>
 												<td style={{
 													width: '80%',
@@ -309,20 +329,7 @@ class Check extends Component {
 													borderBottom: 'solid 1px black',
 													textAlign: 'left'
 												}}>
-													<span
-														style={{marginRight: '10px'}}>{this.state.schedule_date}</span>
-													{
-														this.state.schedule_assigned_scene == 0 ? '上午第一场' : ''
-													}
-													{
-														this.state.schedule_assigned_scene == 1 ? '上午第二场' : ''
-													}
-													{
-														this.state.schedule_assigned_scene == 2 ? '下午第一场' : ''
-													}
-													{
-														this.state.schedule_assigned_scene == 3 ? '下午第二场' : ''
-													}
+													<span style={{marginRight: '10px'}}>{this.state.schedule_date} {this.state.schedule_scene_time}</span>
 												</td>
 											</tr>
 											{
@@ -335,7 +342,7 @@ class Check extends Component {
 															borderBottom: 'solid 1px black',
 															textAlign: 'right'
 														}}>
-															面试成绩
+															面谈成绩
 														</td>
 														<td style={{
 															width: '80%',
@@ -420,11 +427,9 @@ class Check extends Component {
 																	color: 'white',
 																}} bsSize="large"
 																onClick={() => {
-																	this.setState({
-																		is_edit: true
-																	});
+																	this.handleSceneEdit();
 																}}>
-															修改面试时间（只有一次修改机会）
+															修改面谈时间（只有一次修改机会）
 														</Button>
 											}
 										</div>
@@ -813,7 +818,7 @@ class Check extends Component {
 											3）3张一寸证件照（不限底色）。<br/>
 											4.请家长车辆在东鄱南路和轻工三路右侧车道斜停放。<br/>
 											5.联系我们：0757-82596128、18188719581。<br/>
-											6.打印报名表说明：请使用电脑端的浏览器进行打印。打印路径：登录我校官方网站www.fcis.net.cn点击招生招聘-初一新生报名-报名查询-输入证件号码（身份证）、密码-打印报名表
+											6.打印报名表说明：请使用电脑端的浏览器进行打印。打印路径：登录我校官方网站www.fcis.net.cn点击招生招聘-初一新生报名-报名查询-输入学生的身份证件号码（身份证）、密码-打印报名表
 										</Col>
 									</Row>
 								</div>
@@ -829,7 +834,7 @@ class Check extends Component {
 										{this.state.is_load ? "加载中.." : "打印报名表"}
 									</Button>
 									{
-										this.state.schedule_assigned_scene > -1 ?
+										this.state.schedule_scene_id != '' ?
 											''
 											:
 											<Button disabled={this.state.is_load} style={{

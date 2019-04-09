@@ -94,7 +94,7 @@ class Check extends Component {
 					signup_transfer: data.signup_transfer
 				});
 
-				this.handleLoad(data.signup_transfer.signup_id);
+				// this.handleLoad(data.signup_transfer.signup_id);
 			}.bind(this),
 			error: function (data) {
 				this.setState({
@@ -140,7 +140,7 @@ class Check extends Component {
 											textAlign: 'center',
 											marginBottom: '30px'
 										}}>
-											面试信息
+											面谈信息
 										</div>
 										<table border="1" cellSpacing="0" cellPadding="0" width="100%" style={{
 											width: '100%',
@@ -157,7 +157,7 @@ class Check extends Component {
 													borderBottom: 'solid 1px black',
 													textAlign: 'center'
 												}}>
-													面试时间
+													面谈时间
 												</td>
 												<td style={{
 													width: '20%',
@@ -543,7 +543,7 @@ class Check extends Component {
 										3）3张一寸证件照（不限底色）。<br/>
 										4.请家长车辆在东鄱南路和轻工三路右侧车道斜停放。<br/>
 										5.联系我们：0757-82596128、18188719581。<br/>
-										6.打印报名表说明：请使用电脑端的浏览器进行打印。打印路径：登录我校官方网站www.fcis.net.cn点击“招生招聘”-“插班生报名”-报名查询-输入证件号码（身份证）、密码-打印报名表
+										6.打印报名表说明：请使用电脑端的浏览器进行打印。打印路径：登录我校官方网站www.fcis.net.cn点击“招生招聘”-“插班生报名”-报名查询-输入学生的身份证件号码（身份证）、密码-打印报名表
 									</Row>
 								</div>
 							</Print>

@@ -27,7 +27,6 @@ class Login extends Component {
 
 	componentDidMount() {
 		util.scrollToTop(0);
-		console.log('111', storage.getTransferToken());
 		if (storage.getTransferToken()) {
 			this.props.history.push({
 				pathname: "/transfer/check",
