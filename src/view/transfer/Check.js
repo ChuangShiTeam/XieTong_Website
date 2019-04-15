@@ -201,7 +201,7 @@ class Check extends Component {
 											<span style={{
 												fontSize: '30px',
 												fontWeight: '1000'
-											}}>佛山协同（国际）学校2019年春季插班生报名表</span>
+											}}>佛山协同（国际）学校2019年插班生报名表</span>
 										</Col>
 									</Row>
 									<Row style={{paddingTop: '0px', paddingLeft: '50px', paddingRight: '50px'}}>

@@ -114,7 +114,7 @@ class Check extends Component {
 					signup_junior: data.signup_junior
 				});
 
-				this.handleLoad(data.signup_junior.signup_id);
+				// this.handleLoad(data.signup_junior.signup_id);
 			}.bind(this),
 			error: function (data) {
 				this.setState({

@@ -112,7 +112,7 @@ class Check extends Component {
 					signup_pupil: data.signup_pupil
 				});
 
-				this.handleLoad(data.signup_pupil.signup_id);
+				// this.handleLoad(data.signup_pupil.signup_id);
 			}.bind(this),
 			error: function (data) {
 				this.setState({
