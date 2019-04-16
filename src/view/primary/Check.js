@@ -29,7 +29,7 @@ class Check extends Component {
 			schedule_id: '',
 			schedule_date: '',
 			schedule_assigned_id: '',
-			schedule_scene_id: -1,
+			schedule_scene_id: '',
 			schedule_assigned_change: -1,
 			schedule_assigned_score: {},
 			schedule_assigned_status: false,
@@ -775,7 +775,7 @@ class Check extends Component {
 											1）报名表，请自行网上打印，贴照片；<br/>
 											2）户口本学生页复印件1张（港澳台籍身份证复印件，外籍护照复印件）；<br/>
 											3）3张一寸证件照（不限底色）。<br/>
-											4.请家长车辆在东鄱南路和轻工三路右侧车道斜停放。<br/>
+											面谈信息			4.请家长车辆在东鄱南路和轻工三路右侧车道斜停放。<br/>
 											5.联系我们：0757-82596128、82596001、18188719581。<br/>
 											6.打印报名表说明：请使用电脑端的浏览器进行打印。打印路径：登录我校官方网站www.fcis.net.cn点击招生招聘-小一新生报名-报名查询-输入学生的身份证件号码（身份证）、密码-打印报名表
 										</Col>
