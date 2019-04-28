@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {Modal, Button} from 'react-bootstrap';
 
 import Header from '../../component/Header';
 import Footer from '../../component/Footer';
@@ -16,6 +17,7 @@ class Entry extends Component {
 
         this.state = {
             is_load: false,
+			is_show: false,
             result_type: '',
             result_message: '',
             menu_index: 1
@@ -57,6 +59,18 @@ class Entry extends Component {
         });
     }
 
+	handleOpen() {
+		this.setState({
+			is_show: true
+		});
+	}
+
+	handleClose() {
+		this.setState({
+			is_show: false
+		});
+	}
+
     render() {
         return (
             <div>
@@ -86,14 +100,22 @@ class Entry extends Component {
                                 </Link>
                             </div>
                             <div className="col-xs-12 col-md-4">
-                                <Link to={storage.getJuniorToken() ? "/junior/check" : "/junior/signup"} className="thumbnail">
-                                    <div className="signup-enter-item">
-                                        <div className="signup-enter-item-text">
-                                            <img className="signup-enter-item-icon" src="../image/activity.png" alt=""/>
-                                            开始报名
-                                        </div>
-                                    </div>
-                                </Link>
+								{/*<Link to={storage.getJuniorToken() ? "/junior/check" : "/junior/signup"} className="thumbnail">*/}
+									{/*<div className="signup-enter-item">*/}
+										{/*<div className="signup-enter-item-text">*/}
+											{/*<img className="signup-enter-item-icon" src="../image/activity.png" alt=""/>*/}
+											{/*开始报名*/}
+										{/*</div>*/}
+									{/*</div>*/}
+								{/*</Link>*/}
+								<div className="thumbnail" onClick={this.handleOpen.bind(this)}>
+									<div className="signup-enter-item">
+										<div className="signup-enter-item-text">
+											<img className="signup-enter-item-icon" src="../image/activity.png" alt=""/>
+											开始报名
+										</div>
+									</div>
+								</div>
                             </div>
                             <div className="col-xs-12 col-md-4">
                                 <Link to="/junior/login" className="thumbnail">
@@ -109,6 +131,17 @@ class Entry extends Component {
                     </div>
                 </div>
                 <Footer/>
+				<Modal show={this.state.is_show} onHide={this.handleClose.bind(this)}>
+					<Modal.Header closeButton>
+						<Modal.Title>系统提示</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>暂时停止报名！</Modal.Body>
+					<Modal.Footer>
+						<Button variant="primary" onClick={this.handleClose.bind(this)}>
+							确定
+						</Button>
+					</Modal.Footer>
+				</Modal>
             </div>
         );
     }
