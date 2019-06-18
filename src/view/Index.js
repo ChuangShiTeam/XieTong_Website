@@ -15,7 +15,7 @@ class Index extends Component {
         super(props);
 
         this.state = {
-            display: ''
+            display: 'none'
         }
     }
 
@@ -25,8 +25,8 @@ class Index extends Component {
         util.scrollToTop(0);
 
         if (util.isPc()) {
-            window.advertisement = new window.AdMove("advertisement");
-            window.advertisement.Run();
+            // window.advertisement = new window.AdMove("advertisement");
+            // window.advertisement.Run();
         }
 
         if (this.props.index.article_list.length === 0) {
@@ -57,7 +57,7 @@ class Index extends Component {
 
     componentWillUnmount() {
         if (util.isPc()) {
-            window.advertisement.Stop();
+            // window.advertisement.Stop();
         }
     }
 
